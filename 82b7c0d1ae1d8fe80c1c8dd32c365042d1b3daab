@@ -1,0 +1,179 @@
+## Claude Code Prompts
+
+**Session**: 986325b5-9ef7-486f-ac86-d087aa173a2d
+**Captured**: 2026-03-18T21:17:42Z
+
+### Prompts
+
+**1.** [bypass] 1
+
+**2.** Base directory for this skill: /Users/gilles/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/subagent-driven-development
+
+# Subagent-Driven Development
+
+Execute plan by dispatching fresh subagent per task, with two-stage review after each: spec compliance review first, then code quality review.
+
+**Why subagents:** You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They should never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
+
+**Core principle:** Fresh subagent per task + two-stage review (spec then quality) = high quality, fast iteration
+
+## When to Use
+
+```dot
+digraph when_to_use {
+    "Have implementation plan?" [shape=diamond];
+    "Tasks mostly independent?" [shape=diamond];
+    "Stay in this session?" [shape=diamond];
+    "subagent-driven-development" [shape=box];
+    "executing-plans" [shape=box];
+    "Manual execution or brainstorm first" [shape=box];
+
+    "Have implementation plan?" -> "Tasks mostly independent?" [label="yes"];
+    "Have implementation plan?" -> "Manual execution or brainstorm first" [label="no"];
+    "Tasks mostly independent?" -> "Stay in this session?" [label="yes"];
+    "Tasks mostly independent?" -> "Manual execution or brainstorm first" [label="no - tightly coupled"];
+    "Stay in this session?" -> "subagent-driven-development" [label="yes"];
+    "Stay in this session?" -> "executing-plans" [label="no - parallel session"];
+}
+```
+
+**vs. Executing Plans (parallel session):**
+- Same session (no context switch)
+- Fresh subagent per task (no context pollution)
+- Two-stage review after each task: spec compliance first, then code quality
+- Faster iteration (no human-in-loop between tasks)
+
+## The Process
+
+```dot
+digraph process {
+    rankdir=TB;
+
+    subgraph cluster_per_task {
+        label="Per Task";... [truncated]
+
+**3.** [bypass] <task-notification>
+<task-id>a2c18eeb96dd4213c</task-id>
+<tool-use-id>toolu_01NfTcntXNgxkc3FqqZbSYuq</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/a2c18eeb96dd4213c.output</output-file>
+<status>completed</status>
+<summary>Agent "Implement Task 1: Backupta logo" completed</summary>
+<result>---
+
+**Status:** DONE_WITH_CONCERNS
+
+**What was implemented:**
+- Fetched the Backupta website at `https://www.backupta.com/` and located their logo
+- Downloaded the logo to `assets/clients/backupta-logo.png`
+- Verified the file: valid PNG, 961x194 pixels, RGBA (transparent background), 16KB
+- Committed as `303565f` with message "Add Backupta logo asset for clients section"
+
+**File created:**
+- `/Users/gilles/Documents/trailblaze/trailblaze.work/assets/clients/backupta-logo.png`
+
+**Concerns -- logo visibility on dark background:**
+- Despite the source filename containing "full white", the logo is actually **dark navy blue** text with a magenta/cyan accent on the "k", on a **transparent** background.
+- On the site's dark background (#08080a), the dark navy text will be nearly invisible. Only the colored "k" chevron would be somewhat visible.
+- **Recommended fix:** The logo will need a CSS `filter: invert(1)` or `filter: brightness(0) invert(1)` to make it white, or you could apply a light background/padding behind it. Alternatively, you could manually create a white version by inverting the colors in an image editor. Backupta's own website uses this same logo on a dark background, suggesting they may rely on CSS to handle it -- but on their actual site the logo appears as-is against a dark navy/black header, so the contrast issue is real and needs addressing.</result>
+<usage><total_tokens>13831</total_tokens><tool_uses>12</tool_uses><duration_ms>84868</duration_ms></usage>
+<worktree><worktreePath>/Users/gilles/Documents/trailblaze/trailblaze.work/.claude/worktrees/agent-a2c18eeb</worktr... [truncated]
+
+**4.** [bypass] <task-notification>
+<task-id>a2903f4b7e1982d3b</task-id>
+<tool-use-id>toolu_01ViiP2c34pmzEkSLSvHvKZ5</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/a2903f4b7e1982d3b.output</output-file>
+<status>completed</status>
+<summary>Agent "Implement Task 2: English JSON" completed</summary>
+<result>---
+
+**Status:** DONE
+
+**What was implemented:**
+- Created the `i18n/` directory and wrote `i18n/en.json` containing all visible text extracted from `index.html`, organized by section (meta, nav, hero, about, services, approach, caseStudy, principles, clients, contact, footer).
+- All text was verified against the source HTML. Values containing HTML markup (`<br>`, `<span class="em">`) are preserved as-is for innerHTML injection.
+- The `clients` section (Backupta / "Trusted by") is included per the task specification, even though it does not yet appear in the current `index.html` -- it will serve as the source-of-truth for when that section is added.
+
+**Files changed:**
+- `/Users/gilles/Documents/trailblaze/trailblaze.work/i18n/en.json` (created, 131 lines)
+
+**JSON validation result:** Valid JSON (confirmed via `python3 -c "import json; json.load(open('i18n/en.json'))"`)
+
+**Commit:** `1fbae1e` -- "Extract English copy into i18n/en.json"</result>
+<usage><total_tokens>31254</total_tokens><tool_uses>8</tool_uses><duration_ms>86977</duration_ms></usage>
+<worktree><worktreePath>/Users/gilles/Documents/trailblaze/trailblaze.work/.claude/worktrees/agent-a2903f4b</worktreePath><worktreeBranch>worktree-agent-a2903f4b</worktreeBranch></worktree>
+</task-notification>
+Full transcript available at: /private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/a2903f4b7e1982d3b.output
+
+**5.** [bypass] <task-notification>
+<task-id>ad1177b5b188d5f99</task-id>
+<tool-use-id>toolu_01P67fghKYfgumrhMBoqnsEu</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/ad1177b5b188d5f99.output</output-file>
+<status>completed</status>
+<summary>Agent "Implement Task 3: French JSON" completed</summary>
+<result>---
+
+**Status:** DONE
+
+**What I implemented:**
+- Created `/Users/gilles/Documents/trailblaze/trailblaze.work/i18n/fr.json` with the full French translation matching the exact key structure of `en.json`.
+
+**Files changed:**
+- Created: `/Users/gilles/Documents/trailblaze/trailblaze.work/i18n/fr.json` (131 lines)
+
+**JSON validation result:** Valid JSON (confirmed via `python3 -c "import json; json.load(open('i18n/fr.json'))"`)
+
+**Additional validations passed:**
+- Key structure matches `en.json` exactly (no missing, extra, or mismatched keys)
+- No emdashes found
+- No AI writing tells found
+- French guillemets `« »` used correctly in s3.desc
+- Formal "vous" register throughout
+- French number conventions used: `5,5x`, `5/mois`, `80/mois`
+- Proper UTF-8 accents throughout
+
+**Commit:** `2c07a15` - "Add French translation adapted for corporate audience"</result>
+<usage><total_tokens>16657</total_tokens><tool_uses>14</tool_uses><duration_ms>84903</duration_ms></usage>
+<worktree><worktreePath>/Users/gilles/Documents/trailblaze/trailblaze.work/.claude/worktrees/agent-ad1177b5</worktreePath><worktreeBranch>worktree-agent-ad1177b5</worktreeBranch></worktree>
+</task-notification>
+Full transcript available at: /private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/ad1177b5b188d5f99.output
+
+**6.** [bypass] <task-notification>
+<task-id>a3c2443965a90d12f</task-id>
+<tool-use-id>toolu_017CVC54k4PdwouuGPkSacA9</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/a3c2443965a90d12f.output</output-file>
+<status>completed</status>
+<summary>Agent "Implement Task 4: Clients section" completed</summary>
+<result>- **Status:** DONE
+- **What was implemented:** Three changes to `/Users/gilles/Documents/trailblaze/trailblaze.work/index.html`:
+  1. **CSS for clients section** (after `.principle-card p` rule, line ~721): `.clients-grid`, `.client-card`, `.client-card:hover`, `.client-logo`, `.client-logo img` (with brightness/invert filter for the dark navy logo), `.client-info h4`, `.client-info p`
+  2. **Responsive rule** (inside `@media (max-width: 768px)`, after `.principles-grid`): `.client-card` stacks vertically on small screens
+  3. **Clients section HTML** (between the Principles divider and the CTA section): A `<section id="clients">` with a Backupta card featuring logo, name, and description, with `data-i18n` attributes for future localization
+- **Files changed:** `index.html` (+81 lines)
+- **Commit:** `56babd3` "Add clients section with Backupta featured card"
+- **No issues or concerns.**</result>
+<usage><total_tokens>16767</total_tokens><tool_uses>17</tool_uses><duration_ms>96823</duration_ms></usage>
+</task-notification>
+Full transcript available at: /private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/a3c2443965a90d12f.output
+
+**7.** [bypass] <task-notification>
+<task-id>ae4b182d61b93fca8</task-id>
+<tool-use-id>toolu_01Jn4vNBVXbrujHXEsAtBJLM</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/ae4b182d61b93fca8.output</output-file>
+<status>completed</status>
+<summary>Agent "Implement Task 5: data-i18n attrs" completed</summary>
+<result>So there are 72 `data-i18n` attributes total (including the 2 pre-existing from Task 4), 5 `data-i18n-html` attributes, and 2 `data-i18n-attr` attributes. That means 70 new `data-i18n` attributes were added.
+
+Here is the report:
+
+---
+
+- **Status:** DONE
+- **Total `data-i18n` attributes added:** 70 (72 total, minus 2 pre-existing from Task 4: `clients.tag` and `clients.backupta.desc`, which were verified as present and correct)
+- **Total `data-i18n-html` attributes added:** 5 (`hero.headline`, `services.heading`, `approach.heading`, `caseStudy.heading`, `contact.heading`)
+- **Total `data-i18n-attr` attributes added:** 2 (`content:meta.description`, `aria-label:nav.toggleMenu`)
+- **Span wrappers added for buttons:** 2 (hero primary CTA wrapping "Start the conversation", contact email CTA wrapping "hello@trailblaze.work")
+- **Files changed:** `/Users/gilles/Documents/trailblaze/trailblaze.work/index.html`
+- **Concerns:** The commit also includes some CSS animation changes to the `.approach-steps` and `.step-icon` sections that were applied by an external linter/tool during the editing session (not from this task). These changes appear to add animated step reveal effects for the approach section. If these CSS changes are undesirable in this commit, they could be separated out.</result>
+<usage><total_tokens>59364</total_tokens><tool_uses>74</tool_uses><duration_ms>443406</duration_ms></usage>
+</task-notification>
+Full transcript available at: /private/tmp/claude-501/-Users-gilles-Documents-trailblaze-trailblaze-work/986325b5-9ef7-486f-ac86-d087aa173a2d/tasks/ae4b182d61b93fca8.output
