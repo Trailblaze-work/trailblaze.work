@@ -717,6 +717,61 @@
       color: var(--text-secondary);
     }
 
+    /* ── Clients ── */
+    .clients-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .client-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      transition: all 0.3s ease;
+      max-width: 600px;
+    }
+
+    .client-card:hover {
+      border-color: var(--border-glow);
+    }
+
+    .client-logo {
+      flex-shrink: 0;
+      width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .client-logo img {
+      max-width: 100%;
+      max-height: 48px;
+      width: auto;
+      height: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+
+    .client-info h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .client-info p {
+      font-weight: 300;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
     /* ── Case Study ── */
     .case-study-charts {
       display: flex;
@@ -951,6 +1006,11 @@
       .approach-steps { grid-template-columns: 1fr; gap: 2rem; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .principles-grid { grid-template-columns: 1fr; }
+      .client-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
 
       .hero-actions { flex-direction: column; align-items: flex-start; }
 
@@ -1232,6 +1292,27 @@
           </div>
           <h4>Safety is not an afterthought</h4>
           <p>Governance, data privacy, and security are built in from day one. We've seen what happens when they're not, and we won't let that happen to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Clients -->
+  <section id="clients">
+    <div class="section-inner">
+      <div class="section-tag" data-i18n="clients.tag">Trusted by</div>
+
+      <div class="clients-grid">
+        <div class="client-card reveal">
+          <div class="client-logo">
+            <img src="assets/clients/backupta-logo.png" alt="Backupta">
+          </div>
+          <div class="client-info">
+            <h4>Backupta</h4>
+            <p data-i18n="clients.backupta.desc">Backupta builds secure, automated backup solutions for businesses. We helped them accelerate their product development with AI-assisted engineering workflows.</p>
+          </div>
         </div>
       </div>
     </div>
