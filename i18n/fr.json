@@ -23,7 +23,7 @@
     "tag": "Qui sommes-nous",
     "heading": "On sait comment l'IA s'adopte vraiment.",
     "p1": "Tout le monde s'accorde à dire que l'IA compte. Mais la plupart des déploiements échouent parce qu'ils sont menés par des profils qui maîtrisent la technologie sans connaître les métiers, ou l'inverse.",
-    "p2": "Nous faisons les deux. Nous travaillons au contact de vos équipes pour identifier où l'IA apporte une vraie valeur, nous repensons les workflows concernés, et nous restons jusqu'à ce que vos collaborateurs soient autonomes."
+    "p2": "Nous faisons les deux. Notre équipe regroupe des experts en ingénierie, vente, design et produit. Nous travaillons au contact de vos équipes pour identifier où l'IA apporte une vraie valeur, nous repensons les workflows concernés, et nous restons jusqu'à ce que vos collaborateurs soient autonomes."
   },
   "services": {
     "tag": "Nos services",
@@ -115,7 +115,10 @@
   "clients": {
     "tag": "Ils nous font confiance",
     "backupta": {
-      "desc": "Backupta développe des solutions de sauvegarde automatisées et sécurisées pour les entreprises. Nous les avons aidés à accélérer leur cycle de développement produit grâce à des workflows d'ingénierie assistés par l'IA."
+      "desc": "Backupta développe des solutions de sauvegarde automatisées et sécurisées pour les entreprises. Nous avons accompagné chaque équipe vers des pratiques AI-first et conçu des outils IA sur mesure qui font tourner l'ensemble de leur activité."
+    },
+    "lyvoc": {
+      "desc": "Lyvoc est un pure-player de l'intégration cybersécurité qui déploie Okta, Drata et Vanta à travers l'Europe. Nous avons formé leurs équipes à travailler avec l'IA au quotidien et développé des outils sur mesure qui accélèrent leurs prestations clients."
     }
   },
   "contact": {

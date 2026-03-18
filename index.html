@@ -213,6 +213,12 @@
       box-shadow: 0 8px 30px rgba(232, 106, 46, 0.3);
     }
 
+    .nav-cta-icon {
+      display: none;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
     /* ── Mobile nav toggle ── */
     .nav-toggle {
       display: none;
@@ -767,12 +773,14 @@
 
     /* ── Clients ── */
     .clients-grid {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
-      flex-wrap: wrap;
     }
 
     .client-card {
+      text-decoration: none;
+      color: inherit;
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
@@ -781,7 +789,6 @@
       align-items: center;
       gap: 2.5rem;
       transition: all 0.3s ease;
-      max-width: 600px;
     }
 
     .client-card:hover {
@@ -801,8 +808,11 @@
       max-height: 48px;
       width: auto;
       height: auto;
-      filter: brightness(0) invert(1);
       opacity: 0.85;
+    }
+
+    .client-logo img.invert {
+      filter: brightness(0) invert(1);
     }
 
     .client-info h4 {
@@ -1214,6 +1224,7 @@
       .approach-steps { grid-template-columns: 1fr; gap: 2rem; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .principles-grid { grid-template-columns: 1fr; }
+      .clients-grid { grid-template-columns: 1fr; }
       .client-card {
         flex-direction: column;
         align-items: flex-start;
@@ -1238,6 +1249,22 @@
         min-height: 32px;
       }
     }
+
+    @media (max-width: 580px) {
+      nav { padding: 1rem 1rem; gap: 0.5rem; }
+
+      .nav-brand-mark { height: 1.5rem; }
+      .nav-logo { font-size: 1.1rem; }
+
+      .nav-cta {
+        padding: 0.5rem 0.7rem;
+        margin: 0 0.25rem;
+      }
+      .nav-cta-text { display: none; }
+      .nav-cta-icon { display: inline; }
+
+      .nav-toggle { margin-left: 0; }
+    }
   </style>
 </head>
 <body>
@@ -1252,7 +1279,7 @@
       <li><a href="#case-study" data-i18n="nav.caseStudy">Case Study</a></li>
       <li><a href="#principles" data-i18n="nav.whyUs">Why Us</a></li>
     </ul>
-    <a href="#contact" class="nav-cta" data-i18n="nav.cta">Get in Touch</a>
+    <a href="#contact" class="nav-cta"><span class="nav-cta-text" data-i18n="nav.cta">Get in Touch</span><span class="nav-cta-icon" aria-hidden="true">&#9993;</span></a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" data-i18n-attr="aria-label:nav.toggleMenu">
       <span></span><span></span><span></span>
     </button>
@@ -1295,7 +1322,7 @@
           <div class="section-tag" data-i18n="about.tag">Who We Are</div>
           <h3 data-i18n="about.heading">We know how AI actually gets adopted.</h3>
           <p data-i18n="about.p1">Everyone agrees AI matters. But most rollouts stall because they're led by people who understand the tech and not the work, or the work and not the tech.</p>
-          <p data-i18n="about.p2">We do both. We sit with your teams, figure out where AI genuinely helps, rebuild those workflows from scratch, and stick around until your people are comfortable running things on their own.</p>
+          <p data-i18n="about.p2">We do both. Our team includes experts in engineering, sales, design, and product, so we can sit with your people, figure out where AI genuinely helps, rebuild those workflows from scratch, and stick around until everyone is comfortable running things on their own.</p>
         </div>
       </div>
     </div>
@@ -1532,15 +1559,24 @@
       <div class="section-tag" data-i18n="clients.tag">Trusted by</div>
 
       <div class="clients-grid">
-        <div class="client-card reveal">
+        <a href="https://www.backupta.com/" target="_blank" rel="noopener" class="client-card reveal">
           <div class="client-logo">
-            <img src="assets/clients/backupta-logo.png" alt="Backupta">
+            <img src="assets/clients/backupta-logo.png" alt="Backupta" class="invert">
           </div>
           <div class="client-info">
             <h4>Backupta</h4>
-            <p data-i18n="clients.backupta.desc">Backupta builds secure, automated backup solutions for businesses. We helped them accelerate their product development with AI-assisted engineering workflows.</p>
+            <p data-i18n="clients.backupta.desc">Backupta builds secure, automated backup solutions for businesses. We helped every team shift to AI-first workflows and built custom AI-powered tools that now run across their entire operation.</p>
           </div>
-        </div>
+        </a>
+        <a href="https://www.lyvoc.com/" target="_blank" rel="noopener" class="client-card reveal">
+          <div class="client-logo">
+            <img src="assets/clients/lyvoc-logo.png" alt="Lyvoc">
+          </div>
+          <div class="client-info">
+            <h4>Lyvoc</h4>
+            <p data-i18n="clients.lyvoc.desc">Lyvoc is a cybersecurity integration partner deploying Okta, Drata and Vanta across Europe. We trained their teams to work with AI at every level and developed bespoke tools that accelerate how they deliver for clients.</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -1574,9 +1610,7 @@
     <div class="footer-inner">
       <span class="footer-brand"><img src="trailblaze-mark.svg" alt="" class="footer-brand-mark"><span class="footer-logo">TR<span class="logo-ai">AI</span>LBLAZE</span></span>
       <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 Trailblaze. All rights reserved.</span>
-      <ul class="footer-links">
-        <li><a href="mailto:hello@trailblaze.work" data-i18n="footer.contact">Contact</a></li>
-      </ul>
+      <span class="footer-brand" style="visibility: hidden;" aria-hidden="true"><img src="trailblaze-mark.svg" alt="" class="footer-brand-mark"><span class="footer-logo">TRAILBLAZE</span></span>
     </div>
   </footer>
 

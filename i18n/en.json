@@ -23,7 +23,7 @@
     "tag": "Who We Are",
     "heading": "We know how AI actually gets adopted.",
     "p1": "Everyone agrees AI matters. But most rollouts stall because they're led by people who understand the tech and not the work, or the work and not the tech.",
-    "p2": "We do both. We sit with your teams, figure out where AI genuinely helps, rebuild those workflows from scratch, and stick around until your people are comfortable running things on their own."
+    "p2": "We do both. Our team includes experts in engineering, sales, design, and product, so we can sit with your people, figure out where AI genuinely helps, rebuild those workflows from scratch, and stick around until everyone is comfortable running things on their own."
   },
   "services": {
     "tag": "What We Do",
@@ -115,7 +115,10 @@
   "clients": {
     "tag": "Trusted by",
     "backupta": {
-      "desc": "Backupta builds secure, automated backup solutions for businesses. We helped them accelerate their product development with AI-assisted engineering workflows."
+      "desc": "Backupta builds secure, automated backup solutions for businesses. We helped every team shift to AI-first workflows and built custom AI-powered tools that now run across their entire operation."
+    },
+    "lyvoc": {
+      "desc": "Lyvoc is a cybersecurity integration partner deploying Okta, Drata and Vanta across Europe. We trained their teams to work with AI at every level and developed bespoke tools that accelerate how they deliver for clients."
     }
   },
   "contact": {
