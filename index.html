@@ -1111,6 +1111,47 @@
       color: var(--accent-amber);
     }
 
+    /* ── Language switcher ── */
+    .lang-switcher {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 500;
+      display: flex;
+      gap: 2px;
+      background: rgba(26, 26, 30, 0.9);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 3px 4px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .lang-switcher button {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.15s ease;
+      min-width: 36px;
+      min-height: 28px;
+    }
+
+    .lang-switcher button.active {
+      background: rgba(232, 154, 46, 0.15);
+      color: var(--text-primary);
+    }
+
+    .lang-switcher button:not(.active):hover {
+      color: var(--text-secondary);
+    }
+
     /* ── Scroll animations ── */
     .reveal {
       opacity: 0;
@@ -1185,6 +1226,16 @@
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
+      }
+
+      .lang-switcher {
+        bottom: 1rem;
+        right: 1rem;
+      }
+
+      .lang-switcher button {
+        padding: 6px 12px;
+        min-height: 32px;
       }
     }
   </style>
@@ -1511,6 +1562,12 @@
       </div>
     </div>
   </section>
+
+  <!-- Language switcher -->
+  <div class="lang-switcher" id="lang-switcher">
+    <button data-lang="en" aria-label="English">EN</button>
+    <button data-lang="fr" aria-label="Français">FR</button>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -1849,6 +1906,31 @@
         document.getElementById('nav-links').classList.remove('open');
       });
     });
+
+    /* ── Language switcher ── */
+    (() => {
+      const switcher = document.getElementById('lang-switcher');
+      const buttons = switcher.querySelectorAll('button');
+
+      const updateActive = () => {
+        const current = document.documentElement.getAttribute('data-lang') || 'en';
+        buttons.forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-lang') === current);
+        });
+      };
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const newLang = btn.getAttribute('data-lang');
+          if (newLang !== document.documentElement.getAttribute('data-lang')) {
+            window.__setLang(newLang);
+            updateActive();
+          }
+        });
+      });
+
+      updateActive();
+    })();
   </script>
 </body>
 </html>
