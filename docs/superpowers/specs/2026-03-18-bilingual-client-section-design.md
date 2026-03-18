@@ -13,8 +13,10 @@ Make the Trailblaze website bilingual (English/French) with browser language det
 
 All hardcoded text in `index.html` is replaced with `data-i18n` attributes referencing keys in two JSON files:
 
-- `/i18n/en.json` - English copy (source of truth)
-- `/i18n/fr.json` - French copy (adapted, not translated)
+- `i18n/en.json` - English copy (source of truth)
+- `i18n/fr.json` - French copy (adapted, not translated)
+
+All paths are relative (consistent with the rest of the site, e.g., `favicon.svg`). This ensures the site works if ever deployed under a subdirectory.
 
 A small inline JS module handles language resolution and DOM hydration.
 
@@ -30,15 +32,15 @@ A small inline JS module handles language resolution and DOM hydration.
 
 1. **Preload both JSON files** in `<head>`, immediately after font preloads:
    ```html
-   <link rel="preload" href="/i18n/en.json" as="fetch" crossorigin>
-   <link rel="preload" href="/i18n/fr.json" as="fetch" crossorigin>
+   <link rel="preload" href="i18n/en.json" as="fetch" crossorigin>
+   <link rel="preload" href="i18n/fr.json" as="fetch" crossorigin>
    ```
 
 2. **Inline blocking script** in `<head>` (before CSS) that resolves the language and sets `<html lang="">` + a `data-lang` attribute. This runs synchronously so the browser knows the language before painting.
 
-3. **Hydration script** at end of `<body>` (or deferred) fetches the resolved language's JSON (already preloaded, so it's instant from cache) and injects text into all `data-i18n` elements.
+3. **Hydration script** at end of `<body>` (or deferred) fetches the resolved language's JSON (already preloaded, so it's instant from cache) and injects text into all `data-i18n` elements. The `<title>` element is a special case: updated via `document.title = translations.meta.title` since it cannot carry `data-i18n` attributes.
 
-4. **Fallback content in HTML:** The `data-i18n` elements contain the English text as their default `textContent`. If JS fails or is slow, the page still shows English. The hydration replaces this text.
+4. **Fallback content in HTML:** The `data-i18n` elements contain the English text as their default `textContent`. If JS fails or is slow, the page still shows English. The hydration replaces this text. The existing `body { opacity: 0 }` pattern (which waits for `document.fonts.ready`) provides a natural FOUT safety net: the page is invisible until fonts load, and by that time the hydration script will have run.
 
 5. **`localStorage` caching** of language preference so repeat visits skip detection entirely.
 
@@ -100,6 +102,8 @@ The `lang` attribute on `<html>` updates to match the active language. This is i
 - Browser spell-check language
 - Search engine language detection
 
+**Important:** Section `id` attributes (e.g., `#about`, `#services`) remain in English regardless of active language. Only display text changes. Anchor links must not break when switching languages.
+
 ## 2. French Copy Guidelines
 
 The French version is **not a translation**. It is rewritten copy for a French corporate audience:
@@ -123,7 +127,7 @@ The French version is **not a translation**. It is rewritten copy for a French c
 - **Content:** Two labels: `EN` and `FR`
 - **Active state:** Active language gets a subtle amber background highlight (`rgba(232, 154, 46, 0.15)`) with primary text color
 - **Inactive state:** Muted text color, clickable
-- **z-index:** Above content and noise overlay, below nav (e.g., `z-index: 500`)
+- **z-index:** Above content, below nav. The noise overlay sits at `z-index: 9999` but is `pointer-events: none` and 3% opacity, so it is visually and functionally transparent. The switcher at `z-index: 500` is fine.
 - **Backdrop filter:** Slight blur to match nav bar treatment
 - **Mobile:** Same position, slightly larger padding for touch targets (min 44px tap area)
 - **Animation:** Text content swaps with a quick fade transition (150ms opacity)
@@ -143,7 +147,7 @@ The French version is **not a translation**. It is rewritten copy for a French c
 
 ### Placement
 
-Between the "Why Us" (principles) section and the Contact CTA section.
+Between the "Why Us" (principles) section and the Contact CTA section. No nav link for this section (it is a small social proof element, not a major content section).
 
 ### Layout: Featured Client Card
 
@@ -159,7 +163,7 @@ Between the "Why Us" (principles) section and the Contact CTA section.
 
 ### Backupta Logo
 
-- Download the logo from backupta.com and save it locally in the project (e.g., `/assets/clients/backupta-logo.svg` or `.png`)
+- Download the logo from backupta.com and save it locally in the project (e.g., `assets/clients/backupta-logo.svg` or `.png`)
 - Do not hotlink to their domain
 - If their logo is dark-on-light, it may need a light treatment or container background to be visible on the dark site background
 
@@ -167,10 +171,10 @@ Between the "Why Us" (principles) section and the Contact CTA section.
 
 | File | Change |
 |------|--------|
-| `index.html` | Replace hardcoded text with `data-i18n` attributes; add preload tags for JSON files; add inline language detection script; add language switcher markup; add clients section HTML; add hydration script |
-| `/i18n/en.json` | New file: all English copy extracted from current HTML |
-| `/i18n/fr.json` | New file: French copy adapted for corporate audience |
-| `/assets/clients/backupta-logo.*` | New file: Backupta logo saved locally |
+| `index.html` | Replace hardcoded text with `data-i18n` attributes; add preload tags for JSON files; add inline language detection script; add language switcher markup; add clients section HTML; add hydration script; add CSS for language switcher and clients section to inline `<style>` block |
+| `i18n/en.json` | New file: all English copy extracted from current HTML |
+| `i18n/fr.json` | New file: French copy adapted for corporate audience |
+| `assets/clients/backupta-logo.*` | New file: Backupta logo saved locally |
 | `.gitignore` | Already updated (`.superpowers/` added) |
 
 ## 6. Constraints
