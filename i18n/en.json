@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "title": "Trailblaze - AI Consulting for the Modern Workforce",
+    "description": "Trailblaze helps companies deploy AI-assisted work across their workforce. Bleeding-edge best practices. 10x productivity gains."
+  },
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "approach": "Approach",
+    "caseStudy": "Case Study",
+    "whyUs": "Why Us",
+    "cta": "Get in Touch",
+    "toggleMenu": "Toggle menu"
+  },
+  "hero": {
+    "tag": "AI Workforce Consulting",
+    "headline": "Your team,<br><span class=\"em\">ten times faster.</span>",
+    "sub": "We help companies bring AI into their day-to-day work. Not as a gimmick, but as the way things actually get done. Safely, and ahead of the curve.",
+    "ctaPrimary": "Start the conversation",
+    "ctaSecondary": "See how we work"
+  },
+  "about": {
+    "tag": "Who We Are",
+    "heading": "We know how AI actually gets adopted.",
+    "p1": "Everyone agrees AI matters. But most rollouts stall because they're led by people who understand the tech and not the work, or the work and not the tech.",
+    "p2": "We do both. We sit with your teams, figure out where AI genuinely helps, rebuild those workflows from scratch, and stick around until your people are comfortable running things on their own."
+  },
+  "services": {
+    "tag": "What We Do",
+    "heading": "What we<br>actually do.",
+    "desc": "Four things, and we do them well.",
+    "s1": {
+      "title": "Workforce AI Strategy",
+      "desc": "We look at how your teams actually work and figure out where AI makes a real difference. You get a plan you can act on, not a half-baked deck full of buzzwords."
+    },
+    "s2": {
+      "title": "Implementation & Deployment",
+      "desc": "We test every new tool that hits the market, pick the ones that fit your setup, and wire them into the systems your team already uses. No rip-and-replace."
+    },
+    "s3": {
+      "title": "Training & Adoption",
+      "desc": "Tools don't matter if nobody uses them. We train your people hands-on until they're genuinely faster, not just \"AI-enabled\" on paper."
+    },
+    "s4": {
+      "title": "Safety & Governance",
+      "desc": "Moving fast with AI is pointless if it lands you in trouble. We set up the policies, review processes, and monitoring so you can move quickly without the risk."
+    }
+  },
+  "approach": {
+    "tag": "How We Work",
+    "heading": "How an engagement<br>usually goes.",
+    "desc": "Every company is different, but the shape of the work tends to follow these four steps.",
+    "step1": {
+      "title": "Assess",
+      "desc": "We spend time with your teams to understand how work actually happens, not how the org chart says it should."
+    },
+    "step2": {
+      "title": "Design",
+      "desc": "We redesign the workflows that matter most, so AI fits into how your people already think and operate."
+    },
+    "step3": {
+      "title": "Deploy",
+      "desc": "We roll things out alongside your team. Not a handoff, but a working partnership until everything runs smoothly."
+    },
+    "step4": {
+      "title": "Scale",
+      "desc": "Once it works, we help you spread it. We build internal champions so you don't need us forever."
+    }
+  },
+  "caseStudy": {
+    "tag": "Case Study",
+    "heading": "Same team.<br>Different output.",
+    "desc": "A software company we worked with over 16 months. Headcount stayed flat. The way they worked changed completely.",
+    "chart1": {
+      "title": "Cumulative code output",
+      "subtitle": "Functional code only. Team size held constant.",
+      "engaged": "TRAILBLAZE ENGAGED",
+      "projected": "Projected",
+      "rateBefore": "+6k / month",
+      "rateAfter": "+35k / month"
+    },
+    "callout1": {
+      "number": "5.5x",
+      "label": "Acceleration in delivery rate"
+    },
+    "chart2": {
+      "title": "Features shipped per month",
+      "subtitle": "Same team throughout.",
+      "peak": "110"
+    },
+    "callout2": {
+      "beforeNumber": "5/mo",
+      "beforeLabel": "Before engagement",
+      "afterNumber": "80/mo",
+      "afterLabel": "After engagement"
+    }
+  },
+  "principles": {
+    "tag": "Why Trailblaze",
+    "heading": "Why us.",
+    "desc": "There are a lot of firms talking about AI. Here's why our clients chose us.",
+    "p1": {
+      "title": "We keep up so you don't have to",
+      "desc": "AI moves every week. New models, new tools, new launches. We track all of it and put every tool to the test, so your team gets what actually works, not last quarter's thinking."
+    },
+    "p2": {
+      "title": "We care about your people",
+      "desc": "The best tools in the world don't help if your team doesn't use them. We spend as much time on training and buy-in as we do on the technology itself."
+    },
+    "p3": {
+      "title": "Safety is not an afterthought",
+      "desc": "Governance, data privacy, and security are built in from day one. We've seen what happens when they're not, and we won't let that happen to you."
+    }
+  },
+  "clients": {
+    "tag": "Trusted by",
+    "backupta": {
+      "desc": "Backupta builds secure, automated backup solutions for businesses. We helped them accelerate their product development with AI-assisted engineering workflows."
+    }
+  },
+  "contact": {
+    "tag": "Let's Talk",
+    "heading": "Ready to <span class=\"em\">blaze<br>the trail</span>?",
+    "sub": "If you're thinking about how AI fits into your company's future, we should talk.",
+    "cta": "hello@trailblaze.work"
+  },
+  "footer": {
+    "copy": "\u00a9 2026 Trailblaze. All rights reserved.",
+    "contact": "Contact"
+  }
+}
