@@ -5,11 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trailblaze - AI Consulting for the Modern Workforce</title>
   <meta name="description" content="Trailblaze helps companies deploy AI-assisted work across their workforce. Bleeding-edge best practices. 10x productivity gains." data-i18n-attr="content:meta.description">
+  <script>
+    // Resolve language before paint — blocking on purpose
+    (() => {
+      let lang;
+      try { lang = localStorage.getItem('trailblaze-lang'); } catch(e) {}
+      if (!lang) lang = navigator.language?.slice(0,2) === 'fr' ? 'fr' : 'en';
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.gstatic.com/s/syne/v24/8vIH7w4qzmVxm2BL9G78HEY.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtqUYLknw.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="i18n/en.json" as="fetch" crossorigin>
+  <link rel="preload" href="i18n/fr.json" as="fetch" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
@@ -616,7 +628,15 @@
       right: 10%;
       height: 1px;
       background: linear-gradient(to right, transparent, var(--accent-amber), var(--accent-orange), var(--accent-ember), transparent);
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: opacity 0.6s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .approach-steps.animated::before {
       opacity: 0.25;
+      transform: scaleX(1);
     }
 
     .approach-step {
@@ -636,8 +656,36 @@
       margin: 0 auto 1.5rem;
       position: relative;
       z-index: 1;
-      transition: all 0.4s ease;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: scale(0.3);
     }
+
+    .approach-step.step-visible .step-icon {
+      animation: stepAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes stepAppear {
+      0% { opacity: 0; transform: scale(0.3); box-shadow: 0 0 0 rgba(232, 154, 46, 0); }
+      60% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 40px rgba(232, 154, 46, 0.4); }
+      100% { opacity: 1; transform: scale(1); box-shadow: 0 0 15px rgba(232, 154, 46, 0.1); }
+    }
+
+    .approach-step h4,
+    .approach-step p {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .approach-step.step-visible h4,
+    .approach-step.step-visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .approach-step.step-visible h4 { transition-delay: 0.15s; }
+    .approach-step.step-visible p { transition-delay: 0.25s; }
 
     .approach-step:hover .step-icon {
       border-color: var(--accent-amber);
@@ -802,10 +850,129 @@
       margin-bottom: 1.5rem;
     }
 
+    .chart-container {
+      position: relative;
+    }
+
     .chart-container svg {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    /* Chart 1: line draw animation */
+    .chart-line-animated {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      transition: stroke-dashoffset 2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .chart-card.chart-animated .chart-line-animated {
+      stroke-dashoffset: 0;
+    }
+
+    .chart-area-animated {
+      opacity: 0;
+      transition: opacity 1s ease 0.8s;
+    }
+
+    .chart-card.chart-animated .chart-area-animated {
+      opacity: 1;
+    }
+
+    .chart-dot-animated {
+      opacity: 0;
+      transition: opacity 0.4s ease 1.8s, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.8s;
+    }
+
+    .chart-card.chart-animated .chart-dot-animated {
+      opacity: 1;
+    }
+
+    .chart-text-animated {
+      opacity: 0;
+      transition: opacity 0.6s ease 1.2s;
+    }
+
+    .chart-card.chart-animated .chart-text-animated {
+      opacity: 1;
+    }
+
+    .chart-dashed-animated {
+      opacity: 0;
+      transition: opacity 0.6s ease 1s;
+    }
+
+    .chart-card.chart-animated .chart-dashed-animated {
+      opacity: 0.5;
+    }
+
+    /* Chart 2: bar grow animation */
+    .chart-bar-animated {
+      transform-origin: bottom;
+      transform: scaleY(0);
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .chart-card.chart-animated .chart-bar-animated {
+      transform: scaleY(1);
+    }
+
+    /* Chart callout entrance */
+    .chart-card .chart-callout {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease 1.5s, transform 0.5s ease 1.5s;
+    }
+
+    .chart-card.chart-animated .chart-callout {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Chart hover tooltip */
+    .chart-hover-line {
+      stroke: rgba(232, 154, 46, 0.5);
+      stroke-width: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .chart-hover-dot {
+      fill: var(--accent-amber);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+      filter: drop-shadow(0 0 6px rgba(232, 154, 46, 0.6));
+    }
+
+    .chart-tooltip {
+      position: absolute;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-glow);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      white-space: nowrap;
+      z-index: 10;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .chart-tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .chart-tooltip-value {
+      font-weight: 600;
+      color: var(--accent-amber);
     }
 
     .chart-callout {
@@ -1127,28 +1294,28 @@
       <p class="section-desc" data-i18n="approach.desc">Every company is different, but the shape of the work tends to follow these four steps.</p>
 
       <div class="approach-steps">
-        <div class="approach-step reveal">
+        <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           </div>
           <h4 data-i18n="approach.step1.title">Assess</h4>
           <p data-i18n="approach.step1.desc">We spend time with your teams to understand how work actually happens, not how the org chart says it should.</p>
         </div>
-        <div class="approach-step reveal">
+        <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <h4 data-i18n="approach.step2.title">Design</h4>
           <p data-i18n="approach.step2.desc">We redesign the workflows that matter most, so AI fits into how your people already think and operate.</p>
         </div>
-        <div class="approach-step reveal">
+        <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <h4 data-i18n="approach.step3.title">Deploy</h4>
           <p data-i18n="approach.step3.desc">We roll things out alongside your team. Not a handoff, but a working partnership until everything runs smoothly.</p>
         </div>
-        <div class="approach-step reveal">
+        <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
           </div>
@@ -1168,10 +1335,10 @@
 
       <div class="case-study-charts">
         <!-- Chart 1: Cumulative output -->
-        <div class="chart-card reveal">
+        <div class="chart-card" id="chart1">
           <h4 class="chart-title" data-i18n="caseStudy.chart1.title">Cumulative code output</h4>
           <p class="chart-subtitle" data-i18n="caseStudy.chart1.subtitle">Functional code only. Team size held constant.</p>
-          <div class="chart-container">
+          <div class="chart-container" id="chart1-container">
             <svg viewBox="0 0 800 280" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
@@ -1188,21 +1355,30 @@
               <line x1="50" y1="125" x2="780" y2="125" stroke="rgba(232,154,46,0.06)" stroke-width="1"/>
               <line x1="50" y1="20" x2="780" y2="20" stroke="rgba(232,154,46,0.06)" stroke-width="1"/>
               <!-- Engagement vertical line -->
-              <line x1="415" y1="15" x2="415" y2="235" stroke="rgba(232,154,46,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
-              <text x="415" y="12" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="10" font-weight="500" text-anchor="middle" data-i18n="caseStudy.chart1.engaged">TRAILBLAZE ENGAGED</text>
+              <line x1="415" y1="15" x2="415" y2="235" stroke="rgba(232,154,46,0.3)" stroke-width="1" stroke-dasharray="4,4" class="chart-dashed-animated"/>
+              <text x="415" y="12" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="10" font-weight="500" text-anchor="middle" class="chart-text-animated" data-i18n="caseStudy.chart1.engaged">TRAILBLAZE ENGAGED</text>
               <!-- Projected trend (without engagement) -->
-              <line x1="415" y1="203" x2="780" y2="178" stroke="#5c5652" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
-              <text x="782" y="176" fill="#5c5652" font-family="Outfit,sans-serif" font-size="10" font-weight="300" data-i18n="caseStudy.chart1.projected">Projected</text>
+              <line x1="415" y1="203" x2="780" y2="178" stroke="#5c5652" stroke-width="1" stroke-dasharray="6,4" class="chart-dashed-animated"/>
+              <text x="782" y="176" fill="#5c5652" font-family="Outfit,sans-serif" font-size="10" font-weight="300" class="chart-text-animated" data-i18n="caseStudy.chart1.projected">Projected</text>
               <!-- Area fill -->
-              <polygon points="50,230 50,228 98,225 146,222 194,219 242,216 290,213 338,209 386,205 415,203 434,190 482,172 530,152 578,130 626,105 674,76 722,44 770,10 770,230" fill="url(#areaFill)"/>
+              <polygon points="50,230 50,228 98,225 146,222 194,219 242,216 290,213 338,209 386,205 415,203 434,190 482,172 530,152 578,130 626,105 674,76 722,44 770,10 770,230" fill="url(#areaFill)" class="chart-area-animated"/>
               <!-- Main line -->
-              <polyline points="50,228 98,225 146,222 194,219 242,216 290,213 338,209 386,205 415,203 434,190 482,172 530,152 578,130 626,105 674,76 722,44 770,10" stroke="#e89a2e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+              <polyline points="50,228 98,225 146,222 194,219 242,216 290,213 338,209 386,205 415,203 434,190 482,172 530,152 578,130 626,105 674,76 722,44 770,10" stroke="#e89a2e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" fill="none" class="chart-line-animated"/>
               <!-- End dot -->
-              <circle cx="770" cy="10" r="4" fill="#e89a2e"/>
+              <circle cx="770" cy="10" r="4" fill="#e89a2e" class="chart-dot-animated"/>
               <!-- Growth rate annotations -->
-              <text x="220" y="198" fill="#9a9590" font-family="Outfit,sans-serif" font-size="11" text-anchor="middle" data-i18n="caseStudy.chart1.rateBefore">+6k / month</text>
-              <text x="640" y="62" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="13" font-weight="600" text-anchor="middle" data-i18n="caseStudy.chart1.rateAfter">+35k / month</text>
+              <text x="220" y="198" fill="#9a9590" font-family="Outfit,sans-serif" font-size="11" text-anchor="middle" class="chart-text-animated" data-i18n="caseStudy.chart1.rateBefore">+6k / month</text>
+              <text x="640" y="62" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="13" font-weight="600" text-anchor="middle" class="chart-text-animated" data-i18n="caseStudy.chart1.rateAfter">+35k / month</text>
+              <!-- Hover elements -->
+              <line x1="0" y1="15" x2="0" y2="230" class="chart-hover-line" id="chart1-hover-line"/>
+              <circle r="5" class="chart-hover-dot" id="chart1-hover-dot"/>
+              <!-- Invisible hover zone -->
+              <rect x="50" y="0" width="730" height="250" fill="transparent" id="chart1-hover-zone" style="cursor: crosshair;"/>
             </svg>
+            <div class="chart-tooltip" id="chart1-tooltip">
+              <span class="chart-tooltip-value" id="chart1-tooltip-value"></span>
+              <span id="chart1-tooltip-label"> lines</span>
+            </div>
           </div>
           <div class="chart-callout">
             <div class="callout-item">
@@ -1349,9 +1525,76 @@
 
   <!-- Scripts -->
   <script>
+    /* ── i18n hydration ── */
+    (() => {
+      let lang = document.documentElement.getAttribute('data-lang') || 'en';
+      const cache = {};
+
+      const resolve = (obj, path) =>
+        path.split('.').reduce((o, k) => o && o[k], obj);
+
+      const hydrate = (translations) => {
+        cache[lang] = translations;
+        document.title = resolve(translations, 'meta.title') || document.title;
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const val = resolve(translations, el.getAttribute('data-i18n'));
+          if (val == null) return;
+          if (el.hasAttribute('data-i18n-html')) {
+            el.innerHTML = val;
+          } else {
+            el.textContent = val;
+          }
+        });
+
+        document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+          el.getAttribute('data-i18n-attr').split(',').forEach(pair => {
+            const [attr, key] = pair.trim().split(':');
+            const val = resolve(translations, key);
+            if (val != null) el.setAttribute(attr, val);
+          });
+        });
+      };
+
+      const loadLang = (newLang) => {
+        lang = newLang;
+        document.documentElement.lang = lang;
+        document.documentElement.setAttribute('data-lang', lang);
+        try { localStorage.setItem('trailblaze-lang', lang); } catch(e) {}
+
+        // 150ms fade transition for language switch
+        document.body.style.transition = 'opacity 0.15s ease';
+        document.body.style.opacity = '0';
+
+        const applyAndFadeIn = (translations) => {
+          hydrate(translations);
+          requestAnimationFrame(() => {
+            document.body.style.opacity = '1';
+          });
+        };
+
+        if (cache[lang]) {
+          applyAndFadeIn(cache[lang]);
+          return;
+        }
+
+        fetch(`i18n/${lang}.json`)
+          .then(r => r.json())
+          .then(applyAndFadeIn);
+      };
+
+      // Expose for the language switcher
+      window.__setLang = loadLang;
+
+      // Initial hydration
+      fetch(`i18n/${lang}.json`)
+        .then(r => r.json())
+        .then(hydrate);
+    })();
+
     /* ── Wait for fonts before showing page ── */
     document.fonts.ready.then(() => { document.body.style.opacity = '1'; });
-    setTimeout(() => { document.body.style.opacity = '1'; }, 2000); // fallback
+    setTimeout(() => { document.body.style.opacity = '1'; }, 2000);
 
     /* ── Ember particle system ── */
     (function() {
@@ -1448,6 +1691,153 @@
 
     reveals.forEach(el => observer.observe(el));
 
+
+    /* ── Approach steps animation ── */
+    (function() {
+      const stepsContainer = document.querySelector('.approach-steps');
+      const steps = document.querySelectorAll('.approach-step');
+      if (!stepsContainer) return;
+
+      const stepObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stepsContainer.classList.add('animated');
+            steps.forEach((step, i) => {
+              setTimeout(() => {
+                step.classList.add('step-visible');
+              }, 300 + i * 250);
+            });
+            stepObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      stepObserver.observe(stepsContainer);
+    })();
+
+    /* ── Chart scroll animations ── */
+    (function() {
+      const chartCards = document.querySelectorAll('.chart-card');
+      const chartObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const bars = entry.target.querySelectorAll('.chart-bar-animated');
+            bars.forEach((bar, i) => {
+              bar.style.transitionDelay = (0.1 + i * 0.08) + 's';
+            });
+            entry.target.classList.add('chart-animated');
+            chartObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      chartCards.forEach(card => chartObserver.observe(card));
+    })();
+
+    /* ── Chart 1 hover interactivity ── */
+    (function() {
+      const dataPoints = [
+        { x: 50, y: 228, val: '0' },
+        { x: 98, y: 225, val: '6k' },
+        { x: 146, y: 222, val: '12k' },
+        { x: 194, y: 219, val: '18k' },
+        { x: 242, y: 216, val: '24k' },
+        { x: 290, y: 213, val: '30k' },
+        { x: 338, y: 209, val: '36k' },
+        { x: 386, y: 205, val: '42k' },
+        { x: 415, y: 203, val: '48k' },
+        { x: 434, y: 190, val: '65k' },
+        { x: 482, y: 172, val: '100k' },
+        { x: 530, y: 152, val: '145k' },
+        { x: 578, y: 130, val: '200k' },
+        { x: 626, y: 105, val: '260k' },
+        { x: 674, y: 76, val: '320k' },
+        { x: 722, y: 44, val: '380k' },
+        { x: 770, y: 10, val: '430k' }
+      ];
+
+      const container = document.getElementById('chart1-container');
+      const hoverLine = document.getElementById('chart1-hover-line');
+      const hoverDot = document.getElementById('chart1-hover-dot');
+      const tooltip = document.getElementById('chart1-tooltip');
+      const tooltipValue = document.getElementById('chart1-tooltip-value');
+      const hoverZone = document.getElementById('chart1-hover-zone');
+      if (!container || !hoverZone) return;
+
+      const svg = container.querySelector('svg');
+
+      function getClosestPoint(mouseX) {
+        const svgRect = svg.getBoundingClientRect();
+        const svgX = (mouseX - svgRect.left) / svgRect.width * 800;
+        let closest = dataPoints[0];
+        let minDist = Infinity;
+        for (const p of dataPoints) {
+          const d = Math.abs(p.x - svgX);
+          if (d < minDist) { minDist = d; closest = p; }
+        }
+        return closest;
+      }
+
+      hoverZone.addEventListener('mousemove', (e) => {
+        const pt = getClosestPoint(e.clientX);
+        hoverLine.setAttribute('x1', pt.x);
+        hoverLine.setAttribute('x2', pt.x);
+        hoverLine.style.opacity = '1';
+        hoverDot.setAttribute('cx', pt.x);
+        hoverDot.setAttribute('cy', pt.y);
+        hoverDot.style.opacity = '1';
+
+        const svgRect = svg.getBoundingClientRect();
+        const pxX = (pt.x / 800) * svgRect.width;
+        const pxY = (pt.y / 280) * svgRect.height;
+        tooltip.style.left = pxX + 'px';
+        tooltip.style.top = (pxY - 40) + 'px';
+        tooltipValue.textContent = pt.val;
+        tooltip.classList.add('visible');
+      });
+
+      hoverZone.addEventListener('mouseleave', () => {
+        hoverLine.style.opacity = '0';
+        hoverDot.style.opacity = '0';
+        tooltip.classList.remove('visible');
+      });
+    })();
+
+    /* ── Chart 2 hover interactivity ── */
+    (function() {
+      const container = document.getElementById('chart2-container');
+      const tooltip = document.getElementById('chart2-tooltip');
+      const tooltipValue = document.getElementById('chart2-tooltip-value');
+      if (!container) return;
+
+      const svg = container.querySelector('svg');
+      const bars = container.querySelectorAll('rect[data-value]');
+
+      bars.forEach(bar => {
+        bar.style.cursor = 'pointer';
+        bar.addEventListener('mouseenter', () => {
+          const val = bar.getAttribute('data-value');
+          tooltipValue.textContent = val;
+
+          const svgRect = svg.getBoundingClientRect();
+          const x = parseFloat(bar.getAttribute('x'));
+          const y = parseFloat(bar.getAttribute('y'));
+          const w = parseFloat(bar.getAttribute('width'));
+          const pxX = ((x + w / 2) / 800) * svgRect.width;
+          const pxY = (y / 240) * svgRect.height;
+          tooltip.style.left = pxX + 'px';
+          tooltip.style.top = (pxY - 40) + 'px';
+          tooltip.classList.add('visible');
+
+          bar.style.filter = 'brightness(1.4) drop-shadow(0 0 10px rgba(232, 154, 46, 0.5))';
+        });
+
+        bar.addEventListener('mouseleave', () => {
+          tooltip.classList.remove('visible');
+          bar.style.filter = '';
+        });
+      });
+    })();
 
     /* ── Mobile nav toggle ── */
     document.getElementById('nav-toggle').addEventListener('click', () => {
