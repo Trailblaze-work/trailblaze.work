@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trailblaze - AI Consulting for the Modern Workforce</title>
-  <meta name="description" content="Trailblaze helps companies deploy AI-assisted work across their workforce. Bleeding-edge best practices. 10x productivity gains.">
+  <meta name="description" content="Trailblaze helps companies deploy AI-assisted work across their workforce. Bleeding-edge best practices. 10x productivity gains." data-i18n-attr="content:meta.description">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -616,7 +616,15 @@
       right: 10%;
       height: 1px;
       background: linear-gradient(to right, transparent, var(--accent-amber), var(--accent-orange), var(--accent-ember), transparent);
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: opacity 0.6s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .approach-steps.animated::before {
       opacity: 0.25;
+      transform: scaleX(1);
     }
 
     .approach-step {
@@ -636,13 +644,41 @@
       margin: 0 auto 1.5rem;
       position: relative;
       z-index: 1;
-      transition: all 0.4s ease;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: scale(0.3);
+    }
+
+    .approach-step.step-visible .step-icon {
+      animation: stepAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes stepAppear {
+      0% { opacity: 0; transform: scale(0.3); box-shadow: 0 0 0 rgba(232, 154, 46, 0); }
+      60% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 40px rgba(232, 154, 46, 0.4); }
+      100% { opacity: 1; transform: scale(1); box-shadow: 0 0 15px rgba(232, 154, 46, 0.1); }
     }
 
     .approach-step:hover .step-icon {
       border-color: var(--accent-amber);
       box-shadow: 0 0 30px rgba(232, 154, 46, 0.2);
     }
+
+    .approach-step h4,
+    .approach-step p {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .approach-step.step-visible h4,
+    .approach-step.step-visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .approach-step.step-visible h4 { transition-delay: 0.15s; }
+    .approach-step.step-visible p { transition-delay: 0.25s; }
 
     .step-icon svg {
       width: 24px;
@@ -802,10 +838,143 @@
       margin-bottom: 1.5rem;
     }
 
+    .chart-container {
+      position: relative;
+    }
+
     .chart-container svg {
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    /* Chart 1: line draw animation */
+    .chart-line-animated {
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      transition: stroke-dashoffset 2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .chart-card.chart-animated .chart-line-animated {
+      stroke-dashoffset: 0;
+    }
+
+    .chart-area-animated {
+      opacity: 0;
+      transition: opacity 1s ease 0.8s;
+    }
+
+    .chart-card.chart-animated .chart-area-animated {
+      opacity: 1;
+    }
+
+    .chart-dot-animated {
+      opacity: 0;
+      transform-origin: center;
+      transform: scale(0);
+      transition: opacity 0.4s ease 1.8s, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.8s;
+    }
+
+    .chart-card.chart-animated .chart-dot-animated {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .chart-text-animated {
+      opacity: 0;
+      transition: opacity 0.6s ease 1.2s;
+    }
+
+    .chart-card.chart-animated .chart-text-animated {
+      opacity: 1;
+    }
+
+    .chart-dashed-animated {
+      stroke-dasharray: 6, 4;
+      opacity: 0;
+      transition: opacity 0.6s ease 1s;
+    }
+
+    .chart-card.chart-animated .chart-dashed-animated {
+      opacity: 0.5;
+    }
+
+    /* Chart 2: bar grow animation */
+    .chart-bar-animated {
+      transform-origin: bottom;
+      transform: scaleY(0);
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .chart-card.chart-animated .chart-bar-animated {
+      transform: scaleY(1);
+    }
+
+    /* Chart callout animation */
+    .chart-callout {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .chart-card.chart-animated .chart-callout {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 1.5s;
+    }
+
+    /* Chart hover tooltip */
+    .chart-hover-line {
+      stroke: rgba(232, 154, 46, 0.5);
+      stroke-width: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .chart-hover-dot {
+      fill: var(--accent-amber);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+      filter: drop-shadow(0 0 6px rgba(232, 154, 46, 0.6));
+    }
+
+    .chart-tooltip {
+      position: absolute;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-glow);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      white-space: nowrap;
+      z-index: 10;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .chart-tooltip.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .chart-tooltip-value {
+      font-weight: 600;
+      color: var(--accent-amber);
+    }
+
+    /* Bar hover glow */
+    .chart-container svg rect[rx="2"] {
+      transition: filter 0.2s ease, opacity 0.2s ease;
+    }
+
+    .chart-container:hover svg rect[rx="2"]:hover {
+      filter: brightness(1.3) drop-shadow(0 0 8px rgba(232, 154, 46, 0.4));
     }
 
     .chart-callout {
@@ -1028,14 +1197,14 @@
   <nav id="nav">
     <span class="nav-brand"><img src="trailblaze-mark.svg" alt="" class="nav-brand-mark"><span class="nav-logo">TR<span class="logo-ai">AI</span>LBLAZE</span></span>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#approach">Approach</a></li>
-      <li><a href="#case-study">Case Study</a></li>
-      <li><a href="#principles">Why Us</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#approach" data-i18n="nav.approach">Approach</a></li>
+      <li><a href="#case-study" data-i18n="nav.caseStudy">Case Study</a></li>
+      <li><a href="#principles" data-i18n="nav.whyUs">Why Us</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get in Touch</a>
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <a href="#contact" class="nav-cta" data-i18n="nav.cta">Get in Touch</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" data-i18n-attr="aria-label:nav.toggleMenu">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -1045,15 +1214,15 @@
     <canvas id="ember-canvas"></canvas>
     <div class="hero-glow"></div>
     <div class="hero-content">
-      <div class="hero-tag">AI Workforce Consulting</div>
-      <h1 class="hero-headline">Your team,<br><span class="em">ten times faster.</span></h1>
-      <p class="hero-sub">We help companies bring AI into their day-to-day work. Not as a gimmick, but as the way things actually get done. Safely, and ahead of the curve.</p>
+      <div class="hero-tag" data-i18n="hero.tag">AI Workforce Consulting</div>
+      <h1 class="hero-headline" data-i18n="hero.headline" data-i18n-html="true">Your team,<br><span class="em">ten times faster.</span></h1>
+      <p class="hero-sub" data-i18n="hero.sub">We help companies bring AI into their day-to-day work. Not as a gimmick, but as the way things actually get done. Safely, and ahead of the curve.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">
-          Start the conversation
+          <span data-i18n="hero.ctaPrimary">Start the conversation</span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
-        <a href="#services" class="btn-ghost">See how we work</a>
+        <a href="#services" class="btn-ghost" data-i18n="hero.ctaSecondary">See how we work</a>
       </div>
     </div>
     <div class="hero-scroll"><span></span></div>
@@ -1074,10 +1243,10 @@
           </div>
         </div>
         <div class="about-text reveal">
-          <div class="section-tag">Who We Are</div>
-          <h3>We know how AI actually gets adopted.</h3>
-          <p>Everyone agrees AI matters. But most rollouts stall because they're led by people who understand the tech and not the work, or the work and not the tech.</p>
-          <p>We do both. We sit with your teams, figure out where AI genuinely helps, rebuild those workflows from scratch, and stick around until your people are comfortable running things on their own.</p>
+          <div class="section-tag" data-i18n="about.tag">Who We Are</div>
+          <h3 data-i18n="about.heading">We know how AI actually gets adopted.</h3>
+          <p data-i18n="about.p1">Everyone agrees AI matters. But most rollouts stall because they're led by people who understand the tech and not the work, or the work and not the tech.</p>
+          <p data-i18n="about.p2">We do both. We sit with your teams, figure out where AI genuinely helps, rebuild those workflows from scratch, and stick around until your people are comfortable running things on their own.</p>
         </div>
       </div>
     </div>
@@ -1088,30 +1257,30 @@
   <!-- Services -->
   <section id="services">
     <div class="section-inner">
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-heading">What we<br>actually do.</h2>
-      <p class="section-desc">Four things, and we do them well.</p>
+      <div class="section-tag" data-i18n="services.tag">What We Do</div>
+      <h2 class="section-heading" data-i18n="services.heading" data-i18n-html="true">What we<br>actually do.</h2>
+      <p class="section-desc" data-i18n="services.desc">Four things, and we do them well.</p>
 
       <div class="services-grid">
         <div class="service-card reveal">
           <div class="service-number">01</div>
-          <h3>Workforce AI Strategy</h3>
-          <p>We look at how your teams actually work and figure out where AI makes a real difference. You get a plan you can act on, not a half-baked deck full of buzzwords.</p>
+          <h3 data-i18n="services.s1.title">Workforce AI Strategy</h3>
+          <p data-i18n="services.s1.desc">We look at how your teams actually work and figure out where AI makes a real difference. You get a plan you can act on, not a half-baked deck full of buzzwords.</p>
         </div>
         <div class="service-card reveal">
           <div class="service-number">02</div>
-          <h3>Implementation & Deployment</h3>
-          <p>We test every new tool that hits the market, pick the ones that fit your setup, and wire them into the systems your team already uses. No rip-and-replace.</p>
+          <h3 data-i18n="services.s2.title">Implementation & Deployment</h3>
+          <p data-i18n="services.s2.desc">We test every new tool that hits the market, pick the ones that fit your setup, and wire them into the systems your team already uses. No rip-and-replace.</p>
         </div>
         <div class="service-card reveal">
           <div class="service-number">03</div>
-          <h3>Training & Adoption</h3>
-          <p>Tools don't matter if nobody uses them. We train your people hands-on until they're genuinely faster, not just "AI-enabled" on paper.</p>
+          <h3 data-i18n="services.s3.title">Training & Adoption</h3>
+          <p data-i18n="services.s3.desc">Tools don't matter if nobody uses them. We train your people hands-on until they're genuinely faster, not just "AI-enabled" on paper.</p>
         </div>
         <div class="service-card reveal">
           <div class="service-number">04</div>
-          <h3>Safety & Governance</h3>
-          <p>Moving fast with AI is pointless if it lands you in trouble. We set up the policies, review processes, and monitoring so you can move quickly without the risk.</p>
+          <h3 data-i18n="services.s4.title">Safety & Governance</h3>
+          <p data-i18n="services.s4.desc">Moving fast with AI is pointless if it lands you in trouble. We set up the policies, review processes, and monitoring so you can move quickly without the risk.</p>
         </div>
       </div>
     </div>
@@ -1122,38 +1291,38 @@
   <!-- Approach -->
   <section id="approach">
     <div class="section-inner">
-      <div class="section-tag">How We Work</div>
-      <h2 class="section-heading">How an engagement<br>usually goes.</h2>
-      <p class="section-desc">Every company is different, but the shape of the work tends to follow these four steps.</p>
+      <div class="section-tag" data-i18n="approach.tag">How We Work</div>
+      <h2 class="section-heading" data-i18n="approach.heading" data-i18n-html="true">How an engagement<br>usually goes.</h2>
+      <p class="section-desc" data-i18n="approach.desc">Every company is different, but the shape of the work tends to follow these four steps.</p>
 
       <div class="approach-steps">
-        <div class="approach-step reveal">
+        <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           </div>
-          <h4>Assess</h4>
-          <p>We spend time with your teams to understand how work actually happens, not how the org chart says it should.</p>
+          <h4 data-i18n="approach.step1.title">Assess</h4>
+          <p data-i18n="approach.step1.desc">We spend time with your teams to understand how work actually happens, not how the org chart says it should.</p>
         </div>
-        <div class="approach-step reveal">
+        <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
-          <h4>Design</h4>
-          <p>We redesign the workflows that matter most, so AI fits into how your people already think and operate.</p>
+          <h4 data-i18n="approach.step2.title">Design</h4>
+          <p data-i18n="approach.step2.desc">We redesign the workflows that matter most, so AI fits into how your people already think and operate.</p>
         </div>
-        <div class="approach-step reveal">
+        <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <h4>Deploy</h4>
-          <p>We roll things out alongside your team. Not a handoff, but a working partnership until everything runs smoothly.</p>
+          <h4 data-i18n="approach.step3.title">Deploy</h4>
+          <p data-i18n="approach.step3.desc">We roll things out alongside your team. Not a handoff, but a working partnership until everything runs smoothly.</p>
         </div>
-        <div class="approach-step reveal">
+        <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
           </div>
-          <h4>Scale</h4>
-          <p>Once it works, we help you spread it. We build internal champions so you don't need us forever.</p>
+          <h4 data-i18n="approach.step4.title">Scale</h4>
+          <p data-i18n="approach.step4.desc">Once it works, we help you spread it. We build internal champions so you don't need us forever.</p>
         </div>
       </div>
     </div>
@@ -1162,15 +1331,15 @@
   <!-- Case Study -->
   <section id="case-study">
     <div class="section-inner">
-      <div class="section-tag">Case Study</div>
-      <h2 class="section-heading">Same team.<br>Different output.</h2>
-      <p class="section-desc">A software company we worked with over 16 months. Headcount stayed flat. The way they worked changed completely.</p>
+      <div class="section-tag" data-i18n="caseStudy.tag">Case Study</div>
+      <h2 class="section-heading" data-i18n="caseStudy.heading" data-i18n-html="true">Same team.<br>Different output.</h2>
+      <p class="section-desc" data-i18n="caseStudy.desc">A software company we worked with over 16 months. Headcount stayed flat. The way they worked changed completely.</p>
 
       <div class="case-study-charts">
         <!-- Chart 1: Cumulative output -->
         <div class="chart-card reveal">
-          <h4 class="chart-title">Cumulative code output</h4>
-          <p class="chart-subtitle">Functional code only. Team size held constant.</p>
+          <h4 class="chart-title" data-i18n="caseStudy.chart1.title">Cumulative code output</h4>
+          <p class="chart-subtitle" data-i18n="caseStudy.chart1.subtitle">Functional code only. Team size held constant.</p>
           <div class="chart-container">
             <svg viewBox="0 0 800 280" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -1189,10 +1358,10 @@
               <line x1="50" y1="20" x2="780" y2="20" stroke="rgba(232,154,46,0.06)" stroke-width="1"/>
               <!-- Engagement vertical line -->
               <line x1="415" y1="15" x2="415" y2="235" stroke="rgba(232,154,46,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
-              <text x="415" y="12" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="10" font-weight="500" text-anchor="middle">TRAILBLAZE ENGAGED</text>
+              <text x="415" y="12" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="10" font-weight="500" text-anchor="middle" data-i18n="caseStudy.chart1.engaged">TRAILBLAZE ENGAGED</text>
               <!-- Projected trend (without engagement) -->
               <line x1="415" y1="203" x2="780" y2="178" stroke="#5c5652" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
-              <text x="782" y="176" fill="#5c5652" font-family="Outfit,sans-serif" font-size="10" font-weight="300">Projected</text>
+              <text x="782" y="176" fill="#5c5652" font-family="Outfit,sans-serif" font-size="10" font-weight="300" data-i18n="caseStudy.chart1.projected">Projected</text>
               <!-- Area fill -->
               <polygon points="50,230 50,228 98,225 146,222 194,219 242,216 290,213 338,209 386,205 415,203 434,190 482,172 530,152 578,130 626,105 674,76 722,44 770,10 770,230" fill="url(#areaFill)"/>
               <!-- Main line -->
@@ -1200,22 +1369,22 @@
               <!-- End dot -->
               <circle cx="770" cy="10" r="4" fill="#e89a2e"/>
               <!-- Growth rate annotations -->
-              <text x="220" y="198" fill="#9a9590" font-family="Outfit,sans-serif" font-size="11" text-anchor="middle">+6k / month</text>
-              <text x="640" y="62" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="13" font-weight="600" text-anchor="middle">+35k / month</text>
+              <text x="220" y="198" fill="#9a9590" font-family="Outfit,sans-serif" font-size="11" text-anchor="middle" data-i18n="caseStudy.chart1.rateBefore">+6k / month</text>
+              <text x="640" y="62" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="13" font-weight="600" text-anchor="middle" data-i18n="caseStudy.chart1.rateAfter">+35k / month</text>
             </svg>
           </div>
           <div class="chart-callout">
             <div class="callout-item">
-              <div class="callout-number">5.5x</div>
-              <div class="callout-label">Acceleration in delivery rate</div>
+              <div class="callout-number" data-i18n="caseStudy.callout1.number">5.5x</div>
+              <div class="callout-label" data-i18n="caseStudy.callout1.label">Acceleration in delivery rate</div>
             </div>
           </div>
         </div>
 
         <!-- Chart 2: Features per month -->
         <div class="chart-card reveal">
-          <h4 class="chart-title">Features shipped per month</h4>
-          <p class="chart-subtitle">Same team throughout.</p>
+          <h4 class="chart-title" data-i18n="caseStudy.chart2.title">Features shipped per month</h4>
+          <p class="chart-subtitle" data-i18n="caseStudy.chart2.subtitle">Same team throughout.</p>
           <div class="chart-container">
             <svg viewBox="0 0 800 240" fill="none" xmlns="http://www.w3.org/2000/svg">
               <!-- Subtle grid -->
@@ -1244,17 +1413,17 @@
               <rect x="692" y="38" width="35" height="162" rx="2" fill="rgba(232,154,46,0.9)"/>
               <rect x="737" y="58" width="35" height="142" rx="2" fill="rgba(232,154,46,0.8)"/>
               <!-- Peak label -->
-              <text x="619" y="14" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="12" font-weight="600" text-anchor="middle">110</text>
+              <text x="619" y="14" fill="#e89a2e" font-family="Outfit,sans-serif" font-size="12" font-weight="600" text-anchor="middle" data-i18n="caseStudy.chart2.peak">110</text>
             </svg>
           </div>
           <div class="chart-callout">
             <div class="callout-item">
-              <div class="callout-number">5/mo</div>
-              <div class="callout-label">Before engagement</div>
+              <div class="callout-number" data-i18n="caseStudy.callout2.beforeNumber">5/mo</div>
+              <div class="callout-label" data-i18n="caseStudy.callout2.beforeLabel">Before engagement</div>
             </div>
             <div class="callout-item">
-              <div class="callout-number">80/mo</div>
-              <div class="callout-label">After engagement</div>
+              <div class="callout-number" data-i18n="caseStudy.callout2.afterNumber">80/mo</div>
+              <div class="callout-label" data-i18n="caseStudy.callout2.afterLabel">After engagement</div>
             </div>
           </div>
         </div>
@@ -1267,31 +1436,31 @@
   <!-- Principles -->
   <section id="principles">
     <div class="section-inner">
-      <div class="section-tag">Why Trailblaze</div>
-      <h2 class="section-heading">Why us.</h2>
-      <p class="section-desc">There are a lot of firms talking about AI. Here's why our clients chose us.</p>
+      <div class="section-tag" data-i18n="principles.tag">Why Trailblaze</div>
+      <h2 class="section-heading" data-i18n="principles.heading">Why us.</h2>
+      <p class="section-desc" data-i18n="principles.desc">There are a lot of firms talking about AI. Here's why our clients chose us.</p>
 
       <div class="principles-grid">
         <div class="principle-card reveal">
           <div class="principle-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <h4>We keep up so you don't have to</h4>
-          <p>AI moves every week. New models, new tools, new launches. We track all of it and put every tool to the test, so your team gets what actually works, not last quarter's thinking.</p>
+          <h4 data-i18n="principles.p1.title">We keep up so you don't have to</h4>
+          <p data-i18n="principles.p1.desc">AI moves every week. New models, new tools, new launches. We track all of it and put every tool to the test, so your team gets what actually works, not last quarter's thinking.</p>
         </div>
         <div class="principle-card reveal">
           <div class="principle-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
-          <h4>We care about your people</h4>
-          <p>The best tools in the world don't help if your team doesn't use them. We spend as much time on training and buy-in as we do on the technology itself.</p>
+          <h4 data-i18n="principles.p2.title">We care about your people</h4>
+          <p data-i18n="principles.p2.desc">The best tools in the world don't help if your team doesn't use them. We spend as much time on training and buy-in as we do on the technology itself.</p>
         </div>
         <div class="principle-card reveal">
           <div class="principle-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h4>Safety is not an afterthought</h4>
-          <p>Governance, data privacy, and security are built in from day one. We've seen what happens when they're not, and we won't let that happen to you.</p>
+          <h4 data-i18n="principles.p3.title">Safety is not an afterthought</h4>
+          <p data-i18n="principles.p3.desc">Governance, data privacy, and security are built in from day one. We've seen what happens when they're not, and we won't let that happen to you.</p>
         </div>
       </div>
     </div>
@@ -1324,12 +1493,12 @@
   <section class="cta-section" id="contact">
     <div class="cta-glow"></div>
     <div class="section-inner">
-      <div class="section-tag" style="justify-content: center;">Let's Talk</div>
-      <h2 class="cta-heading reveal">Ready to <span class="em">blaze<br>the trail</span>?</h2>
-      <p class="cta-sub reveal">If you're thinking about how AI fits into your company's future, we should talk.</p>
+      <div class="section-tag" style="justify-content: center;" data-i18n="contact.tag">Let's Talk</div>
+      <h2 class="cta-heading reveal" data-i18n="contact.heading" data-i18n-html="true">Ready to <span class="em">blaze<br>the trail</span>?</h2>
+      <p class="cta-sub reveal" data-i18n="contact.sub">If you're thinking about how AI fits into your company's future, we should talk.</p>
       <div class="reveal">
         <a href="mailto:hello@trailblaze.work" class="btn-primary" style="font-size: 1.05rem; padding: 1rem 2.5rem;">
-          hello@trailblaze.work
+          <span data-i18n="contact.cta">hello@trailblaze.work</span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </div>
@@ -1340,9 +1509,9 @@
   <footer>
     <div class="footer-inner">
       <span class="footer-brand"><img src="trailblaze-mark.svg" alt="" class="footer-brand-mark"><span class="footer-logo">TR<span class="logo-ai">AI</span>LBLAZE</span></span>
-      <span class="footer-copy">&copy; 2026 Trailblaze. All rights reserved.</span>
+      <span class="footer-copy" data-i18n="footer.copy">&copy; 2026 Trailblaze. All rights reserved.</span>
       <ul class="footer-links">
-        <li><a href="mailto:hello@trailblaze.work">Contact</a></li>
+        <li><a href="mailto:hello@trailblaze.work" data-i18n="footer.contact">Contact</a></li>
       </ul>
     </div>
   </footer>
