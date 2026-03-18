@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "title": "Trailblaze - Conseil en IA pour les entreprises",
+    "description": "Trailblaze accompagne les entreprises dans le déploiement de l'IA au quotidien. Les meilleures pratiques du marché. Des gains de productivité multipliés par 10."
+  },
+  "nav": {
+    "about": "À propos",
+    "services": "Services",
+    "approach": "Méthode",
+    "caseStudy": "Étude de cas",
+    "whyUs": "Pourquoi nous",
+    "cta": "Nous contacter",
+    "toggleMenu": "Ouvrir le menu"
+  },
+  "hero": {
+    "tag": "Conseil IA en entreprise",
+    "headline": "Votre équipe,<br><span class=\"em\">dix fois plus rapide.</span>",
+    "sub": "Nous aidons les entreprises à intégrer l'IA dans leur travail quotidien. Pas comme un gadget, mais comme un vrai levier de performance. En toute sécurité, avec un temps d'avance.",
+    "ctaPrimary": "Parlons-en",
+    "ctaSecondary": "Découvrir notre méthode"
+  },
+  "about": {
+    "tag": "Qui sommes-nous",
+    "heading": "On sait comment l'IA s'adopte vraiment.",
+    "p1": "Tout le monde s'accorde à dire que l'IA compte. Mais la plupart des déploiements échouent parce qu'ils sont menés par des profils qui maîtrisent la technologie sans connaître les métiers, ou l'inverse.",
+    "p2": "Nous faisons les deux. Nous travaillons au contact de vos équipes pour identifier où l'IA apporte une vraie valeur, nous repensons les workflows concernés, et nous restons jusqu'à ce que vos collaborateurs soient autonomes."
+  },
+  "services": {
+    "tag": "Nos services",
+    "heading": "Ce que nous<br>faisons concrètement.",
+    "desc": "Quatre expertises. Toutes maîtrisées.",
+    "s1": {
+      "title": "Stratégie IA pour les équipes",
+      "desc": "Nous analysons le fonctionnement réel de vos équipes pour identifier où l'IA fait une vraie différence. Vous repartez avec un plan actionnable, pas un document creux rempli de mots à la mode."
+    },
+    "s2": {
+      "title": "Mise en œuvre et déploiement",
+      "desc": "Nous testons chaque nouvel outil qui arrive sur le marché, sélectionnons ceux qui correspondent à votre environnement, et les intégrons dans les systèmes que vos équipes utilisent déjà. Aucune rupture."
+    },
+    "s3": {
+      "title": "Formation et adoption",
+      "desc": "Les outils ne servent à rien si personne ne s'en sert. Nous formons vos équipes sur le terrain jusqu'à ce qu'elles soient réellement plus performantes, pas juste « dotées d'IA » sur le papier."
+    },
+    "s4": {
+      "title": "Sécurité et gouvernance",
+      "desc": "Aller vite avec l'IA n'a aucun sens si cela vous expose à des risques. Nous mettons en place les politiques, les processus de validation et le suivi nécessaires pour avancer rapidement en toute confiance."
+    }
+  },
+  "approach": {
+    "tag": "Notre méthode",
+    "heading": "Comment se déroule<br>une mission type.",
+    "desc": "Chaque entreprise est différente, mais nos interventions suivent généralement ces quatre étapes.",
+    "step1": {
+      "title": "Diagnostic",
+      "desc": "Nous passons du temps avec vos équipes pour comprendre comment le travail se fait réellement, pas ce que l'organigramme prédit."
+    },
+    "step2": {
+      "title": "Conception",
+      "desc": "Nous repensons les workflows prioritaires pour que l'IA s'insère naturellement dans les habitudes de vos collaborateurs."
+    },
+    "step3": {
+      "title": "Déploiement",
+      "desc": "Nous déployons les solutions avec vos équipes. Pas de transfert sec : un vrai partenariat opérationnel jusqu'à la stabilisation."
+    },
+    "step4": {
+      "title": "Passage à l'échelle",
+      "desc": "Une fois les résultats prouvés, nous vous aidons à généraliser. Nous formons des relais internes pour que vous n'ayez plus besoin de nous."
+    }
+  },
+  "caseStudy": {
+    "tag": "Étude de cas",
+    "heading": "Même équipe.<br>Résultats transformés.",
+    "desc": "Un éditeur logiciel que nous avons accompagné pendant 16 mois. Les effectifs n'ont pas bougé. La façon de travailler, si.",
+    "chart1": {
+      "title": "Production de code cumulée",
+      "subtitle": "Code fonctionnel uniquement. Taille de l'équipe constante.",
+      "engaged": "DÉBUT DE MISSION TRAILBLAZE",
+      "projected": "Projection",
+      "rateBefore": "+6k / mois",
+      "rateAfter": "+35k / mois"
+    },
+    "callout1": {
+      "number": "5,5x",
+      "label": "Accélération du rythme de livraison"
+    },
+    "chart2": {
+      "title": "Fonctionnalités livrées par mois",
+      "subtitle": "Équipe identique sur toute la période.",
+      "peak": "110"
+    },
+    "callout2": {
+      "beforeNumber": "5/mois",
+      "beforeLabel": "Avant la mission",
+      "afterNumber": "80/mois",
+      "afterLabel": "Après la mission"
+    }
+  },
+  "principles": {
+    "tag": "Pourquoi Trailblaze",
+    "heading": "Pourquoi nous.",
+    "desc": "Beaucoup de cabinets parlent d'IA. Voici pourquoi nos clients nous ont choisis.",
+    "p1": {
+      "title": "Nous suivons le rythme pour vous",
+      "desc": "L'IA évolue chaque semaine. Nouveaux modèles, nouveaux outils, nouvelles annonces. Nous testons tout et ne retenons que ce qui fonctionne, pour que vos équipes ne travaillent jamais avec les idées du trimestre dernier."
+    },
+    "p2": {
+      "title": "Vos collaborateurs sont au centre",
+      "desc": "Les meilleurs outils du monde sont inutiles si vos équipes ne les utilisent pas. Nous consacrons autant d'énergie à la formation et à l'adhésion qu'à la technologie elle-même."
+    },
+    "p3": {
+      "title": "La sécurité n'est pas une option",
+      "desc": "Gouvernance, confidentialité des données et sécurité sont intégrées dès le premier jour. Nous savons ce qui se passe quand ce n'est pas le cas, et nous ne laisserons pas cela vous arriver."
+    }
+  },
+  "clients": {
+    "tag": "Ils nous font confiance",
+    "backupta": {
+      "desc": "Backupta développe des solutions de sauvegarde automatisées et sécurisées pour les entreprises. Nous les avons aidés à accélérer leur cycle de développement produit grâce à des workflows d'ingénierie assistés par l'IA."
+    }
+  },
+  "contact": {
+    "tag": "Échangeons",
+    "heading": "Prêts à <span class=\"em\">ouvrir<br>la voie</span> ?",
+    "sub": "Si vous réfléchissez à la place de l'IA dans l'avenir de votre entreprise, parlons-en.",
+    "cta": "hello@trailblaze.work"
+  },
+  "footer": {
+    "copy": "\u00a9 2026 Trailblaze. Tous droits réservés.",
+    "contact": "Contact"
+  }
+}
