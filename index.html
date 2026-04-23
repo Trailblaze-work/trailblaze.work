@@ -22,7 +22,7 @@
   <link rel="preload" href="https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtqUYLknw.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="i18n/en.json" as="fetch" crossorigin>
   <link rel="preload" href="i18n/fr.json" as="fetch" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -296,13 +296,13 @@
 
 
     .hero-headline {
-      font-family: var(--font-display);
+      font-family: var(--font-body);
       font-weight: 800;
-      font-size: clamp(3rem, 7.5vw, 6.5rem);
-      line-height: 1.02;
-      letter-spacing: -0.035em;
+      font-size: clamp(2.16rem, 5.04vw, 4.5rem);
+      line-height: 1.06;
+      letter-spacing: -0.025em;
       color: var(--text-primary);
-      max-width: 900px;
+      max-width: none;
       margin-bottom: 2rem;
       opacity: 0;
       transform: translateY(30px);
@@ -771,10 +771,61 @@
       color: var(--text-secondary);
     }
 
+    /* ── Tools ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .tool-card:hover {
+      border-color: var(--border-glow);
+    }
+
+    .tool-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(232, 154, 46, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .tool-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent-amber);
+    }
+
+    .tool-card h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .tool-card p {
+      font-weight: 300;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
     /* ── Clients ── */
     .clients-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
 
@@ -786,8 +837,9 @@
       border-radius: 16px;
       padding: 2.5rem;
       display: flex;
-      align-items: center;
-      gap: 2.5rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.75rem;
       transition: all 0.3s ease;
     }
 
@@ -1186,6 +1238,8 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
       .stat-item::after { display: none !important; }
       .principles-grid { grid-template-columns: repeat(2, 1fr); }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .clients-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -1224,12 +1278,8 @@
       .approach-steps { grid-template-columns: 1fr; gap: 2rem; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .principles-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: 1fr; }
       .clients-grid { grid-template-columns: 1fr; }
-      .client-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-      }
 
       .hero-actions { flex-direction: column; align-items: flex-start; }
 
@@ -1274,8 +1324,9 @@
     <span class="nav-brand"><img src="trailblaze-mark.svg" alt="" class="nav-brand-mark"><span class="nav-logo">TR<span class="logo-ai">AI</span>LBLAZE</span></span>
     <ul class="nav-links" id="nav-links">
       <li><a href="#about" data-i18n="nav.about">About</a></li>
-      <li><a href="#services" data-i18n="nav.services">Services</a></li>
       <li><a href="#approach" data-i18n="nav.approach">Approach</a></li>
+      <li><a href="#tools" data-i18n="nav.tools">Tools</a></li>
+      <li><a href="#process" data-i18n="nav.process">Process</a></li>
       <li><a href="#case-study" data-i18n="nav.caseStudy">Case Study</a></li>
       <li><a href="#principles" data-i18n="nav.whyUs">Why Us</a></li>
     </ul>
@@ -1290,15 +1341,15 @@
     <canvas id="ember-canvas"></canvas>
     <div class="hero-glow"></div>
     <div class="hero-content">
-      <div class="hero-tag" data-i18n="hero.tag">AI Workforce Consulting</div>
-      <h1 class="hero-headline" data-i18n="hero.headline" data-i18n-html="true">Your team,<br><span class="em">ten times faster.</span></h1>
-      <p class="hero-sub" data-i18n="hero.sub">We help companies bring AI into their day-to-day work. Not as a gimmick, but as the way things actually get done. Safely, and ahead of the curve.</p>
+      <div class="hero-tag" data-i18n="hero.tag">AI Consulting for Modern Teams</div>
+      <h1 class="hero-headline" data-i18n="hero.headline" data-i18n-html="true">Make AI <span class="em">the way work gets done.</span></h1>
+      <p class="hero-sub" data-i18n="hero.sub">From engineering to design, product and sales, we help your teams turn AI from novelty into the way work gets done. Hands-on, on your real workflows, with the people who actually do the job.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">
           <span data-i18n="hero.ctaPrimary">Start the conversation</span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
-        <a href="#services" class="btn-ghost" data-i18n="hero.ctaSecondary">See how we work</a>
+        <a href="#approach" class="btn-ghost" data-i18n="hero.ctaSecondary">See how we work</a>
       </div>
     </div>
     <div class="hero-scroll"><span></span></div>
@@ -1330,33 +1381,23 @@
 
   <div class="divider"></div>
 
-  <!-- Services -->
-  <section id="services">
+  <!-- Approach (workshops + reviews) -->
+  <section id="approach">
     <div class="section-inner">
-      <div class="section-tag" data-i18n="services.tag">What We Do</div>
-      <h2 class="section-heading" data-i18n="services.heading" data-i18n-html="true">What we<br>actually do.</h2>
-      <p class="section-desc" data-i18n="services.desc">Four things, and we do them well.</p>
+      <div class="section-tag" data-i18n="approach.tag">Our Approach</div>
+      <h2 class="section-heading" data-i18n="approach.heading" data-i18n-html="true">Two things,<br>done well.</h2>
+      <p class="section-desc" data-i18n="approach.desc">We work directly with your team, on real code and real workflows. No artificial exercises.</p>
 
       <div class="services-grid">
         <div class="service-card reveal">
           <div class="service-number">01</div>
-          <h3 data-i18n="services.s1.title">Workforce AI Strategy</h3>
-          <p data-i18n="services.s1.desc">We look at how your teams actually work and figure out where AI makes a real difference. You get a plan you can act on, not a half-baked deck full of buzzwords.</p>
+          <h3 data-i18n="approach.p1.title">Hands-on workshops</h3>
+          <p data-i18n="approach.p1.desc">Small groups of 2 to 4 people, working on your actual codebase and tools. Reproducible best practices, calibrated to each participant's level of AI experience. People leave with habits, not slides.</p>
         </div>
         <div class="service-card reveal">
           <div class="service-number">02</div>
-          <h3 data-i18n="services.s2.title">Implementation & Deployment</h3>
-          <p data-i18n="services.s2.desc">We test every new tool that hits the market, pick the ones that fit your setup, and wire them into the systems your team already uses. No rip-and-replace.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-number">03</div>
-          <h3 data-i18n="services.s3.title">Training & Adoption</h3>
-          <p data-i18n="services.s3.desc">Tools don't matter if nobody uses them. We train your people hands-on until they're genuinely faster, not just "AI-enabled" on paper.</p>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-number">04</div>
-          <h3 data-i18n="services.s4.title">Safety & Governance</h3>
-          <p data-i18n="services.s4.desc">Moving fast with AI is pointless if it lands you in trouble. We set up the policies, review processes, and monitoring so you can move quickly without the risk.</p>
+          <h3 data-i18n="approach.p2.title">Prompt reviews</h3>
+          <p data-i18n="approach.p2.desc">We analyse how AI is actually being used in your team's day-to-day work, hand back targeted recommendations they can apply immediately, and track how the practice evolves week after week.</p>
         </div>
       </div>
     </div>
@@ -1364,41 +1405,76 @@
 
   <div class="divider"></div>
 
-  <!-- Approach -->
-  <section id="approach">
+  <!-- Tools -->
+  <section id="tools">
     <div class="section-inner">
-      <div class="section-tag" data-i18n="approach.tag">How We Work</div>
-      <h2 class="section-heading" data-i18n="approach.heading" data-i18n-html="true">How an engagement<br>usually goes.</h2>
-      <p class="section-desc" data-i18n="approach.desc">Every company is different, but the shape of the work tends to follow these four steps.</p>
+      <div class="section-tag" data-i18n="tools.tag">Our Tools</div>
+      <h2 class="section-heading" data-i18n="tools.heading" data-i18n-html="true">The instruments<br>we bring with us.</h2>
+      <p class="section-desc" data-i18n="tools.desc">Software we've built, and continue to build, to make adoption measurable and the workflow specifically yours.</p>
+
+      <div class="tools-grid">
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 16V11M12 16V8M17 16v-3"/></svg>
+          </div>
+          <h4 data-i18n="tools.t1.title">Adoption & velocity dashboard</h4>
+          <p data-i18n="tools.t1.desc">Tracks AI adoption across the team and the impact on delivery velocity, so progress is visible and decisions can be made on data.</p>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H6l-2 2V4z"/><path d="M8 9h8M8 12h5"/></svg>
+          </div>
+          <h4 data-i18n="tools.t2.title">Prompt logging & reporting</h4>
+          <p data-i18n="tools.t2.desc">Captures what people are actually prompting and producing, so reviews and recommendations are grounded in real practice, not anecdotes.</p>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.6 7.1 17.2l.9-5.5-4-3.9 5.5-.8L12 2z"/></svg>
+          </div>
+          <h4 data-i18n="tools.t3.title">Custom-built tools</h4>
+          <p data-i18n="tools.t3.desc">When a workflow needs its own tooling, we design and build it for you, fitted to how your business actually operates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Process (engagement arc) -->
+  <section id="process">
+    <div class="section-inner">
+      <div class="section-tag" data-i18n="process.tag">How We Work</div>
+      <h2 class="section-heading" data-i18n="process.heading" data-i18n-html="true">How an engagement<br>usually goes.</h2>
+      <p class="section-desc" data-i18n="process.desc">Every company is different, but the shape of the work tends to follow these four steps.</p>
 
       <div class="approach-steps">
         <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           </div>
-          <h4 data-i18n="approach.step1.title">Assess</h4>
-          <p data-i18n="approach.step1.desc">We spend time with your teams to understand how work actually happens, not how the org chart says it should.</p>
+          <h4 data-i18n="process.step1.title">Assess</h4>
+          <p data-i18n="process.step1.desc">We sit with your team to understand how AI is being used today, where the gaps are, and what's actually slowing people down.</p>
         </div>
         <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
-          <h4 data-i18n="approach.step2.title">Design</h4>
-          <p data-i18n="approach.step2.desc">We redesign the workflows that matter most, so AI fits into how your people already think and operate.</p>
+          <h4 data-i18n="process.step2.title">Practice</h4>
+          <p data-i18n="process.step2.desc">Hands-on workshops on your real code, in small groups, with content tuned to each person's level.</p>
         </div>
         <div class="approach-step">
           <div class="step-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
           </div>
-          <h4 data-i18n="approach.step3.title">Deploy</h4>
-          <p data-i18n="approach.step3.desc">We roll things out alongside your team. Not a handoff, but a working partnership until everything runs smoothly.</p>
+          <h4 data-i18n="process.step3.title">Iterate</h4>
+          <p data-i18n="process.step3.desc">Weekly code and prompt reviews, with targeted recommendations and visible progress tracking.</p>
         </div>
         <div class="approach-step">
           <div class="step-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
           </div>
-          <h4 data-i18n="approach.step4.title">Scale</h4>
-          <p data-i18n="approach.step4.desc">Once it works, we help you spread it. We build internal champions so you don't need us forever.</p>
+          <h4 data-i18n="process.step4.title">Scale</h4>
+          <p data-i18n="process.step4.desc">Once it works, we help you spread the practice and grow internal champions, so you don't need us forever.</p>
         </div>
       </div>
     </div>
@@ -1575,6 +1651,15 @@
           <div class="client-info">
             <h4>Lyvoc</h4>
             <p data-i18n="clients.lyvoc.desc">Lyvoc is a cybersecurity integration partner deploying Okta, Drata and Vanta across Europe. We trained their teams to work with AI at every level and developed bespoke tools that accelerate how they deliver for clients.</p>
+          </div>
+        </a>
+        <a href="https://almapay.com/" target="_blank" rel="noopener" class="client-card reveal">
+          <div class="client-logo">
+            <img src="assets/clients/alma-logo.svg" alt="Alma">
+          </div>
+          <div class="client-info">
+            <h4>Alma</h4>
+            <p data-i18n="clients.alma.desc">Alma is a leading European payments company, providing instalment and pay-later solutions across the continent. We work with their engineering teams to embed AI deeply into how they design, build, and ship.</p>
           </div>
         </a>
       </div>

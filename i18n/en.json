@@ -1,76 +1,86 @@
 {
   "meta": {
-    "title": "Trailblaze - AI Consulting for the Modern Workforce",
-    "description": "Trailblaze helps companies deploy AI-assisted work across their workforce. Bleeding-edge best practices. 10x productivity gains."
+    "title": "Trailblaze - AI Consulting for Modern Teams",
+    "description": "Trailblaze helps teams adopt AI in their daily work, engineering first, with experts for design, product and sales when you need them."
   },
   "nav": {
     "about": "About",
-    "services": "Services",
     "approach": "Approach",
+    "tools": "Tools",
+    "process": "Process",
     "caseStudy": "Case Study",
     "whyUs": "Why Us",
     "cta": "Get in Touch",
     "toggleMenu": "Toggle menu"
   },
   "hero": {
-    "tag": "AI Workforce Consulting",
-    "headline": "Your team,<br><span class=\"em\">ten times faster.</span>",
-    "sub": "We help companies bring AI into their day-to-day work. Not as a gimmick, but as the way things actually get done. Safely, and ahead of the curve.",
+    "tag": "AI Consulting for Modern Teams",
+    "headline": "Make AI <span class=\"em\">the way work gets done.</span>",
+    "sub": "From engineering to design, product and sales, we help your teams turn AI from novelty into the way work gets done. Hands-on, on your real workflows, with the people who actually do the job.",
     "ctaPrimary": "Start the conversation",
     "ctaSecondary": "See how we work"
   },
   "about": {
     "tag": "Who We Are",
-    "heading": "We know how AI actually gets adopted.",
-    "p1": "Everyone agrees AI matters. But most rollouts stall because they're led by people who understand the tech and not the work, or the work and not the tech.",
-    "p2": "We do both. Our team includes experts in engineering, sales, design, and product, so we can sit with your people, figure out where AI genuinely helps, rebuild those workflows from scratch, and stick around until everyone is comfortable running things on their own."
-  },
-  "services": {
-    "tag": "What We Do",
-    "heading": "What we<br>actually do.",
-    "desc": "Four things, and we do them well.",
-    "s1": {
-      "title": "Workforce AI Strategy",
-      "desc": "We look at how your teams actually work and figure out where AI makes a real difference. You get a plan you can act on, not a half-baked deck full of buzzwords."
-    },
-    "s2": {
-      "title": "Implementation & Deployment",
-      "desc": "We test every new tool that hits the market, pick the ones that fit your setup, and wire them into the systems your team already uses. No rip-and-replace."
-    },
-    "s3": {
-      "title": "Training & Adoption",
-      "desc": "Tools don't matter if nobody uses them. We train your people hands-on until they're genuinely faster, not just \"AI-enabled\" on paper."
-    },
-    "s4": {
-      "title": "Safety & Governance",
-      "desc": "Moving fast with AI is pointless if it lands you in trouble. We set up the policies, review processes, and monitoring so you can move quickly without the risk."
-    }
+    "heading": "AI expertise is built on real work.",
+    "p1": "AI tools change every week. Every person on your team deserves to get the most out of them, and that expertise only comes from practice on real work, with the right guidance alongside.",
+    "p2": "Trailblaze helps teams adopt the best AI practices and maximise the return on their AI investment. Engineering is where we go deepest, and we bring dedicated experts for design, product, and marketing/sales when the work calls for it."
   },
   "approach": {
+    "tag": "Our Approach",
+    "heading": "Two things,<br>done well.",
+    "desc": "We work directly with your team, on real code and real workflows. No artificial exercises.",
+    "p1": {
+      "title": "Hands-on workshops",
+      "desc": "Small groups of 2 to 4 people, working on your actual codebase and tools. Reproducible best practices, calibrated to each participant's level of AI experience. People leave with habits, not slides."
+    },
+    "p2": {
+      "title": "Prompt reviews",
+      "desc": "We analyse how AI is actually being used in your team's day-to-day work, hand back targeted recommendations they can apply immediately, and track how the practice evolves week after week."
+    }
+  },
+  "tools": {
+    "tag": "Our Tools",
+    "heading": "The instruments<br>we bring with us.",
+    "desc": "Software we've built, and continue to build, to make adoption measurable and the workflow specifically yours.",
+    "t1": {
+      "title": "Adoption & velocity dashboard",
+      "desc": "Tracks AI adoption across the team and the impact on delivery velocity, so progress is visible and decisions can be made on data."
+    },
+    "t2": {
+      "title": "Prompt logging & reporting",
+      "desc": "Captures what people are actually prompting and producing, so reviews and recommendations are grounded in real practice, not anecdotes."
+    },
+    "t3": {
+      "title": "Custom-built tools",
+      "desc": "When a workflow needs its own tooling, we design and build it for you, fitted to how your business actually operates."
+    }
+  },
+  "process": {
     "tag": "How We Work",
     "heading": "How an engagement<br>usually goes.",
     "desc": "Every company is different, but the shape of the work tends to follow these four steps.",
     "step1": {
       "title": "Assess",
-      "desc": "We spend time with your teams to understand how work actually happens, not how the org chart says it should."
+      "desc": "We sit with your team to understand how AI is being used today, where the gaps are, and what's actually slowing people down."
     },
     "step2": {
-      "title": "Design",
-      "desc": "We redesign the workflows that matter most, so AI fits into how your people already think and operate."
+      "title": "Practice",
+      "desc": "Hands-on workshops on your real code, in small groups, with content tuned to each person's level."
     },
     "step3": {
-      "title": "Deploy",
-      "desc": "We roll things out alongside your team. Not a handoff, but a working partnership until everything runs smoothly."
+      "title": "Iterate",
+      "desc": "Weekly code and prompt reviews, with targeted recommendations and visible progress tracking."
     },
     "step4": {
       "title": "Scale",
-      "desc": "Once it works, we help you spread it. We build internal champions so you don't need us forever."
+      "desc": "Once it works, we help you spread the practice and grow internal champions, so you don't need us forever."
     }
   },
   "caseStudy": {
     "tag": "Case Study",
     "heading": "Same team.<br>Different output.",
-    "desc": "A software company we worked with over 16 months. Headcount stayed flat. The way they worked changed completely.",
+    "desc": "An engineering team we worked with over 16 months. Headcount stayed flat. The way they shipped changed completely.",
     "chart1": {
       "title": "Cumulative code output",
       "subtitle": "Functional code only. Team size held constant.",
@@ -98,18 +108,18 @@
   "principles": {
     "tag": "Why Trailblaze",
     "heading": "Why us.",
-    "desc": "There are a lot of firms talking about AI. Here's why our clients chose us.",
+    "desc": "A lot of firms talk about AI. Here's what's actually different about working with us.",
     "p1": {
-      "title": "We keep up so you don't have to",
-      "desc": "AI moves every week. New models, new tools, new launches. We track all of it and put every tool to the test, so your team gets what actually works, not last quarter's thinking."
+      "title": "We use what we teach",
+      "desc": "We've been running 100% AI-driven development since early 2025. Every recommendation we give is something we use ourselves, every day, on real production work."
     },
     "p2": {
-      "title": "We care about your people",
-      "desc": "The best tools in the world don't help if your team doesn't use them. We spend as much time on training and buy-in as we do on the technology itself."
+      "title": "Veteran AI-first practitioners",
+      "desc": "Our people are CTOs, CPOs, and very senior ICs. Every one of them has been shipping production code AI-first, every day, for over a year."
     },
     "p3": {
-      "title": "Safety is not an afterthought",
-      "desc": "Governance, data privacy, and security are built in from day one. We've seen what happens when they're not, and we won't let that happen to you."
+      "title": "Engineering core, full-stack ready",
+      "desc": "Engineering is where we go deepest, and we bring dedicated experts for design, product, and marketing/sales when your work calls for them."
     }
   },
   "clients": {
@@ -119,16 +129,19 @@
     },
     "lyvoc": {
       "desc": "Lyvoc is a cybersecurity integration partner deploying Okta, Drata and Vanta across Europe. We trained their teams to work with AI at every level and developed bespoke tools that accelerate how they deliver for clients."
+    },
+    "alma": {
+      "desc": "Alma is a leading European payments company, providing instalment and pay-later solutions across the continent. We work with their engineering teams to embed AI deeply into how they design, build, and ship."
     }
   },
   "contact": {
     "tag": "Let's Talk",
     "heading": "Ready to <span class=\"em\">blaze<br>the trail</span>?",
-    "sub": "If you're thinking about how AI fits into your company's future, we should talk.",
+    "sub": "If you're thinking about how AI fits into how your teams work, let's talk.",
     "cta": "hello@trailblaze.work"
   },
   "footer": {
-    "copy": "\u00a9 2026 Trailblaze. All rights reserved.",
+    "copy": "© 2026 Trailblaze. All rights reserved.",
     "contact": "Contact"
   }
 }

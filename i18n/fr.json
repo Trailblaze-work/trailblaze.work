@@ -1,76 +1,86 @@
 {
   "meta": {
-    "title": "Trailblaze - Conseil en IA pour les entreprises",
-    "description": "Trailblaze accompagne les entreprises dans le déploiement de l'IA au quotidien. Les meilleures pratiques du marché. Des gains de productivité multipliés par 10."
+    "title": "Trailblaze - Conseil IA pour les équipes modernes",
+    "description": "Trailblaze accompagne les équipes dans l'adoption de l'IA au quotidien, l'ingénierie en priorité, avec des experts en design, produit et vente quand il faut."
   },
   "nav": {
     "about": "À propos",
-    "services": "Services",
-    "approach": "Méthode",
+    "approach": "Approche",
+    "tools": "Outils",
+    "process": "Méthode",
     "caseStudy": "Étude de cas",
     "whyUs": "Pourquoi nous",
     "cta": "Nous contacter",
     "toggleMenu": "Ouvrir le menu"
   },
   "hero": {
-    "tag": "Conseil IA en entreprise",
-    "headline": "Votre équipe,<br><span class=\"em\">dix fois plus rapide.</span>",
-    "sub": "Nous aidons les entreprises à intégrer l'IA dans leur travail quotidien. Pas comme un gadget, mais comme un vrai levier de performance. En toute sécurité, avec un temps d'avance.",
+    "tag": "Conseil IA pour les équipes modernes",
+    "headline": "Faites de l'IA <span class=\"em\">votre façon de travailler.</span>",
+    "sub": "De l'ingénierie au design, en passant par le produit et la vente, nous aidons vos équipes à transformer l'IA en méthode de travail concrète. Sur le terrain, sur vos vrais flux, avec les personnes qui font le métier.",
     "ctaPrimary": "Parlons-en",
     "ctaSecondary": "Découvrir notre méthode"
   },
   "about": {
     "tag": "Qui sommes-nous",
-    "heading": "On sait comment l'IA s'adopte vraiment.",
-    "p1": "Tout le monde s'accorde à dire que l'IA compte. Mais la plupart des déploiements échouent parce qu'ils sont menés par des profils qui maîtrisent la technologie sans connaître les métiers, ou l'inverse.",
-    "p2": "Nous faisons les deux. Notre équipe regroupe des experts en ingénierie, vente, design et produit. Nous travaillons au contact de vos équipes pour identifier où l'IA apporte une vraie valeur, nous repensons les workflows concernés, et nous restons jusqu'à ce que vos collaborateurs soient autonomes."
-  },
-  "services": {
-    "tag": "Nos services",
-    "heading": "Ce que nous<br>faisons concrètement.",
-    "desc": "Quatre expertises. Toutes maîtrisées.",
-    "s1": {
-      "title": "Stratégie IA pour les équipes",
-      "desc": "Nous analysons le fonctionnement réel de vos équipes pour identifier où l'IA fait une vraie différence. Vous repartez avec un plan actionnable, pas un document creux rempli de mots à la mode."
-    },
-    "s2": {
-      "title": "Mise en œuvre et déploiement",
-      "desc": "Nous testons chaque nouvel outil qui arrive sur le marché, sélectionnons ceux qui correspondent à votre environnement, et les intégrons dans les systèmes que vos équipes utilisent déjà. Aucune rupture."
-    },
-    "s3": {
-      "title": "Formation et adoption",
-      "desc": "Les outils ne servent à rien si personne ne s'en sert. Nous formons vos équipes sur le terrain jusqu'à ce qu'elles soient réellement plus performantes, pas juste « dotées d'IA » sur le papier."
-    },
-    "s4": {
-      "title": "Sécurité et gouvernance",
-      "desc": "Aller vite avec l'IA n'a aucun sens si cela vous expose à des risques. Nous mettons en place les politiques, les processus de validation et le suivi nécessaires pour avancer rapidement en toute confiance."
-    }
+    "heading": "L'expertise IA se construit sur du vrai travail.",
+    "p1": "Les outils IA évoluent en permanence. Chaque membre de vos équipes mérite d'en tirer le meilleur parti, et cette expertise se construit par la pratique sur du vrai travail, avec le bon accompagnement.",
+    "p2": "Trailblaze aide les équipes à adopter les meilleures pratiques IA et à maximiser leur retour sur investissement dans ce domaine. L'ingénierie est notre cœur d'expertise, et nous mobilisons des experts dédiés pour le design, le produit, et le marketing/vente lorsque la mission le demande."
   },
   "approach": {
+    "tag": "Notre approche",
+    "heading": "Deux choses,<br>bien faites.",
+    "desc": "Nous travaillons directement avec vos équipes, sur du vrai code et de vrais flux de travail. Pas d'exercices artificiels.",
+    "p1": {
+      "title": "Ateliers pratiques",
+      "desc": "Groupes de 2 à 4 personnes, sur votre vrai code et vos outils. Mise en place de bonnes pratiques reproductibles, adaptées au niveau d'expérience IA de chaque participant. On en repart avec des habitudes, pas des slides."
+    },
+    "p2": {
+      "title": "Revues de prompts",
+      "desc": "Nous analysons l'utilisation de l'IA dans le travail quotidien de vos équipes, donnons des recommandations ciblées et immédiatement applicables, et suivons l'évolution des pratiques semaine après semaine."
+    }
+  },
+  "tools": {
+    "tag": "Nos outils",
+    "heading": "Les instruments<br>que nous apportons.",
+    "desc": "Des logiciels que nous avons construits, et que nous continuons de construire, pour rendre l'adoption mesurable et le flux de travail vraiment vôtre.",
+    "t1": {
+      "title": "Tableau de bord adoption & vélocité",
+      "desc": "Suit l'adoption de l'IA dans l'équipe et son impact sur la vélocité de livraison, pour rendre le progrès visible et appuyer les décisions sur des données."
+    },
+    "t2": {
+      "title": "Enregistrement et reporting des prompts",
+      "desc": "Capture ce que les personnes prompt et produisent réellement, pour ancrer les revues et les recommandations dans la pratique réelle, pas dans l'anecdote."
+    },
+    "t3": {
+      "title": "Outils sur mesure",
+      "desc": "Lorsqu'un flux de travail mérite ses propres outils, nous les concevons et les développons pour vous, adaptés à la façon dont votre entreprise fonctionne réellement."
+    }
+  },
+  "process": {
     "tag": "Notre méthode",
     "heading": "Comment se déroule<br>une mission type.",
     "desc": "Chaque entreprise est différente, mais nos interventions suivent généralement ces quatre étapes.",
     "step1": {
       "title": "Diagnostic",
-      "desc": "Nous passons du temps avec vos équipes pour comprendre comment le travail se fait réellement, pas ce que l'organigramme prédit."
+      "desc": "Nous passons du temps avec vos équipes pour comprendre comment l'IA est utilisée aujourd'hui, où sont les écarts, et ce qui ralentit vraiment les gens."
     },
     "step2": {
-      "title": "Conception",
-      "desc": "Nous repensons les workflows prioritaires pour que l'IA s'insère naturellement dans les habitudes de vos collaborateurs."
+      "title": "Pratique",
+      "desc": "Ateliers pratiques sur votre vrai code, en petits groupes, avec un contenu adapté au niveau de chaque participant."
     },
     "step3": {
-      "title": "Déploiement",
-      "desc": "Nous déployons les solutions avec vos équipes. Pas de transfert sec : un vrai partenariat opérationnel jusqu'à la stabilisation."
+      "title": "Itération",
+      "desc": "Revues hebdomadaires de code et de prompts, recommandations ciblées et suivi visible des progrès."
     },
     "step4": {
       "title": "Passage à l'échelle",
-      "desc": "Une fois les résultats prouvés, nous vous aidons à généraliser. Nous formons des relais internes pour que vous n'ayez plus besoin de nous."
+      "desc": "Une fois que ça marche, nous vous aidons à diffuser la pratique et à former des relais internes, pour que vous n'ayez plus besoin de nous."
     }
   },
   "caseStudy": {
     "tag": "Étude de cas",
     "heading": "Même équipe.<br>Résultats transformés.",
-    "desc": "Un éditeur logiciel que nous avons accompagné pendant 16 mois. Les effectifs n'ont pas bougé. La façon de travailler, si.",
+    "desc": "Une équipe d'ingénierie que nous avons accompagnée pendant 16 mois. Les effectifs n'ont pas bougé. La façon de livrer, si.",
     "chart1": {
       "title": "Production de code cumulée",
       "subtitle": "Code fonctionnel uniquement. Taille de l'équipe constante.",
@@ -98,18 +108,18 @@
   "principles": {
     "tag": "Pourquoi Trailblaze",
     "heading": "Pourquoi nous.",
-    "desc": "Beaucoup de cabinets parlent d'IA. Voici pourquoi nos clients nous ont choisis.",
+    "desc": "Beaucoup de cabinets parlent d'IA. Voici ce qui change vraiment quand on travaille avec nous.",
     "p1": {
-      "title": "Nous suivons le rythme pour vous",
-      "desc": "L'IA évolue chaque semaine. Nouveaux modèles, nouveaux outils, nouvelles annonces. Nous testons tout et ne retenons que ce qui fonctionne, pour que vos équipes ne travaillent jamais avec les idées du trimestre dernier."
+      "title": "Nous utilisons ce que nous enseignons",
+      "desc": "Nous fonctionnons en développement 100 % piloté par IA depuis début 2025. Chaque recommandation que nous donnons, nous l'utilisons nous-mêmes, tous les jours, en production."
     },
     "p2": {
-      "title": "Vos collaborateurs sont au centre",
-      "desc": "Les meilleurs outils du monde sont inutiles si vos équipes ne les utilisent pas. Nous consacrons autant d'énergie à la formation et à l'adhésion qu'à la technologie elle-même."
+      "title": "Praticiens AI-first chevronnés",
+      "desc": "Nos intervenants sont CTO, CPO, et IC très expérimentés. Tous livrent du code en production en mode AI-first, chaque jour, depuis plus d'un an."
     },
     "p3": {
-      "title": "La sécurité n'est pas une option",
-      "desc": "Gouvernance, confidentialité des données et sécurité sont intégrées dès le premier jour. Nous savons ce qui se passe quand ce n'est pas le cas, et nous ne laisserons pas cela vous arriver."
+      "title": "Ingénierie au cœur, expertise complète",
+      "desc": "L'ingénierie est notre cœur d'expertise, et nous mobilisons des experts dédiés pour le design, le produit, et le marketing/vente lorsque votre mission le demande."
     }
   },
   "clients": {
@@ -119,16 +129,19 @@
     },
     "lyvoc": {
       "desc": "Lyvoc est un pure-player de l'intégration cybersécurité qui déploie Okta, Drata et Vanta à travers l'Europe. Nous avons formé leurs équipes à travailler avec l'IA au quotidien et développé des outils sur mesure qui accélèrent leurs prestations clients."
+    },
+    "alma": {
+      "desc": "Alma est un acteur européen majeur du paiement, proposant des solutions de paiement en plusieurs fois et de paiement différé à travers le continent. Nous accompagnons leurs équipes d'ingénierie pour intégrer l'IA en profondeur dans la conception, le développement et la livraison."
     }
   },
   "contact": {
     "tag": "Échangeons",
     "heading": "Prêts à <span class=\"em\">ouvrir<br>la voie</span> ?",
-    "sub": "Si vous réfléchissez à la place de l'IA dans l'avenir de votre entreprise, parlons-en.",
+    "sub": "Si vous réfléchissez à la place de l'IA dans le travail de vos équipes, parlons-en.",
     "cta": "hello@trailblaze.work"
   },
   "footer": {
-    "copy": "\u00a9 2026 Trailblaze. Tous droits réservés.",
+    "copy": "© 2026 Trailblaze. Tous droits réservés.",
     "contact": "Contact"
   }
 }
