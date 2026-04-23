@@ -28,13 +28,17 @@
   },
   "approach": {
     "tag": "Our Approach",
-    "heading": "Two things,<br>done well.",
+    "heading": "Three things,<br>done well.",
     "desc": "We work directly with your team, on real code and real workflows. No artificial exercises.",
     "p1": {
+      "title": "AI audits",
+      "desc": "We map where each person on your team actually stands in their AI use today: who's just starting out, who's stuck on bad habits, who's already getting real leverage. You get a clear picture of where the team is, and what to do next."
+    },
+    "p2": {
       "title": "Hands-on workshops",
       "desc": "Small groups of 2 to 4 people, working on your actual codebase and tools. Reproducible best practices, calibrated to each participant's level of AI experience. People leave with habits, not slides."
     },
-    "p2": {
+    "p3": {
       "title": "Prompt reviews",
       "desc": "We analyse how AI is actually being used in your team's day-to-day work, hand back targeted recommendations they can apply immediately, and track how the practice evolves week after week."
     }

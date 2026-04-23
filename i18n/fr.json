@@ -28,13 +28,17 @@
   },
   "approach": {
     "tag": "Notre approche",
-    "heading": "Deux choses,<br>bien faites.",
+    "heading": "Trois choses,<br>bien faites.",
     "desc": "Nous travaillons directement avec vos équipes, sur du vrai code et de vrais flux de travail. Pas d'exercices artificiels.",
     "p1": {
+      "title": "Audits IA",
+      "desc": "Nous cartographions où en est chaque personne de votre équipe dans son utilisation de l'IA : qui débute, qui s'est figé sur de mauvaises habitudes, qui en tire déjà un vrai avantage. Vous obtenez une image claire de la maturité de l'équipe, et de ce qu'il faut faire ensuite."
+    },
+    "p2": {
       "title": "Ateliers pratiques",
       "desc": "Groupes de 2 à 4 personnes, sur votre vrai code et vos outils. Mise en place de bonnes pratiques reproductibles, adaptées au niveau d'expérience IA de chaque participant. On en repart avec des habitudes, pas des slides."
     },
-    "p2": {
+    "p3": {
       "title": "Revues de prompts",
       "desc": "Nous analysons l'utilisation de l'IA dans le travail quotidien de vos équipes, donnons des recommandations ciblées et immédiatement applicables, et suivons l'évolution des pratiques semaine après semaine."
     }
