@@ -1,0 +1,322 @@
+/* ============================================================
+   TRAILBLAZE — editorial marketing page
+   ONE cohesive theming axis on <html>: data-house
+   Each house is a complete system (type + colour + radius + depth +
+   scale) pulled from the design-system teardown of four real studios:
+     mono      — Mono Light (Significa-inspired) · DEFAULT · = :root
+     mozza     — warm boutique (green + coral, italic serif)
+     galadrim  — electric single-typeface (navy + blue + pink)
+     goji      — big-type bold (gojiberry red + mint, dark bands)
+   ============================================================ */
+
+:root {
+  /* ===== PALETTE (default house: MONO LIGHT — Significa's real token values) ===== */
+  --paper:      #f7f7f7;   /* Significa --color-background */
+  --paper-2:    #ffffff;   /* --color-background-panel */
+  --paper-3:    #ededed;   /* --color-background-offset */
+  --ink:        #171717;   /* --color-foreground */
+  --ink-2:      #141414;   /* dark feature bands (Goji Surfaces-L1) */
+  --ink-soft:   #6f7072;   /* --color-foreground-secondary */
+  --ink-faint:  #a0a0a3;   /* between secondary & tertiary, legible */
+  --accent:     #171717;   /* primary action = near-black */
+  --accent-dk:  #000000;
+  --on-accent:  #f7f7f7;   /* text on accent buttons */
+  --accent-2:   #0055ff;   /* Significa --color-foreground-accent (links only) */
+  --brand:      #ffd324;   /* Significa signal yellow — the one spot colour */
+  --panel-hi:   var(--paper-2);  /* highlight panel (houses override) */
+  --paper-on-ink: #ededed;
+
+  --line:       #e8e8e8;   /* Significa --color-border (hairline) */
+  --line-soft:  #efefef;
+
+  /* ===== TYPE (default: grotesk) ===== */
+  --font-display: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+  --font-ui:      'Hanken Grotesk', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+  --display-italic: normal;   /* serif emphasis turns italic */
+  --display-tracking: -0.025em;
+  --hero-tracking: -0.035em;
+
+  /* ===== SCALE / WEIGHT (default feel: bold) ===== */
+  --fs-hero:  clamp(2.8rem, 7.6vw, 6.2rem);
+  --fs-h2:    clamp(1.9rem, 4.4vw, 3.4rem);
+  --fs-h3:    clamp(1.2rem, 2vw, 1.6rem);
+  --fs-lede:  clamp(1.12rem, 1.7vw, 1.42rem);
+  --fs-quote: clamp(1.8rem, 4.2vw, 3.3rem);
+  --lh-hero:  1.02;
+  --wght-display: 760;
+  --wght-h:   720;
+
+  --maxw:     1200px;
+  --gutter:   clamp(20px, 5vw, 64px);
+  --sec-pad:  clamp(64px, 9vw, 130px);
+  --radius:   4px;
+  --radius-lg: 8px;
+  --card-bd:  1px solid var(--line);
+  --shadow-soft: none;   /* Significa: depth via hairlines + offset surfaces, not shadows */
+  --shadow-float: 0 1px 0 var(--line);
+}
+
+/* ===================== HOUSE STYLES =====================
+   :root above IS the default house — MONO LIGHT (bold grotesk,
+   signal-yellow spot, hairline depth). The three below are complete,
+   cohesive systems, each transferred from one studio's real stylesheet.
+   ======================================================== */
+
+/* ---- MOZZA — warm boutique · green + coral · friendly grotesk + italic serif ---- */
+html[data-house="mozza"] {
+  --font-display: 'Familjen Grotesk', system-ui, sans-serif;
+  --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+  --font-ui:      'Hanken Grotesk', system-ui, sans-serif;
+  --display-italic: italic;
+  --display-tracking: -0.018em;
+  --hero-tracking: -0.022em;
+
+  --paper: #faf7f1; --paper-2: #ffffff; --paper-3: #f1ebe0;
+  --ink: #1f1c18; --ink-2: #14120e; --ink-soft: #6b6359; --ink-faint: #9c9387;
+  --accent: #1f1c18; --accent-dk: #000000; --on-accent: #faf7f1;
+  --accent-2: #e04a40;           /* coral-red */
+  --brand: #24cd6c;              /* Mozza green */
+  --panel-hi: #ffd7d4;           /* signature soft-coral highlight panel */
+  --paper-on-ink: #f3ece0;
+  --line: #ece3d5; --line-soft: #f2ebdf;
+
+  --fs-hero:  clamp(2.6rem, 6.6vw, 5.3rem);
+  --fs-h2:    clamp(1.85rem, 4vw, 3.1rem);
+  --fs-h3:    clamp(1.2rem, 2vw, 1.6rem);
+  --fs-lede:  clamp(1.12rem, 1.7vw, 1.42rem);
+  --fs-quote: clamp(1.7rem, 3.9vw, 3rem);
+  --lh-hero:  1.05;
+  --wght-display: 700; --wght-h: 640;
+  --radius: 15px; --radius-lg: 20px;            /* Mozza house radius */
+  --shadow-soft: 0 12px 22px -12px rgba(40,30,18,.16), 0 3px 8px -5px rgba(40,30,18,.08);
+}
+
+/* ---- GALADRIM — electric single-typeface · navy + blue + hot-pink ---- */
+html[data-house="galadrim"] {
+  --font-display: 'Kumbh Sans', system-ui, sans-serif;
+  --font-body:    'Kumbh Sans', system-ui, sans-serif;
+  --font-ui:      'Kumbh Sans', system-ui, sans-serif;
+  --display-italic: normal;
+  --display-tracking: -0.01em;
+  --hero-tracking: 0.005em;
+
+  --paper: #ffffff; --paper-2: #f4f5f7; --paper-3: #e9ebef;
+  --ink: #010c1e; --ink-2: #0b0d11; --ink-soft: #5a606b; --ink-faint: #9298a3;
+  --accent: #0081ff; --accent-dk: #0068cf; --on-accent: #ffffff;
+  --accent-2: #ff2362;           /* hot pink */
+  --brand: #0081ff;              /* Galadrim electric blue */
+  --panel-hi: #b3d4fc;
+  --paper-on-ink: #eef0f3;
+  --line: #e9ebef; --line-soft: #f1f2f4;
+
+  --fs-hero:  clamp(2.1rem, 5.4vw, 3.9rem);     /* Galadrim's modest 47px hero */
+  --fs-h2:    clamp(1.7rem, 3.6vw, 2.7rem);
+  --fs-h3:    clamp(1.18rem, 1.9vw, 1.55rem);
+  --fs-lede:  clamp(1.1rem, 1.6vw, 1.36rem);
+  --fs-quote: clamp(1.55rem, 3.4vw, 2.7rem);
+  --lh-hero:  1.12;
+  --wght-display: 700; --wght-h: 700;
+  --radius: 4px; --radius-lg: 6px;              /* Galadrim's utilitarian 4px */
+  --shadow-soft: 0 8px 20px -12px rgba(8,18,40,.16);
+}
+
+/* ---- GOJI LABS — Trailblaze house: gojiberry red + mint + dark bands,
+   set in the MONO LIGHT bold grotesk (Schibsted). Big, confident hero. ---- */
+html[data-house="goji"] {
+  --font-display: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+  --font-ui:      'Hanken Grotesk', system-ui, sans-serif;
+  --display-italic: normal;
+  --display-tracking: -0.022em;
+  --hero-tracking: -0.032em;
+
+  --paper: #ffffff; --paper-2: #f7f7f7; --paper-3: #f0eeee;
+  --ink: #141414; --ink-2: #141414; --ink-soft: #514f4f; --ink-faint: #9e9c9c;
+  --accent: #da3750; --accent-dk: #c12c43; --on-accent: #ffffff;
+  --accent-2: #0e8c57;           /* Goji green text */
+  --brand: #da3750;              /* "gojiberry" red */
+  --panel-hi: #a4f5d3;           /* mint highlight */
+  --paper-on-ink: #ededed;
+  --line: #e3e1e1; --line-soft: #efeded;
+
+  --fs-hero:  clamp(3.4rem, 7vw, 5.6rem);       /* ~40% larger, full presence */
+  --fs-h2:    clamp(1.95rem, 4.2vw, 3.2rem);
+  --fs-h3:    clamp(1.22rem, 2vw, 1.6rem);
+  --fs-lede:  clamp(1.14rem, 1.6vw, 1.4rem);
+  --fs-quote: clamp(1.85rem, 4vw, 3.1rem);
+  --lh-hero:  1.04;
+  --wght-display: 760; --wght-h: 720;
+  --radius: 5px; --radius-lg: 8px;              /* Goji's sharp 4–5px */
+  --shadow-soft: 0 18px 40px -24px rgba(0,0,0,.28);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* paper grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--grain-opacity, 0);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+body > * { position: relative; z-index: 1; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--wght-h);
+  font-optical-sizing: auto;
+  line-height: 1.05;
+  letter-spacing: var(--display-tracking);
+  margin: 0;
+  text-wrap: balance;
+}
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  margin: 0;
+}
+.eyebrow .idx { color: var(--ink-faint); }
+
+.lede { font-size: var(--fs-lede); line-height: 1.45; color: var(--ink-soft); }
+.muted { color: var(--ink-soft); }
+.faint { color: var(--ink-faint); }
+
+/* ---------- Layout ---------- */
+/* A/B copy variants — toggled via data-variant on <html> */
+html[data-variant="a"] [data-v="b"] { display: none; }
+html[data-variant="b"] [data-v="a"] { display: none; }
+
+.wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+section { padding-block: var(--sec-pad); }
+.band-2 { background: var(--paper-2); }
+.band-3 { background: var(--paper-3); }
+.band-ink {
+  background: var(--ink-2);
+  color: var(--paper-on-ink);
+  --line: color-mix(in oklab, #ffffff 16%, transparent);
+  --line-soft: color-mix(in oklab, #ffffff 9%, transparent);
+}
+.band-ink h1, .band-ink h2, .band-ink h3 { color: var(--paper-on-ink); }
+.band-ink .muted { color: color-mix(in oklab, var(--paper-on-ink) 70%, transparent); }
+.band-ink .eyebrow { color: color-mix(in oklab, var(--paper-on-ink) 60%, transparent); }
+
+.sec-head { max-width: 64ch; margin-bottom: clamp(36px, 5vw, 64px); }
+.sec-head h2 { font-size: var(--fs-h2); margin-top: .5rem; }
+.sec-head .lede { margin-top: 1.1rem; }
+
+/* hairline rule */
+.rule { height: 1px; background: var(--line); border: 0; margin: 0; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: .005em;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: .85em 1.4em;
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent-dk); transform: translateY(-1px); }
+.band-ink .btn-primary { background: var(--paper-on-ink); color: var(--ink-2); }
+.band-ink .btn-primary:hover { background: #fff; }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--ink); background: color-mix(in oklab, var(--ink) 4%, transparent); }
+.band-ink .btn-ghost { color: var(--paper-on-ink); border-color: color-mix(in oklab, var(--paper-on-ink) 30%, transparent); }
+.band-ink .btn-ghost:hover { border-color: var(--paper-on-ink); background: color-mix(in oklab, #fff 8%, transparent); }
+.btn .arr { transition: transform .18s ease; }
+.btn:hover .arr { transform: translateX(3px); }
+
+:where(a, button, input, summary, [tabindex]):focus-visible {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* placeholder chrome */
+.ph {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .04em;
+  color: var(--accent-2);
+  background: color-mix(in oklab, var(--accent-2) 10%, transparent);
+  border: 1px dashed color-mix(in oklab, var(--accent-2) 42%, transparent);
+  border-radius: 3px;
+  padding: .1em .5em;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* image / portrait slot */
+.slot {
+  position: relative;
+  background:
+    repeating-linear-gradient(135deg, var(--paper-3) 0 9px, color-mix(in oklab, var(--paper-3) 70%, var(--paper)) 9px 18px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.slot .slot-label {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .05em;
+  color: var(--ink-soft);
+  background: color-mix(in oklab, var(--paper) 84%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: .25em .6em;
+}
+
+/* ---------- Reveal animation ---------- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: .07s; }
+.reveal.d2 { transition-delay: .14s; }
+.reveal.d3 { transition-delay: .21s; }
+.reveal.d4 { transition-delay: .28s; }
+.reveal.instant { transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
