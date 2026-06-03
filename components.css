@@ -253,6 +253,7 @@ html[data-variant="b"] .way-setup { order: 1; }
 .prob-viz .g-stroke-mute { stroke: var(--line); }
 .prob-viz .g-fill-strong { fill: var(--brand); }
 @media (max-width: 860px) { .prob-row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .prob-viz { height: 92px; } }
 @media (max-width: 480px) { .prob-row { grid-template-columns: 1fr; } }
 
 /* ---------- How it works (timeline) ---------- */
@@ -496,8 +497,8 @@ html[data-bio="long"] .member .m-name { font-size: clamp(1.45rem, 2.2vw, 1.9rem)
 html[data-bio="long"] .member .m-disc { margin-top: .5rem; font-size: .74rem; }
 html[data-bio="long"] .member .m-cred { margin-top: .7rem; font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.5; color: var(--ink-soft); max-width: 72ch; }
 @media (max-width: 600px) {
-  html[data-bio="long"] .member { grid-template-columns: 84px 1fr; gap: 18px; align-items: start; }
-  html[data-bio="long"] .member .slot { height: auto; width: 84px; }
+  html[data-bio="long"] .member { grid-template-columns: 1fr; gap: 16px; align-items: start; }
+  html[data-bio="long"] .member .slot { height: clamp(110px, 15vh, 150px); width: auto; justify-self: start; }
 }
 .team-note { font-family: var(--font-body); font-style: italic; color: var(--ink-soft); font-size: var(--fs-lede); max-width: 50ch; }
 
