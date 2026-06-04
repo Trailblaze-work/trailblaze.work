@@ -1,0 +1,42 @@
+# Trailblaze
+
+> Senior, hands-on AI-adoption consultancy for engineering teams. France-first. A small team of veteran operators (CTOs, CPOs, senior ICs) who have run AI-first development since early 2025.
+
+## What we do
+
+- Workshops and 1:1 coaching to get engineers genuinely productive with AI tools (Claude Code, Cursor, Copilot).
+- Custom tooling: adoption and velocity dashboards, prompt logging and reporting, and bespoke internal tools.
+- Engineering at the core, with design, product, and sales experts brought in when needed.
+
+## How we work
+
+1. A free first conversation.
+2. We work alongside your team: workshops, materials, and time in your meetings.
+3. Ongoing support after handover.
+
+## Pricing
+
+- A flat daily fee per expert (the figure is shared in the first conversation).
+- First conversation is free.
+- You pay only for days worked.
+- No lock-in.
+
+## Who it's for
+
+Teams that already have AI tools but little internal guidance, based in France and Europe.
+
+## Clients
+
+Backupta, Lyvoc, Alma.
+
+## Why us
+
+- We use what we teach: AI-first daily since early 2025.
+- Senior-only, no juniors.
+- We focus on skill transfer, unlike integrators, ESNs, Big-4 firms, or hiring.
+
+## Contact
+
+- Email: hello@trailblaze.work
+- Book a call: https://calendly.com/hello-trailblaze/30min
+- Website: https://trailblaze.work
