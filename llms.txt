@@ -1,12 +1,12 @@
 # Trailblaze
 
-> Senior, hands-on AI-adoption consultancy for engineering teams. France-first. A small team of veteran operators (CTOs, CPOs, senior ICs) who have run AI-first development since early 2025.
+> Senior, hands-on AI-adoption consultancy for every team: engineering, product, design and sales. France-first. A small team of veteran operators (CTOs, CPOs, senior ICs) who have run AI-first development since early 2025.
 
 ## What we do
 
-- Workshops and 1:1 coaching to get engineers genuinely productive with AI tools (Claude Code, Cursor, Copilot).
+- Workshops and 1:1 coaching to get teams genuinely productive with AI tools, for example engineering with Claude Code, Cursor and Copilot, and product, design and sales with the tools that fit their work.
 - Custom tooling: adoption and velocity dashboards, prompt logging and reporting, and bespoke internal tools.
-- Engineering at the core, with design, product, and sales experts brought in when needed.
+- Senior experts across engineering, product, design and sales, matched to the work.
 
 ## How we work
 
