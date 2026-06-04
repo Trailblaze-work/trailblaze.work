@@ -78,7 +78,71 @@
     requestAnimationFrame(frame);
   }
 
-  function init() { initReveals(); initParallax(); initSectionParallax(); }
+  /* ---------- 1d. Case-study charts (animate-in + chart 1 hover) ---------- */
+  function initCharts() {
+    // entrance animation: add .chart-animated when card scrolls in
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.chart-card'));
+    if (cards.length) {
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        cards.forEach(function (c) { c.classList.add('chart-animated'); });
+      } else {
+        var cio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('chart-animated'); cio.unobserve(e.target); }
+          });
+        }, { threshold: 0.25 });
+        cards.forEach(function (c) { cio.observe(c); });
+      }
+    }
+
+    // chart 1 hover tooltip
+    var zone = document.getElementById('chart1-hover-zone');
+    var line = document.getElementById('chart1-hover-line');
+    var dot = document.getElementById('chart1-hover-dot');
+    var tip = document.getElementById('chart1-tooltip');
+    var tipVal = document.getElementById('chart1-tooltip-value');
+    var container = document.getElementById('chart1-container');
+    if (!zone || !line || !dot || !tip || !container) return;
+
+    // {x,y in 0-800/0-280 viewBox, val} — from the brief's data table
+    var pts = [
+      { x: 50, y: 228, val: '0' }, { x: 98, y: 225, val: '6k' }, { x: 146, y: 222, val: '12k' },
+      { x: 194, y: 219, val: '18k' }, { x: 242, y: 216, val: '24k' }, { x: 290, y: 213, val: '30k' },
+      { x: 338, y: 209, val: '36k' }, { x: 386, y: 205, val: '42k' }, { x: 415, y: 203, val: '48k' },
+      { x: 434, y: 190, val: '65k' }, { x: 482, y: 172, val: '100k' }, { x: 530, y: 152, val: '145k' },
+      { x: 578, y: 130, val: '200k' }, { x: 626, y: 105, val: '260k' }, { x: 674, y: 76, val: '320k' },
+      { x: 722, y: 44, val: '380k' }, { x: 770, y: 10, val: '430k' }
+    ];
+    var VBW = 800, VBH = 280;
+
+    function move(ev) {
+      var rect = container.getBoundingClientRect();
+      var px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - rect.left;
+      var vx = px / rect.width * VBW;
+      var nearest = pts[0], best = Infinity;
+      for (var i = 0; i < pts.length; i++) {
+        var d = Math.abs(pts[i].x - vx);
+        if (d < best) { best = d; nearest = pts[i]; }
+      }
+      line.setAttribute('x1', nearest.x); line.setAttribute('x2', nearest.x);
+      line.style.opacity = '1';
+      dot.setAttribute('cx', nearest.x); dot.setAttribute('cy', nearest.y);
+      dot.style.opacity = '1';
+      tipVal.textContent = nearest.val;
+      tip.classList.add('visible');
+      tip.style.left = (nearest.x / VBW * rect.width) + 'px';
+      tip.style.top = (nearest.y / VBH * rect.height - 44) + 'px';
+    }
+    function leave() {
+      line.style.opacity = '0'; dot.style.opacity = '0'; tip.classList.remove('visible');
+    }
+    zone.addEventListener('mousemove', move);
+    zone.addEventListener('mouseleave', leave);
+    zone.addEventListener('touchmove', move, { passive: true });
+    zone.addEventListener('touchend', leave);
+  }
+
+  function init() { initReveals(); initParallax(); initSectionParallax(); initCharts(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
