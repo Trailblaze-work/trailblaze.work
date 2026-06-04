@@ -1,0 +1,11 @@
+{
+  "name": "trailblaze-site",
+  "private": true,
+  "description": "Static site for trailblaze.work. This package.json exists only for pre-ship checks (no build step).",
+  "scripts": {
+    "check:overflow": "node scripts/check-mobile-overflow.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
