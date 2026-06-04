@@ -183,6 +183,7 @@ section { padding-block: var(--sec-pad); }
   font-family: var(--font-ui);
   font-weight: 600;
   font-size: 1rem;
+  line-height: 1.2;
   letter-spacing: .005em;
   border: 1px solid transparent;
   border-radius: var(--radius);
@@ -197,8 +198,6 @@ section { padding-block: var(--sec-pad); }
 }
 .btn-primary { background: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { background: var(--accent-dk); transform: translateY(-1px); }
-.band-ink .btn-primary { background: var(--paper-on-ink); color: var(--ink-2); }
-.band-ink .btn-primary:hover { background: #fff; }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 .btn-ghost:hover { border-color: var(--ink); background: color-mix(in oklab, var(--ink) 4%, transparent); }
 .band-ink .btn-ghost { color: var(--paper-on-ink); border-color: color-mix(in oklab, var(--paper-on-ink) 30%, transparent); }

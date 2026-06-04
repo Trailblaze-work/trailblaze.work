@@ -48,7 +48,12 @@
 .nav .btn { padding: .6em 1.05em; font-size: .92rem; }
 .nav-toggle { display: none; }
 .nav-cta .cta-short { display: none; }
-@media (max-width: 900px) {
+/* secondary email icon-button next to each CTA */
+.cta-email { padding-left: .9em; padding-right: .9em; }
+.cta-email svg { display: block; width: 1.2em; height: 1.2em; }
+.nav .cta-email { padding: .6em .72em; }
+.nav-email-mobile { display: none; }
+@media (max-width: 1024px) {
   .nav-toggle {
     display: inline-flex;
     align-items: center;
@@ -78,6 +83,8 @@
     box-shadow: 0 12px 24px -18px rgba(0,0,0,.3);
   }
   .nav.nav-open .nav-links a { padding: .55rem 0; }
+  .nav .cta-email { display: none; }
+  .nav.nav-open .nav-links .nav-email-mobile { display: inline-flex; align-items: center; gap: .55rem; color: var(--accent); }
 }
 
 /* ---------- Hero ---------- */
@@ -414,8 +421,8 @@ html[data-bio="long"] .member .m-cred { margin-top: .7rem; font-size: clamp(1rem
 .footer .brand { margin-right:0; }
 .footer .f-meta { font-family: var(--font-mono); font-size:.82rem; color: var(--ink-soft); display:flex; gap:.5rem .9rem; flex-wrap:wrap; align-items:center; }
 .footer .f-meta a { text-decoration:none; }
-.footer .f-email { font-family: var(--font-mono); font-size: .82rem; color: var(--ink-soft); text-decoration: none; }
-.footer .f-email:hover { color: var(--accent); }
+.footer .f-email { font-family: var(--font-mono); font-size: .82rem; color: var(--accent); text-decoration: none; }
+.footer .f-email:hover { color: var(--accent-dk); }
 .footer .f-geo { width: 100%; margin: 1rem 0 0; font-family: var(--font-mono); font-size: .76rem; color: var(--ink-faint); }
 
 /* ============================================================
@@ -550,8 +557,10 @@ html[data-house="goji"] .hero h1 { max-width: none; }
 }
 .client-card:hover { border-color: var(--ink); transform: translateY(-2px); }
 .client-card:hover .client-go { color: var(--brand); }
-.client-logo { height: 40px; display: flex; align-items: center; }
-.client-logo img { max-height: 38px; max-width: 150px; width: auto; height: auto; }
+.client-logo { align-self: stretch; min-height: 82px; display: flex; align-items: center; justify-content: center;
+  background: #f4f5f7; border: 1px solid var(--line); border-radius: 12px; padding: 20px 24px; }
+.client-logo img { max-height: 42px; max-width: 170px; width: auto; height: auto; }
+.client-logo.logo-dark { background: var(--ink); border-color: var(--ink); }
 .client-wordmark {
   font-family: var(--font-display); font-weight: 800; font-size: 1.55rem;
   letter-spacing: -0.02em; color: var(--ink);
