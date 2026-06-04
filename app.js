@@ -4,7 +4,12 @@
    ============================================================ */
 (function () {
   'use strict';
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var motionMql = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var reduceMotion = motionMql.matches;
+
+  // Callbacks that stop running parallax rAF loops; invoked when reduced
+  // motion turns on at runtime.
+  var parallaxStops = [];
 
   /* ---------- 1. Scroll reveals ---------- */
   function initReveals() {
@@ -42,6 +47,8 @@
     if (!bg || !hero || reduceMotion) return;
     var factor = 0.32;
     var last = null;
+    var rafId = null;
+    var running = false;
     function frame() {
       var top = hero.getBoundingClientRect().top; // ~0 at top, negative once scrolled past
       var scrolled = Math.max(0, -top);           // how far the hero has scrolled up
@@ -50,9 +57,31 @@
         last = offset;
         bg.style.transform = 'translate3d(0,' + offset.toFixed(1) + 'px,0)';
       }
-      requestAnimationFrame(frame);
+      rafId = requestAnimationFrame(frame);
     }
-    requestAnimationFrame(frame);
+    function start() {
+      if (running || reduceMotion) return;
+      running = true;
+      rafId = requestAnimationFrame(frame);
+    }
+    function stop() {
+      running = false;
+      if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+    parallaxStops.push(stop);
+
+    // Only run the loop while the hero is on screen. Without
+    // IntersectionObserver, fall back to the always-on loop.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { start(); } else { stop(); }
+        });
+      });
+      io.observe(hero);
+    } else {
+      start();
+    }
   }
 
   /* ---------- 3. Section parallax (pricing) ----------
@@ -64,6 +93,8 @@
     if (!bg || !sec || reduceMotion) return;
     var factor = 0.12;
     var last = null;
+    var rafId = null;
+    var running = false;
     function frame() {
       var rect = sec.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight;
@@ -73,9 +104,31 @@
         last = offset;
         bg.style.transform = 'translate3d(0,' + offset.toFixed(1) + 'px,0)';
       }
-      requestAnimationFrame(frame);
+      rafId = requestAnimationFrame(frame);
     }
-    requestAnimationFrame(frame);
+    function start() {
+      if (running || reduceMotion) return;
+      running = true;
+      rafId = requestAnimationFrame(frame);
+    }
+    function stop() {
+      running = false;
+      if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+    }
+    parallaxStops.push(stop);
+
+    // Only run the loop while the pricing section is on screen. Without
+    // IntersectionObserver, fall back to the always-on loop.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { start(); } else { stop(); }
+        });
+      });
+      io.observe(sec);
+    } else {
+      start();
+    }
   }
 
   /* ---------- 1d. Case-study charts (animate-in + chart 1 hover) ---------- */
@@ -117,7 +170,10 @@
 
     function move(ev) {
       var rect = container.getBoundingClientRect();
-      var px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - rect.left;
+      var hasTouch = ev.touches && ev.touches.length;
+      var clientX = hasTouch ? ev.touches[0].clientX : ev.clientX;
+      if (clientX == null) return;
+      var px = clientX - rect.left;
       var vx = px / rect.width * VBW;
       var nearest = pts[0], best = Infinity;
       for (var i = 0; i < pts.length; i++) {
@@ -142,7 +198,50 @@
     zone.addEventListener('touchend', leave);
   }
 
-  function init() { initReveals(); initParallax(); initSectionParallax(); initCharts(); }
+  /* ---------- 4. Mobile nav toggle ---------- */
+  function initNav() {
+    var btn = document.querySelector('.nav-toggle');
+    var header = btn && btn.closest('header.nav');
+    if (!btn || !header) return;
+    var nav = document.getElementById('primary-nav');
+
+    function setOpen(open) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      header.classList.toggle('nav-open', open);
+    }
+    function isOpen() { return btn.getAttribute('aria-expanded') === 'true'; }
+
+    btn.addEventListener('click', function () { setOpen(!isOpen()); });
+
+    // Close when a nav link is clicked.
+    if (nav) {
+      nav.addEventListener('click', function (ev) {
+        if (ev.target.closest('a')) { setOpen(false); }
+      });
+    }
+
+    // Close on Escape.
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && isOpen()) { setOpen(false); }
+    });
+
+    // Close on outside click while open.
+    document.addEventListener('click', function (ev) {
+      if (isOpen() && !header.contains(ev.target)) { setOpen(false); }
+    });
+  }
+
+  // React to reduced-motion turning on at runtime: stop the parallax loops.
+  function onMotionChange(ev) {
+    reduceMotion = ev.matches;
+    if (reduceMotion) {
+      parallaxStops.forEach(function (stop) { stop(); });
+    }
+  }
+  if (motionMql.addEventListener) motionMql.addEventListener('change', onMotionChange);
+  else if (motionMql.addListener) motionMql.addListener(onMotionChange);
+
+  function init() { initReveals(); initParallax(); initSectionParallax(); initCharts(); initNav(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();

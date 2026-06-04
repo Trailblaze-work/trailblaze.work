@@ -1,0 +1,32 @@
+# robots.txt for https://trailblaze.work
+
+# Default: allow all crawlers
+User-agent: *
+Allow: /
+
+# AI crawlers explicitly welcome (we want to be citable by AI assistants)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://trailblaze.work/sitemap.xml
