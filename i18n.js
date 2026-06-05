@@ -269,11 +269,13 @@
     // English is the HTML default — only rewrite the DOM when French is active.
     if (current === 'fr') applyLang('fr');
     else renderToggle();
+    // Tell the head-script gate the copy is ready; it reveals once fonts are too.
+    if (window.__appReveal) window.__appReveal.i18n();
+    else document.documentElement.classList.remove('app-loading');
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  // This script sits at the very end of <body>, so every translatable node is
+  // already parsed. Run synchronously — applying French before paint avoids the
+  // English→French flash — rather than waiting for DOMContentLoaded.
+  init();
 })();

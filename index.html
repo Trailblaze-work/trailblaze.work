@@ -3,6 +3,39 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Hold the page hidden until (a) i18n.js has swapped the copy and (b) the web
+     fonts are ready — so there's neither an English→French flash nor a
+     fallback-font reflow (headline rendering big, then snapping smaller once
+     Schibsted Grotesk loads). A safety cap guarantees we never stay hidden. -->
+<script>
+(function () {
+  var de = document.documentElement;
+  try {
+    var s = localStorage.getItem('tb-lang');
+    var nav = (navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language) || 'en';
+    var lang = (s === 'fr' || s === 'en') ? s : (String(nav).toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en');
+    de.setAttribute('lang', lang);
+  } catch (e) {}
+  de.classList.add('app-loading');
+  var fontsReady = false, i18nReady = false, done = false;
+  function maybe() {
+    if (done || !fontsReady || !i18nReady) return;
+    done = true;
+    de.classList.remove('app-loading');
+  }
+  window.__appReveal = {
+    fonts: function () { fontsReady = true; maybe(); },
+    i18n: function () { i18nReady = true; maybe(); }
+  };
+  try {
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(window.__appReveal.fonts);
+    else { fontsReady = true; }
+  } catch (e) { fontsReady = true; }
+  // Never let a slow font network keep content hidden.
+  setTimeout(function () { if (!done) { done = true; de.classList.remove('app-loading'); } }, 1200);
+})();
+</script>
+<style>html.app-loading body { visibility: hidden; }</style>
 <title>Trailblaze · Hands-on AI adoption for every team</title>
 <meta name="description" content="Trailblaze helps your teams get real value from the AI tools you already pay for. Workshops, coaching and workflows for engineering, product, design and sales." />
 <link rel="canonical" href="https://trailblaze.work/" />
