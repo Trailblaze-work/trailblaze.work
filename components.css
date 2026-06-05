@@ -53,6 +53,28 @@
 .cta-email svg { display: block; width: 1.2em; height: 1.2em; }
 .nav .cta-email { padding: .6em .72em; }
 .nav-email-mobile { display: none; }
+/* tiny floating single-language toggle, fixed in the bottom-right corner */
+.lang-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-family: var(--font-ui);
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  opacity: .7;
+  box-shadow: 0 4px 14px -6px rgba(0,0,0,.35);
+  transition: color .15s ease, opacity .15s ease, transform .15s ease;
+}
+.lang-toggle:hover { color: var(--ink); opacity: 1; transform: translateY(-1px); }
 @media (max-width: 1024px) {
   .nav-toggle {
     display: inline-flex;
