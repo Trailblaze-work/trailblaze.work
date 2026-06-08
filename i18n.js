@@ -144,10 +144,16 @@
     },
     clients: {
       h2: 'Ils nous font confiance',
-      lede: 'Des équipes qui nous ont rejoints pour rendre l\'IA réelle dans leur façon de construire et de livrer.',
+      lede: 'Des équipes qui nous ont rejoints pour rendre l\'IA réelle dans leur façon de travailler.',
       backupta_desc: 'Backupta développe des solutions de sauvegarde automatisées et sécurisées pour les entreprises. On a aidé chaque équipe à passer à des workflows IA-first et développé des outils personnalisés alimentés par l\'IA qui tournent aujourd\'hui dans toute leur organisation.',
       lyvoc_desc: 'Lyvoc est un intégrateur en cybersécurité qui déploie Okta, Drata et Vanta en Europe. On a formé leurs équipes à travailler avec l\'IA à tous les niveaux et développé des outils sur mesure qui accélèrent leur façon de livrer pour leurs clients.',
       alma_desc: 'Alma est un acteur majeur des paiements en Europe, proposant des solutions de paiement en plusieurs fois et différé à travers le continent. On travaille avec leurs équipes ingénierie pour intégrer l\'IA en profondeur dans la façon dont elles conçoivent, développent et livrent.',
+      assessfirst_desc: 'AssessFirst est une plateforme d\'évaluation des talents nativement portée par l\'IA, qui prédit l\'adéquation et la performance des candidats grâce aux sciences comportementales.',
+      kalent_desc: 'Kalent est un copilote de recrutement par IA qui source, qualifie et engage des candidats à partir d\'une base de plus de 200 millions de profils.',
+      atinary_desc: 'Atinary développe des Self-Driving Labs pilotés par l\'IA et la robotique qui accélèrent la recherche en chimie, pharmacie et science des matériaux.',
+      bruin_desc: 'Bruin est une plateforme de données par IA qui transforme des sources de données éparses en réponses, tableaux de bord, synthèses et alertes.',
+      mentalyc_desc: 'Mentalyc est une plateforme de documentation par IA qui rédige les notes de suivi et les plans de traitement pour les thérapeutes en santé mentale.',
+      cordelier_desc: 'Cordelier & Associés est un cabinet d\'avocats parisien fondé en 1957, intervenant en responsabilité civile, assurance, immobilier et contentieux commercial.',
       visit: 'Visiter le site →'
     },
     pricing: {

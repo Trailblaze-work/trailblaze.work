@@ -231,6 +231,28 @@
     });
   }
 
+  /* ---------- 5. Trusted-by carousel (Splide) ---------- */
+  function initClientsCarousel() {
+    var el = document.querySelector('.clients-carousel');
+    if (!el || typeof Splide === 'undefined') return;
+    new Splide(el, {
+      perPage: 3,
+      perMove: 1,
+      gap: '1.5rem',
+      padding: { right: '3.2rem' }, // peek of the next card → reads as a carousel
+      arrows: true,
+      pagination: true,
+      drag: true,
+      snap: true,
+      speed: reduceMotion ? 0 : 450,
+      mediaQuery: 'max-width',
+      breakpoints: {
+        980: { perPage: 2, padding: { right: '2.6rem' } },
+        640: { perPage: 1, padding: { right: '3.4rem' }, gap: '0.9rem' }
+      }
+    }).mount();
+  }
+
   // React to reduced-motion turning on at runtime: stop the parallax loops.
   function onMotionChange(ev) {
     reduceMotion = ev.matches;
@@ -241,7 +263,7 @@
   if (motionMql.addEventListener) motionMql.addEventListener('change', onMotionChange);
   else if (motionMql.addListener) motionMql.addListener(onMotionChange);
 
-  function init() { initReveals(); initParallax(); initSectionParallax(); initCharts(); initNav(); }
+  function init() { initReveals(); initParallax(); initSectionParallax(); initCharts(); initNav(); initClientsCarousel(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
