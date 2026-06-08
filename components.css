@@ -558,6 +558,67 @@ html[data-house="goji"] .hero h1 { max-width: none; }
 .callout-number.callout-dim { color: var(--ink-faint); }
 .callout-label { font-size: .85rem; color: var(--ink-soft); margin-top: .15rem; }
 
+/* ---------- Case study: client testimonials ---------- */
+.case-testimonials { margin-top: clamp(40px, 5vw, 68px); }
+.case-bridge { font-family: var(--font-display); font-weight: var(--wght-h); font-size: clamp(1.3rem, 2.4vw, 1.7rem); letter-spacing: -0.015em; color: var(--ink); margin-bottom: clamp(20px, 2.5vw, 30px); }
+
+.tlist--stack { display: flex; flex-direction: column; gap: clamp(16px, 2vw, 22px); }
+.tcard {
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: clamp(22px, 2.4vw, 34px);
+  box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 10px 26px -22px rgba(0,0,0,.25);
+}
+.tcard--row { display: grid; grid-template-columns: 1.04fr .96fr; gap: clamp(24px, 3vw, 46px); align-items: start; }
+@media (max-width: 760px) { .tcard--row { grid-template-columns: 1fr; gap: 22px; } }
+.t-body { display: flex; flex-direction: column; }
+
+.t-head { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.15rem; }
+.t-logo { display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 14px; border-radius: 8px; background: #f4f5f7; border: 1px solid var(--line); text-decoration: none; transition: border-color .2s ease, transform .2s ease; }
+.t-logo:hover { border-color: var(--ink); transform: translateY(-1px); }
+.t-logo.is-dark { background: var(--ink); border-color: var(--ink); }
+.t-logo.is-dark:hover { border-color: var(--ink-soft); }
+.t-logo img { max-height: 22px; max-width: 132px; width: auto; height: auto; display: block; }
+.t-scale { font-family: var(--font-mono); font-size: .8rem; font-weight: 500; letter-spacing: .01em; color: var(--ink-soft); }
+
+.t-quote { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.02rem, 1.35vw, 1.18rem); line-height: 1.5; color: var(--ink); margin: 0 0 1.05rem; text-wrap: pretty; }
+.t-quote em { font-style: normal; font-weight: 700; color: var(--brand); }
+.t-attr { font-size: .86rem; color: var(--ink-soft); margin: 0; }
+.t-attr strong { color: var(--ink); font-weight: 600; }
+
+.t-viz { background: var(--paper-2); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: clamp(15px, 1.5vw, 20px); }
+.t-viz-label { font-family: var(--font-mono); font-size: .82rem; font-weight: 500; letter-spacing: .005em; color: var(--ink-soft); margin: 0 0 .75rem; }
+
+/* column bar chart */
+.t-chart { display: flex; align-items: flex-end; gap: 4px; min-height: 132px; margin-top: .3rem; }
+.t-chart--pair { gap: clamp(16px, 8%, 40px); justify-content: center; }
+.t-chart--pair .t-col { max-width: 150px; }
+.t-col { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.t-colbar { width: 100%; border-radius: var(--radius) var(--radius) 0 0; background: var(--brand); position: relative; }
+.t-colbar--dim { background: var(--line); }
+.t-colval { position: absolute; top: -1.25rem; left: 50%; transform: translateX(-50%); font-family: var(--font-display); font-size: .85rem; font-weight: 800; color: var(--brand); white-space: nowrap; }
+.t-colval--dim { color: var(--ink); }
+.t-collabel { font-family: var(--font-mono); font-size: .62rem; color: var(--ink-faint); margin-top: .35rem; }
+.t-collabel--hi { color: var(--brand); }
+.t-chart-foot { display: flex; justify-content: space-between; margin-top: .7rem; font-family: var(--font-mono); font-size: .64rem; }
+.t-chart-foot .dim { color: var(--ink-faint); }
+.t-chart-foot .hi { color: var(--brand); font-weight: 600; }
+
+/* time-series line/area */
+.t-svg { width: 100%; height: auto; display: block; overflow: visible; margin-top: .1rem; }
+.t-svg-line { fill: none; stroke: var(--brand); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+.t-svg-grid { stroke: color-mix(in oklab, var(--ink) 8%, transparent); }
+.t-svg-axis { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 10px; }
+.t-svg-marker { stroke: color-mix(in oklab, var(--brand) 45%, transparent); }
+.t-svg-marker-label { fill: var(--brand); font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; }
+.t-svg-dot { fill: var(--brand); }
+.t-svg-val { fill: var(--brand); font-family: var(--font-display); font-weight: 800; font-size: 13.5px; }
+.t-svg-val--dim { fill: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 13.5px; }
+.t-svg-xlab { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; }
+
+/* dual viz: stacked */
+.t-duo { display: flex; flex-direction: column; gap: clamp(18px, 2vw, 24px); }
+.t-duo .t-chart { min-height: 108px; }
+
 /* ---------- Trusted by (client cards) ---------- */
 .clients-carousel-wrap { margin-top: clamp(32px, 4vw, 52px); }
 .clients-carousel { position: relative; }
