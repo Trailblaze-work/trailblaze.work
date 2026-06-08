@@ -103,7 +103,7 @@
       c2_sr: 'Les fonctionnalités livrées par mois sont passées d\'environ 5 par mois avant l\'engagement à environ 80 par mois après, avec un pic à 110.',
       c2_before: 'Avant l\'engagement',
       c2_after: 'Après l\'engagement',
-      t_bridge: 'Le même changement, leurs équipes.',
+      t_bridge: 'Ce que disent nos clients.',
       t1_aria: 'AssessFirst (ouvre dans un nouvel onglet)',
       t1_quote: '"On ne réalisait pas tout ce que l\'IA pouvait nous apporter avant que Guillaume nous aide à la mettre en place, construise des cas d\'usage et aide toutes nos équipes au contact client à l\'utiliser efficacement. Ça nous a fait passer d\'<em>AI-curious</em> à <em>AI-first</em>."',
       t1_attr: '<strong>Simon</strong> · CPO @ AssessFirst',
