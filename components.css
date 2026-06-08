@@ -560,9 +560,7 @@ html[data-house="goji"] .hero h1 { max-width: none; }
 
 /* ---------- Trusted by (client cards) ---------- */
 .clients-carousel-wrap { margin-top: clamp(32px, 4vw, 52px); }
-/* hidden until Splide mounts (the wrap is JS-revealed already) → no flash of stacked slides */
-.clients-carousel { position: relative; visibility: hidden; }
-.clients-carousel.is-initialized { visibility: visible; }
+.clients-carousel { position: relative; }
 /* give the card lift/shadow vertical room without shifting layout */
 .clients-carousel .splide__track { padding-block: 12px; margin-block: -12px; }
 /* equal-height cards across slides */
