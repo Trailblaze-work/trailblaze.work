@@ -677,3 +677,7 @@ html[data-house="goji"] .hero h1 { max-width: none; }
 .clients-carousel .splide__pagination__page.is-active { background: var(--brand); transform: scale(1.3); }
 .clients-carousel .splide__pagination__page:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 @media (max-width: 640px) { .clients-carousel .splide__arrow { display: none; } }
+
+/* Hero diagnostic CTA variant */
+.hero-cta-diag { flex-direction: column; align-items: flex-start; gap: 1rem; }
+.hero-diag-note { font-size: 1rem; font-weight: 500; color: var(--ink); max-width: 40ch; line-height: 1.5; margin: 0; }

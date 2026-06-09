@@ -263,7 +263,118 @@
   if (motionMql.addEventListener) motionMql.addEventListener('change', onMotionChange);
   else if (motionMql.addListener) motionMql.addListener(onMotionChange);
 
-  function init() { initReveals(); initParallax(); initSectionParallax(); initCharts(); initNav(); initClientsCarousel(); }
+  /* ---------- 6. AI Readiness Diagnostic ---------- */
+  function initDiagnostic() {
+    var widget = document.getElementById('diag-widget');
+    if (!widget) return;
+
+    var answers = [null, null, null, null, null];
+    var fillEl  = document.getElementById('diag-progress-fill');
+    var textEl  = document.getElementById('diag-progress-text');
+    var resultEl  = document.getElementById('diag-result');
+    var scoreNumEl = document.getElementById('diag-score-num');
+    var stageEl  = document.getElementById('diag-stage');
+    var adviceEl = document.getElementById('diag-advice');
+
+    var stages = [
+      { min: 0,  max: 24,  en: 'Still on the starting line',  fr: 'Encore au point de départ' },
+      { min: 25, max: 49,  en: 'Early adopter stage',         fr: "Phase d’exploration" },
+      { min: 50, max: 74,  en: 'Building momentum',           fr: "La dynamique s’installe" },
+      { min: 75, max: 100, en: 'AI-native',                   fr: 'IA-native' }
+    ];
+
+    var advice = [
+      {
+        en: "Your team is at the start of the AI journey. The biggest wins are still ahead — and they’re very achievable. A structured introduction to AI tools, even a half-day session, can move the needle fast.",
+        fr: "Votre équipe est au début de l’aventure IA. Les gains les plus importants sont encore devant vous — et ils sont très accessibles. Une introduction structurée aux outils IA, même d’une demi-journée, peut faire bouger les choses rapidement."
+      },
+      {
+        en: "Some people on your team are getting value from AI, but it’s not yet consistent or team-wide. The gap between your early adopters and everyone else is the main thing to close.",
+        fr: "Certaines personnes de votre équipe tirent déjà de la valeur de l’IA, mais ce n’est pas encore régulier ni généralisé. L’écart entre vos early adopters et les autres est la principale chose à combler."
+      },
+      {
+        en: "You’re past the starting phase — AI is delivering real value in your team. The next step is making it more consistent, measuring the impact, and spreading what’s working across the whole team.",
+        fr: "Vous avez passé la phase de démarrage — l’IA apporte une vraie valeur dans votre équipe. L’étape suivante : la rendre plus régulière, mesurer l’impact et diffuser ce qui fonctionne à toute l’équipe."
+      },
+      {
+        en: "Your team is operating at a genuinely high level with AI. The focus now is resilience — making sure this capability is embedded in your processes, not dependent on a few individuals.",
+        fr: "Votre équipe opère à un très bon niveau avec l’IA. Le focus maintenant, c’est la résilience — s’assurer que cette capacité est ancrée dans vos processus, et pas dépendante de quelques individus."
+      }
+    ];
+
+    function getStageIndex(score) {
+      for (var i = 0; i < stages.length; i++) {
+        if (score >= stages[i].min && score <= stages[i].max) return i;
+      }
+      return stages.length - 1;
+    }
+
+    function updateProgress() {
+      var answered = 0;
+      for (var i = 0; i < answers.length; i++) { if (answers[i] !== null) answered++; }
+      var pct = Math.round((answered / 5) * 100);
+      if (fillEl) fillEl.style.width = pct + '%';
+      if (textEl) textEl.textContent = answered + ' / 5';
+    }
+
+    function showResult() {
+      var total = 0;
+      for (var i = 0; i < answers.length; i++) total += answers[i];
+      var finalScore = Math.round(total / 5);
+      var idx = getStageIndex(finalScore);
+      var isFr = document.documentElement.lang === 'fr';
+
+      if (scoreNumEl) scoreNumEl.textContent = finalScore;
+      if (stageEl)   stageEl.textContent   = isFr ? stages[idx].fr : stages[idx].en;
+      if (adviceEl)  adviceEl.textContent  = isFr ? advice[idx].fr  : advice[idx].en;
+
+      if (resultEl) {
+        resultEl.hidden = false;
+        setTimeout(function () {
+          resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    }
+
+    function allAnswered() {
+      for (var i = 0; i < answers.length; i++) { if (answers[i] === null) return false; }
+      return true;
+    }
+
+    widget.addEventListener('click', function (ev) {
+      var btn = ev.target.closest ? ev.target.closest('.diag-opt') : null;
+      if (!btn) return;
+      var qEl = btn.parentNode;
+      while (qEl && !qEl.getAttribute('data-q')) qEl = qEl.parentNode;
+      if (!qEl) return;
+
+      var qIdx  = parseInt(qEl.getAttribute('data-q'), 10);
+      var score = parseInt(btn.getAttribute('data-score'), 10);
+
+      var opts = qEl.querySelectorAll('.diag-opt');
+      for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
+      btn.classList.add('selected');
+      qEl.classList.add('answered');
+      answers[qIdx] = score;
+
+      updateProgress();
+      if (allAnswered()) showResult();
+    });
+
+    // Re-render result text after language switch
+    var langBtn = document.querySelector('.lang-toggle');
+    if (langBtn) {
+      langBtn.addEventListener('click', function () {
+        setTimeout(function () {
+          if (resultEl && !resultEl.hidden && allAnswered()) showResult();
+        }, 50);
+      });
+    }
+
+    updateProgress();
+  }
+
+  function init() { initReveals(); initParallax(); initSectionParallax(); initCharts(); initNav(); initClientsCarousel(); initDiagnostic(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();

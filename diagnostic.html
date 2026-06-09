@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-house="goji" data-i18n-title="diag.page_title">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Readiness Diagnostic · Trailblaze</title>
+<meta name="description" content="5 questions. No email required. Score your team's AI readiness in 2 minutes." />
+<link rel="canonical" href="https://trailblaze.work/diagnostic.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400..600&family=Schibsted+Grotesk:wght@400..900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=2" />
+<link rel="stylesheet" href="components.css?v=2" />
+<style>
+/* =====================================================
+   Diagnostic page — self-contained styles
+   (inlined to be immune to CDN caching of components.css)
+   ===================================================== */
+
+/* Progress */
+.diag-widget { max-width: 720px; }
+.diag-progress { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.diag-progress-bar { flex: 1; height: 3px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.diag-progress-fill { height: 100%; background: var(--accent); border-radius: 999px; width: 0%; transition: width .4s ease; }
+.diag-progress-text { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; color: var(--ink-faint); white-space: nowrap; min-width: 42px; text-align: right; }
+
+/* Questions */
+.diag-questions { display: flex; flex-direction: column; gap: 10px; }
+.diag-q { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(14px,2.2vw,22px) clamp(16px,2.5vw,24px); background: var(--paper); transition: border-color .25s ease; }
+.diag-q.answered { border-color: color-mix(in oklab, var(--accent) 45%, var(--line)); }
+.diag-q-num { display: block; font-family: var(--font-mono); font-size: .68rem; font-weight: 600; letter-spacing: .16em; color: var(--accent); margin-bottom: .55rem; }
+.diag-q-text { font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--ink); margin: 0 0 12px; line-height: 1.35; }
+
+/* Options */
+.diag-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.diag-opt { appearance: none; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--ink-soft); font-family: var(--font-ui); font-size: .875rem; font-weight: 500; padding: .38em 1.05em; cursor: pointer; line-height: 1.4; transition: border-color .15s, background .15s, color .15s, transform .1s; }
+.diag-opt:hover { border-color: var(--ink-soft); color: var(--ink); background: color-mix(in oklab, var(--ink) 4%, transparent); }
+.diag-opt.selected { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.diag-opt:active { transform: scale(.96); }
+
+/* Result */
+.diag-result { margin-top: 14px; border: 1.5px solid var(--accent); border-radius: var(--radius-lg); background: var(--paper); animation: diag-in .35s ease both; }
+@keyframes diag-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.diag-result-inner { padding: clamp(20px,3vw,32px); }
+.diag-score-line { display: flex; align-items: baseline; gap: .32em; margin-bottom: .4rem; }
+.diag-label { font-family: var(--font-mono); font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.diag-score-num { font-family: var(--font-display); font-size: clamp(1.8rem,4.5vw,2.8rem); font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: var(--display-tracking); }
+.diag-score-max { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--ink-faint); line-height: 1; }
+.diag-stage { font-family: var(--font-display); font-size: clamp(1.15rem,2.4vw,1.55rem); font-weight: 720; letter-spacing: var(--display-tracking); color: var(--ink); margin-bottom: .55rem; line-height: 1.15; }
+.diag-advice { font-size: .96rem; color: var(--ink-soft); line-height: 1.55; max-width: 58ch; margin: 0 0 1.4rem; }
+.diag-cta { font-size: .9rem; padding: .65em 1.25em; }
+
+/* Dark band overrides */
+.band-ink .diag-progress-bar { background: color-mix(in oklab, #ffffff 16%, transparent); }
+.band-ink .diag-q { background: color-mix(in oklab, #ffffff 7%, transparent); border-color: color-mix(in oklab, #ffffff 14%, transparent); }
+.band-ink .diag-q.answered { border-color: color-mix(in oklab, var(--accent) 70%, transparent); }
+.band-ink .diag-q-text { color: var(--paper-on-ink); }
+.band-ink .diag-opt { color: color-mix(in oklab, var(--paper-on-ink) 62%, transparent); border-color: color-mix(in oklab, #ffffff 18%, transparent); background: transparent; }
+.band-ink .diag-opt:hover { color: var(--paper-on-ink); border-color: color-mix(in oklab, #ffffff 40%, transparent); background: color-mix(in oklab, #ffffff 10%, transparent); }
+.band-ink .diag-opt.selected { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.band-ink .diag-result { background: color-mix(in oklab, #ffffff 8%, transparent); border-color: var(--accent); }
+.band-ink .diag-stage { color: var(--paper-on-ink); }
+.band-ink .diag-score-max { color: color-mix(in oklab, var(--paper-on-ink) 45%, transparent); }
+.band-ink .diag-advice { color: color-mix(in oklab, var(--paper-on-ink) 66%, transparent); }
+
+/* Page layout */
+.diag-page-body { padding-block: clamp(64px, 9vw, 120px); }
+.diag-page-intro { margin-bottom: clamp(40px, 6vw, 72px); }
+.diag-page-intro h1 { font-size: var(--fs-h2); font-weight: var(--wght-display); letter-spacing: var(--display-tracking); margin: .5rem 0 1rem; max-width: 22ch; text-wrap: balance; color: var(--paper-on-ink); }
+.diag-lede { font-size: 1.05rem; color: color-mix(in oklab, var(--paper-on-ink) 66%, transparent); max-width: 50ch; line-height: 1.6; margin: 0; }
+.diag-page-body .diag-widget { max-width: 780px; }
+.diag-page-body .diag-q { padding: clamp(20px, 2.8vw, 30px) clamp(20px, 3vw, 32px); }
+.diag-page-body .diag-q-text { font-size: 1.07rem; margin-bottom: 16px; }
+.diag-page-body .diag-opts { gap: 10px; }
+.diag-page-body .diag-opt { font-size: .93rem; padding: .5em 1.25em; }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <nav class="nav-inner" aria-label="Primary">
+    <a class="brand" href="/"><img class="mark" src="trailblaze-mark.svg" alt="" aria-hidden="true" />Trailblaze</a>
+    <a class="btn btn-primary nav-cta" href="https://calendly.com/hello-trailblaze/30min" target="_blank" rel="noopener noreferrer"><span class="cta-long" data-i18n="nav.cta_long">Book a diagnostic call</span><span class="cta-short" data-i18n="nav.cta_short">Book a call</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="diag-page-body band-ink" aria-labelledby="diag-h">
+    <div class="wrap">
+
+      <div class="diag-page-intro">
+        <h1 id="diag-h" data-i18n="diag.h1">Score your team's AI readiness in 2 minutes.</h1>
+        <p class="diag-lede" data-i18n="diag.lede">5 questions. No email required. See where you stand and what to focus on.</p>
+      </div>
+
+      <div class="diag-widget" id="diag-widget">
+
+        <div class="diag-progress" aria-hidden="true">
+          <div class="diag-progress-bar"><div class="diag-progress-fill" id="diag-progress-fill"></div></div>
+          <span class="diag-progress-text" id="diag-progress-text">0 / 5</span>
+        </div>
+
+        <div class="diag-questions">
+
+          <div class="diag-q" data-q="0">
+            <span class="diag-q-num">01</span>
+            <p class="diag-q-text" data-i18n="diag.q1">How many people on your team use AI tools on a typical working day?</p>
+            <div class="diag-opts" role="group" aria-label="Answer options">
+              <button class="diag-opt" data-score="0"   data-i18n="diag.q1a0">None or almost none</button>
+              <button class="diag-opt" data-score="34"  data-i18n="diag.q1a1">A few people</button>
+              <button class="diag-opt" data-score="67"  data-i18n="diag.q1a2">Most of the team</button>
+              <button class="diag-opt" data-score="100" data-i18n="diag.q1a3">Everyone, every day</button>
+            </div>
+          </div>
+
+          <div class="diag-q" data-q="1">
+            <span class="diag-q-num">02</span>
+            <p class="diag-q-text" data-i18n="diag.q2">Does someone on your team catch when an AI output is wrong — before it causes a problem?</p>
+            <div class="diag-opts" role="group" aria-label="Answer options">
+              <button class="diag-opt" data-score="0"   data-i18n="diag.q2a0">Not really</button>
+              <button class="diag-opt" data-score="34"  data-i18n="diag.q2a1">One or two people</button>
+              <button class="diag-opt" data-score="67"  data-i18n="diag.q2a2">Most of us</button>
+              <button class="diag-opt" data-score="100" data-i18n="diag.q2a3">It's a team-wide habit</button>
+            </div>
+          </div>
+
+          <div class="diag-q" data-q="2">
+            <span class="diag-q-num">03</span>
+            <p class="diag-q-text" data-i18n="diag.q3">Has AI measurably changed how fast your team delivers?</p>
+            <div class="diag-opts" role="group" aria-label="Answer options">
+              <button class="diag-opt" data-score="0"   data-i18n="diag.q3a0">Not yet</button>
+              <button class="diag-opt" data-score="34"  data-i18n="diag.q3a1">A little, on some tasks</button>
+              <button class="diag-opt" data-score="67"  data-i18n="diag.q3a2">Yes, noticeably</button>
+              <button class="diag-opt" data-score="100" data-i18n="diag.q3a3">Dramatically — it transformed our pace</button>
+            </div>
+          </div>
+
+          <div class="diag-q" data-q="3">
+            <span class="diag-q-num">04</span>
+            <p class="diag-q-text" data-i18n="diag.q4">Does your leadership track AI's impact on business outcomes — not just usage frequency?</p>
+            <div class="diag-opts" role="group" aria-label="Answer options">
+              <button class="diag-opt" data-score="0"   data-i18n="diag.q4a0">No, we don't measure it</button>
+              <button class="diag-opt" data-score="34"  data-i18n="diag.q4a1">We track usage, not outcomes</button>
+              <button class="diag-opt" data-score="67"  data-i18n="diag.q4a2">We're starting to connect the two</button>
+              <button class="diag-opt" data-score="100" data-i18n="diag.q4a3">Yes — outcomes measured systematically</button>
+            </div>
+          </div>
+
+          <div class="diag-q" data-q="4">
+            <span class="diag-q-num">05</span>
+            <p class="diag-q-text" data-i18n="diag.q5">If your most AI-savvy person left tomorrow, would the team's capability drop significantly?</p>
+            <div class="diag-opts" role="group" aria-label="Answer options">
+              <button class="diag-opt" data-score="0"   data-i18n="diag.q5a0">Yes — we'd really feel it</button>
+              <button class="diag-opt" data-score="34"  data-i18n="diag.q5a1">Quite a lot</button>
+              <button class="diag-opt" data-score="67"  data-i18n="diag.q5a2">A little — others could step up</button>
+              <button class="diag-opt" data-score="100" data-i18n="diag.q5a3">No — skills are distributed</button>
+            </div>
+          </div>
+
+        </div><!-- /.diag-questions -->
+
+        <div class="diag-result" id="diag-result" hidden>
+          <div class="diag-result-inner">
+            <div class="diag-score-line">
+              <span class="diag-label" data-i18n="diag.score_label">YOUR SCORE:</span>
+              <span class="diag-score-num" id="diag-score-num"></span>
+              <span class="diag-score-max"> / 100</span>
+            </div>
+            <div class="diag-stage" id="diag-stage"></div>
+            <p class="diag-advice" id="diag-advice"></p>
+            <a class="btn btn-primary diag-cta" href="https://calendly.com/hello-trailblaze/30min" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="diag.cta">Talk to us about what's blocking your team</span> →
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /#diag-widget -->
+    </div><!-- /.wrap -->
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="brand" href="/"><img class="mark" src="trailblaze-mark.svg" alt="" aria-hidden="true" />Trailblaze</a>
+    <div class="f-meta">
+      <a href="privacy.html" data-i18n="footer.privacy">Privacy policy</a>
+      <a class="fr-only" href="mentions-legales.html">Mentions légales</a>
+      <a class="f-email" href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>
+    </div>
+  </div>
+</footer>
+
+<button class="lang-toggle" type="button" aria-label="Change language">EN</button>
+
+<script src="i18n.js?v=2"></script>
+<script src="app.js?v=2"></script>
+</body>
+</html>
