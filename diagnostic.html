@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-house="goji" data-i18n-title="diag.page_title">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Readiness Diagnostic · Trailblaze</title>
+<meta name="description" content="Score your team's AI readiness in 2 minutes. 5 questions. No email required. See where you stand and what to fix first." />
+<link rel="canonical" href="https://trailblaze.work/diagnostic" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400..600&family=Schibsted+Grotesk:wght@400..900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="components.css" />
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <nav class="nav-inner" aria-label="Primary">
+    <a class="brand" href="/"><img class="mark" src="trailblaze-mark.svg" alt="" aria-hidden="true" />Trailblaze</a>
+    <a class="btn btn-primary nav-cta" href="https://calendly.com/hello-trailblaze/30min" target="_blank" rel="noopener noreferrer"><span data-i18n="nav.cta_long">Book a diagnostic call</span></a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HEADER + WIDGET ============ -->
+<section class="diag-page-body band-ink" aria-labelledby="diag-h">
+  <div class="wrap">
+    <div class="diag-page-intro">
+      <h1 id="diag-h" data-i18n="diag.h1">Score your team's AI readiness in 2 minutes.</h1>
+      <p class="diag-lede" data-i18n="diag.lede">5 questions. No email required. See where you stand and what to fix first.</p>
+    </div>
+    <div class="diag-widget" id="diag-widget">
+      <div class="diag-progress" aria-hidden="true">
+        <div class="diag-progress-bar"><div class="diag-progress-fill" id="diag-progress-fill"></div></div>
+        <span class="diag-progress-text" id="diag-progress-text">0 / 5</span>
+      </div>
+      <div class="diag-questions">
+        <div class="diag-q" data-q="0">
+          <span class="diag-q-num">01</span>
+          <p class="diag-q-text" data-i18n="diag.q1">How many people on your team use AI tools on a typical working day?</p>
+          <div class="diag-opts" role="group">
+            <button class="diag-opt" data-score="0" type="button" data-i18n="diag.q1a0">None or almost none</button>
+            <button class="diag-opt" data-score="34" type="button" data-i18n="diag.q1a1">A few people</button>
+            <button class="diag-opt" data-score="67" type="button" data-i18n="diag.q1a2">Most of the team</button>
+            <button class="diag-opt" data-score="100" type="button" data-i18n="diag.q1a3">Everyone, every day</button>
+          </div>
+        </div>
+        <div class="diag-q" data-q="1">
+          <span class="diag-q-num">02</span>
+          <p class="diag-q-text" data-i18n="diag.q2">Can anyone on your team tell when an AI output is wrong or made up — before it causes a problem?</p>
+          <div class="diag-opts" role="group">
+            <button class="diag-opt" data-score="0" type="button" data-i18n="diag.q2a0">Not reliably</button>
+            <button class="diag-opt" data-score="34" type="button" data-i18n="diag.q2a1">One or two people can</button>
+            <button class="diag-opt" data-score="67" type="button" data-i18n="diag.q2a2">Most of us can</button>
+            <button class="diag-opt" data-score="100" type="button" data-i18n="diag.q2a3">It's a team-wide habit</button>
+          </div>
+        </div>
+        <div class="diag-q" data-q="2">
+          <span class="diag-q-num">03</span>
+          <p class="diag-q-text" data-i18n="diag.q3">Has AI measurably changed how fast your team delivers?</p>
+          <div class="diag-opts" role="group">
+            <button class="diag-opt" data-score="0" type="button" data-i18n="diag.q3a0">Not yet</button>
+            <button class="diag-opt" data-score="34" type="button" data-i18n="diag.q3a1">Slightly, in a few tasks</button>
+            <button class="diag-opt" data-score="67" type="button" data-i18n="diag.q3a2">Yes, noticeably</button>
+            <button class="diag-opt" data-score="100" type="button" data-i18n="diag.q3a3">Dramatically — it's transformed our pace</button>
+          </div>
+        </div>
+        <div class="diag-q" data-q="3">
+          <span class="diag-q-num">04</span>
+          <p class="diag-q-text" data-i18n="diag.q4">Does your leadership track AI's impact on business outcomes — not just how often people use it?</p>
+          <div class="diag-opts" role="group">
+            <button class="diag-opt" data-score="0" type="button" data-i18n="diag.q4a0">No, we don't track it</button>
+            <button class="diag-opt" data-score="34" type="button" data-i18n="diag.q4a1">We track usage, not outcomes</button>
+            <button class="diag-opt" data-score="67" type="button" data-i18n="diag.q4a2">We're starting to connect the dots</button>
+            <button class="diag-opt" data-score="100" type="button" data-i18n="diag.q4a3">Yes — outcomes measured systematically</button>
+          </div>
+        </div>
+        <div class="diag-q" data-q="4">
+          <span class="diag-q-num">05</span>
+          <p class="diag-q-text" data-i18n="diag.q5">If your most AI-savvy person left tomorrow, would the team's capability significantly drop?</p>
+          <div class="diag-opts" role="group">
+            <button class="diag-opt" data-score="0" type="button" data-i18n="diag.q5a0">Yes — we'd really feel it</button>
+            <button class="diag-opt" data-score="34" type="button" data-i18n="diag.q5a1">Quite a bit</button>
+            <button class="diag-opt" data-score="67" type="button" data-i18n="diag.q5a2">Somewhat — others could step up</button>
+            <button class="diag-opt" data-score="100" type="button" data-i18n="diag.q5a3">Not really — it's spread across the team</button>
+          </div>
+        </div>
+      </div>
+      <div class="diag-result" id="diag-result" aria-live="polite" hidden>
+        <div class="diag-result-inner">
+          <div class="diag-score-line">
+            <span class="diag-label" data-i18n="diag.score_label">YOUR SCORE:</span>
+            <span class="diag-score-num" id="diag-score-num"></span>
+            <span class="diag-score-max"> / 100</span>
+          </div>
+          <div class="diag-stage" id="diag-stage"></div>
+          <p class="diag-advice" id="diag-advice"></p>
+          <a class="btn btn-primary diag-cta" href="https://calendly.com/hello-trailblaze/30min" target="_blank" rel="noopener noreferrer"><span data-i18n="diag.cta">Talk to us about what's blocking your team</span> <span class="arr" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="brand" href="/"><img class="mark" src="trailblaze-mark.svg" alt="" aria-hidden="true" />Trailblaze</a>
+    <div class="f-meta">
+      <a href="privacy.html">Privacy policy</a>
+      <a class="f-email" href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>
+    </div>
+  </div>
+</footer>
+
+<button class="lang-toggle" type="button" aria-label="Change language">EN</button>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

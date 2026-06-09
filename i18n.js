@@ -44,7 +44,9 @@
     },
     hero: {
       h1: 'Vous payez pour l\'IA. On s\'assure qu\'elle rapporte.',
-      subhead: 'On construit de vrais produits avec l\'IA depuis son arrivée, on connaît les patterns et les pièges. On fait progresser chaque équipe rapidement, pour que l\'investissement soit rentable.'
+      subhead: 'On construit de vrais produits avec l\'IA depuis son arrivée, on connaît les patterns et les pièges. On fait progresser chaque équipe rapidement, pour que l\'investissement soit rentable.',
+      diag_note: 'Pas sûr de l\'état de votre équipe face à l\'IA ? Voyez où vous en êtes en 2 minutes — sans email requis.',
+      diag_cta: 'Évaluez la maturité IA de votre équipe'
     },
     cta: {
       book: 'Réserver un appel diagnostic',
@@ -199,6 +201,24 @@
     },
     footer: {
       privacy: 'Politique de confidentialité'
+    },
+    diag: {
+      page_title: 'Diagnostic IA · Trailblaze',
+      h1: 'Évaluez la maturité IA de votre équipe en 2 minutes.',
+      lede: '5 questions. Sans email requis. Voyez où vous en êtes et ce à traiter en priorité.',
+      q1: 'Combien de personnes dans votre équipe utilisent des outils IA un jour de travail typique ?',
+      q1a0: 'Aucune ou presque', q1a1: 'Quelques personnes', q1a2: 'La plupart', q1a3: 'Tout le monde, chaque jour',
+      q2: 'Dans votre équipe, quelqu\'un repère-t-il quand une réponse IA est fausse — avant que ça pose un problème ?',
+      q2a0: 'Pas vraiment', q2a1: 'Une ou deux personnes', q2a2: 'La plupart d\'entre nous', q2a3: 'C\'est une habitude collective',
+      q3: 'L\'IA a-t-elle changé de façon mesurable la vitesse de livraison de votre équipe ?',
+      q3a0: 'Pas encore', q3a1: 'Un peu, sur quelques tâches', q3a2: 'Oui, nettement', q3a3: 'Radicalement — ça a transformé notre rythme',
+      q4: 'Votre direction suit-elle l\'impact de l\'IA sur les résultats business — pas seulement la fréquence d\'utilisation ?',
+      q4a0: 'Non, on ne mesure pas', q4a1: 'On suit l\'usage, pas les résultats', q4a2: 'On commence à faire le lien', q4a3: 'Oui — résultats mesurés systématiquement',
+      q5: 'Si votre personne la plus à l\'aise avec l\'IA partait demain, les capacités de l\'équipe chuteraient-elles ?',
+      q5a0: 'Oui — on le sentirait vraiment', q5a1: 'Beaucoup', q5a2: 'Un peu — d\'autres pourraient prendre le relais', q5a3: 'Non — les compétences sont réparties',
+      score_label: 'VOTRE SCORE :',
+      cta: 'Parlons de ce qui bloque votre équipe',
+      nav_cta: 'Réserver un appel diagnostic'
     }
   };
 
@@ -252,7 +272,9 @@
       if (val != null) el.setAttribute('aria-label', val);
     }
 
-    document.title = fr ? t.meta.title : enTitle;
+    var pageTitleKey = document.documentElement.getAttribute('data-i18n-title');
+    var frTitle = pageTitleKey ? get(pageTitleKey) : t.meta.title;
+    document.title = fr ? (frTitle || t.meta.title) : enTitle;
     for (i = 0; i < metaSpecs.length; i++) {
       if (metaSpecs[i].el) metaSpecs[i].el.setAttribute('content', fr ? metaSpecs[i].fr : metaSpecs[i].en);
     }
