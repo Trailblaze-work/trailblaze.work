@@ -196,6 +196,9 @@
       a5: 'On travaille dans votre propre environnement et on signe un NDA. Rien n\'en sort sans votre accord, et on vous aide à choisir des outils compatibles avec vos règles de sécurité.',
       q6: 'Dans combien de temps peut-on démarrer ?',
       a6: 'On peut avoir un premier appel dans la semaine, et démarrer quelques jours après notre accord, juste le temps de préparer vos supports.'
+    },
+    footer: {
+      privacy: 'Politique de confidentialité'
     }
   };
 

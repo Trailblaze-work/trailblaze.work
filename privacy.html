@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-house="goji" data-portrait="rounded" data-bio="long">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Decide language before first paint and hold the page hidden until web fonts
+     are ready, matching the homepage (no language flash, no font reflow). -->
+<script>
+(function () {
+  var de = document.documentElement;
+  try {
+    var s = localStorage.getItem('tb-lang');
+    var nav = (navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language) || 'en';
+    var lang = (s === 'fr' || s === 'en') ? s : (String(nav).toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en');
+    de.setAttribute('lang', lang);
+  } catch (e) {}
+  de.classList.add('app-loading');
+  var done = false;
+  function reveal() { if (!done) { done = true; de.classList.remove('app-loading'); } }
+  try {
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(reveal);
+    else reveal();
+  } catch (e) { reveal(); }
+  setTimeout(reveal, 1200);
+})();
+</script>
+<style>
+  html.app-loading body { visibility: hidden; }
+  /* Show only the active language's content (the <html lang> is set above). */
+  html[lang="en"] [data-only="fr"] { display: none; }
+  html[lang="fr"] [data-only="en"] { display: none; }
+
+  .legal-top { border-bottom: 1px solid var(--line); }
+  .legal-top-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 66px; }
+  .legal-back { font-family: var(--font-ui); font-size: .9rem; color: var(--ink-soft); text-decoration: none; }
+  .legal-back:hover { color: var(--ink); }
+
+  .legal { max-width: 760px; margin-inline: auto; padding-block: clamp(40px, 6vw, 90px); }
+  .legal h1 { font-family: var(--font-display); font-weight: var(--wght-display, 800); font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 .4rem; color: var(--ink); }
+  .legal .updated { font-family: var(--font-mono); font-size: .82rem; color: var(--ink-soft); margin: 0 0 2.6rem; }
+  .legal h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.6vw, 1.75rem); letter-spacing: -.01em; margin: 2.6rem 0 .6rem; color: var(--ink); }
+  .legal p, .legal li { color: var(--ink-soft); line-height: 1.65; font-size: 1rem; }
+  .legal p { margin: .6rem 0; }
+  .legal ul { padding-left: 1.25rem; margin: .6rem 0; }
+  .legal li { margin: .35rem 0; }
+  .legal a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 2px; }
+  .legal strong { color: var(--ink); font-weight: 600; }
+  .legal .note { margin-top: 3rem; padding: 1rem 1.2rem; border: 1px dashed var(--line); border-radius: 10px; font-size: .9rem; }
+</style>
+<title>Privacy Policy · Trailblaze</title>
+<meta name="description" content="How Trailblaze collects, uses and protects your personal data." />
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://trailblaze.work/privacy.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400..600&family=Schibsted+Grotesk:wght@400..900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="components.css" />
+</head>
+<body>
+
+<header class="legal-top">
+  <div class="wrap legal-top-inner">
+    <a class="brand" href="/"><img class="mark" src="trailblaze-mark.svg" alt="" aria-hidden="true" />Trailblaze</a>
+    <a class="legal-back" href="/" data-only="en">← Back to site</a>
+    <a class="legal-back" href="/" data-only="fr">← Retour au site</a>
+  </div>
+</header>
+
+<main class="wrap legal">
+
+  <!-- ============================ ENGLISH ============================ -->
+  <div data-only="en">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: 9 June 2026</p>
+
+    <p>This Privacy Policy explains how <strong>Trailblaze</strong> (“we”, “us”, “our”) collects, uses and protects your personal data when you visit <strong>trailblaze.work</strong> or get in touch with us. We are committed to handling your information responsibly and in line with the EU General Data Protection Regulation (GDPR) and applicable French law.</p>
+
+    <h2>1. Who is responsible for your data</h2>
+    <p>The data controller is <strong>Trailblaze</strong>, registered at <strong>60 rue François Ier, 75008 Paris, France</strong> (SIRET 101&nbsp;637&nbsp;544&nbsp;00012). For any question about this policy or your data, contact us at <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>.</p>
+
+    <h2>2. What data we collect</h2>
+    <p><strong>Information you give us</strong> — when you email us or book a diagnostic call, we may collect your name, email address, company, and the contents of your message.</p>
+    <p><strong>Information collected automatically</strong> — when you browse the site, our hosting and content-delivery providers may process technical data such as your IP address, browser type, device information, and pages visited, for security and to keep the site running.</p>
+    <p>We do <strong>not</strong> ask for or store sensitive data (such as financial details, government IDs, or health data) through this website.</p>
+
+    <h2>3. How we use your data</h2>
+    <ul>
+      <li>To respond to your enquiries and schedule calls you request;</li>
+      <li>To provide, maintain and improve our website;</li>
+      <li>To keep the site secure and prevent abuse;</li>
+      <li>To comply with our legal obligations.</li>
+    </ul>
+
+    <h2>4. Legal bases (GDPR)</h2>
+    <p>We process your data on the basis of your <strong>consent</strong> (e.g. when you contact us), our <strong>legitimate interest</strong> in running and improving our business and site, and where relevant the <strong>performance of a contract</strong> or compliance with a <strong>legal obligation</strong>.</p>
+
+    <h2>5. Cookies and analytics</h2>
+    <p>This site uses <strong>no analytics, advertising or third-party tracking cookies</strong>. We store a small language preference in your browser (via local storage) so the site remembers whether you chose English or French — this stays on your device and is not used to track you. Note that if you book a call, our scheduling provider (Calendly) may set its own cookies on its own pages; please refer to their policy.</p>
+
+    <h2>6. Service providers we rely on</h2>
+    <p>We share data only with providers that help us operate, and only as needed:</p>
+    <ul>
+      <li><strong>Hosting &amp; delivery</strong> — GitHub Pages and Cloudflare serve this website.</li>
+      <li><strong>Scheduling</strong> — Calendly processes the details you submit when booking a call.</li>
+      <li><strong>Email</strong> — Google Workspace (Google) when you write to us.</li>
+    </ul>
+    <p>These providers act as our processors and are bound to protect your data.</p>
+
+    <h2>7. International transfers</h2>
+    <p>Some providers may process data outside the European Economic Area. Where that happens, we rely on appropriate safeguards (such as the European Commission’s Standard Contractual Clauses).</p>
+
+    <h2>8. How long we keep your data</h2>
+    <p>We keep personal data only as long as needed for the purposes above — typically for the duration of our exchange and a reasonable period afterwards — then delete or anonymise it, unless a longer period is required by law.</p>
+
+    <h2>9. Your rights</h2>
+    <p>Under the GDPR you have the right to access, correct, delete, restrict or object to the processing of your data, to data portability, and to withdraw consent at any time. To exercise these rights, email <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>. You also have the right to lodge a complaint with the French data-protection authority, the <strong>CNIL</strong> (<a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>).</p>
+
+    <h2>10. Security</h2>
+    <p>We take reasonable technical and organisational measures to protect your data against loss, misuse and unauthorised access. No method of transmission over the internet is completely secure, however, and we cannot guarantee absolute security.</p>
+
+    <h2>11. Changes to this policy</h2>
+    <p>We may update this policy from time to time. The “Last updated” date above reflects the latest version.</p>
+
+    <h2>12. Contact</h2>
+    <p>Questions about this policy or your personal data? Email us at <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>.</p>
+
+  </div>
+
+  <!-- ============================ FRENCH ============================ -->
+  <div data-only="fr">
+    <h1>Politique de confidentialité</h1>
+    <p class="updated">Dernière mise à jour : 9 juin 2026</p>
+
+    <p>La présente politique de confidentialité explique comment <strong>Trailblaze</strong> (« nous ») collecte, utilise et protège vos données personnelles lorsque vous visitez <strong>trailblaze.work</strong> ou nous contactez. Nous nous engageons à traiter vos informations de manière responsable, conformément au Règlement général sur la protection des données (RGPD) et au droit français applicable.</p>
+
+    <h2>1. Responsable du traitement</h2>
+    <p>Le responsable du traitement est <strong>Trailblaze</strong>, dont le siège est situé <strong>60 rue François Ier, 75008 Paris, France</strong> (SIRET 101&nbsp;637&nbsp;544&nbsp;00012). Pour toute question concernant cette politique ou vos données, écrivez-nous à <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>.</p>
+
+    <h2>2. Données que nous collectons</h2>
+    <p><strong>Informations que vous nous communiquez</strong> — lorsque vous nous écrivez ou réservez un appel diagnostic, nous pouvons collecter votre nom, votre adresse e-mail, votre société et le contenu de votre message.</p>
+    <p><strong>Informations collectées automatiquement</strong> — lors de votre navigation, nos prestataires d’hébergement et de diffusion peuvent traiter des données techniques telles que votre adresse IP, le type de navigateur, des informations sur l’appareil et les pages consultées, pour la sécurité et le bon fonctionnement du site.</p>
+    <p>Nous ne demandons ni ne conservons <strong>aucune</strong> donnée sensible (informations bancaires, pièces d’identité, données de santé) via ce site.</p>
+
+    <h2>3. Utilisation de vos données</h2>
+    <ul>
+      <li>Répondre à vos demandes et organiser les appels que vous sollicitez ;</li>
+      <li>Fournir, maintenir et améliorer notre site ;</li>
+      <li>Assurer la sécurité du site et prévenir les abus ;</li>
+      <li>Respecter nos obligations légales.</li>
+    </ul>
+
+    <h2>4. Bases légales (RGPD)</h2>
+    <p>Nous traitons vos données sur la base de votre <strong>consentement</strong> (ex. lorsque vous nous contactez), de notre <strong>intérêt légitime</strong> à exploiter et améliorer notre activité et notre site, et le cas échéant de l’<strong>exécution d’un contrat</strong> ou du respect d’une <strong>obligation légale</strong>.</p>
+
+    <h2>5. Cookies et mesure d’audience</h2>
+    <p>Ce site n’utilise <strong>aucun cookie de mesure d’audience, de publicité ou de suivi tiers</strong>. Nous enregistrons une simple préférence de langue dans votre navigateur (via le stockage local) afin que le site retienne si vous avez choisi le français ou l’anglais — cette information reste sur votre appareil et ne sert pas à vous suivre. À noter : si vous réservez un appel, notre prestataire de prise de rendez-vous (Calendly) peut déposer ses propres cookies sur ses propres pages ; veuillez consulter sa politique.</p>
+
+    <h2>6. Prestataires auxquels nous faisons appel</h2>
+    <p>Nous ne partageons des données qu’avec des prestataires qui nous aident à fonctionner, et uniquement dans la mesure nécessaire :</p>
+    <ul>
+      <li><strong>Hébergement et diffusion</strong> — GitHub Pages et Cloudflare hébergent et diffusent ce site.</li>
+      <li><strong>Prise de rendez-vous</strong> — Calendly traite les informations que vous transmettez lors d’une réservation.</li>
+      <li><strong>E-mail</strong> — Google Workspace (Google) lorsque vous nous écrivez.</li>
+    </ul>
+    <p>Ces prestataires agissent en qualité de sous-traitants et sont tenus de protéger vos données.</p>
+
+    <h2>7. Transferts hors UE</h2>
+    <p>Certains prestataires peuvent traiter des données en dehors de l’Espace économique européen. Le cas échéant, nous nous appuyons sur des garanties appropriées (telles que les clauses contractuelles types de la Commission européenne).</p>
+
+    <h2>8. Durée de conservation</h2>
+    <p>Nous conservons vos données personnelles uniquement le temps nécessaire aux finalités ci-dessus — généralement la durée de nos échanges et une période raisonnable ensuite — puis nous les supprimons ou les anonymisons, sauf obligation légale de conservation plus longue.</p>
+
+    <h2>9. Vos droits</h2>
+    <p>Conformément au RGPD, vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition au traitement de vos données, d’un droit à la portabilité, et du droit de retirer votre consentement à tout moment. Pour exercer ces droits, écrivez à <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>. Vous pouvez également introduire une réclamation auprès de la <strong>CNIL</strong> (<a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>).</p>
+
+    <h2>10. Sécurité</h2>
+    <p>Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables pour protéger vos données contre la perte, l’usage abusif et l’accès non autorisé. Aucune transmission sur Internet n’étant totalement sûre, nous ne pouvons toutefois pas garantir une sécurité absolue.</p>
+
+    <h2>11. Modifications de cette politique</h2>
+    <p>Nous pouvons mettre à jour cette politique de temps à autre. La date de « dernière mise à jour » ci-dessus indique la version la plus récente.</p>
+
+    <h2>12. Contact</h2>
+    <p>Une question sur cette politique ou vos données personnelles ? Écrivez-nous à <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>.</p>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="brand" href="/"><img class="mark" src="trailblaze-mark.svg" alt="" aria-hidden="true" />Trailblaze</a>
+    <div class="f-meta">
+      <a class="fr-only" href="mentions-legales.html">Mentions légales</a>
+      <a class="f-email" href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>
+    </div>
+  </div>
+</footer>
+
+<button class="lang-toggle" type="button" aria-label="Change language">EN</button>
+
+<script>
+/* Language toggle for this static page: swaps <html lang> (CSS shows the right
+   block), persists the choice in the same key the homepage uses, and updates
+   the page title + the floating button label. */
+(function () {
+  var de = document.documentElement;
+  var btn = document.querySelector('.lang-toggle');
+  var titles = { en: 'Privacy Policy · Trailblaze', fr: 'Politique de confidentialité · Trailblaze' };
+  function lang() { return de.getAttribute('lang') === 'fr' ? 'fr' : 'en'; }
+  function render() {
+    var l = lang();
+    document.title = titles[l];
+    if (btn) {
+      btn.textContent = l.toUpperCase();
+      btn.setAttribute('title', l === 'fr' ? 'English' : 'Français');
+      btn.setAttribute('aria-label', 'Change language to ' + (l === 'fr' ? 'English' : 'Français'));
+    }
+  }
+  render();
+  if (btn) btn.addEventListener('click', function (ev) {
+    ev.preventDefault();
+    var next = lang() === 'fr' ? 'en' : 'fr';
+    try { localStorage.setItem('tb-lang', next); } catch (e) {}
+    de.setAttribute('lang', next);
+    render();
+  });
+})();
+</script>
+</body>
+</html>

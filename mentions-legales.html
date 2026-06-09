@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr" data-house="goji" data-portrait="rounded" data-bio="long">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- French-only legal page. Hold the page hidden until web fonts are ready
+     (matches the rest of the site: no fallback-font reflow). -->
+<script>
+(function () {
+  var de = document.documentElement;
+  de.classList.add('app-loading');
+  var done = false;
+  function reveal() { if (!done) { done = true; de.classList.remove('app-loading'); } }
+  try {
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(reveal);
+    else reveal();
+  } catch (e) { reveal(); }
+  setTimeout(reveal, 1200);
+})();
+</script>
+<style>
+  html.app-loading body { visibility: hidden; }
+
+  .legal-top { border-bottom: 1px solid var(--line); }
+  .legal-top-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 66px; }
+  .legal-back { font-family: var(--font-ui); font-size: .9rem; color: var(--ink-soft); text-decoration: none; }
+  .legal-back:hover { color: var(--ink); }
+
+  .legal { max-width: 760px; margin-inline: auto; padding-block: clamp(40px, 6vw, 90px); }
+  .legal h1 { font-family: var(--font-display); font-weight: var(--wght-display, 800); font-size: clamp(2rem, 4.6vw, 3rem); line-height: 1.08; letter-spacing: -.02em; margin: 0 0 .4rem; color: var(--ink); }
+  .legal .updated { font-family: var(--font-mono); font-size: .82rem; color: var(--ink-soft); margin: 0 0 2.6rem; }
+  .legal h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.6vw, 1.75rem); letter-spacing: -.01em; margin: 2.6rem 0 .6rem; color: var(--ink); }
+  .legal p, .legal li { color: var(--ink-soft); line-height: 1.65; font-size: 1rem; }
+  .legal p { margin: .6rem 0; }
+  .legal ul { padding-left: 1.25rem; margin: .6rem 0; }
+  .legal li { margin: .35rem 0; }
+  .legal a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 2px; }
+  .legal strong { color: var(--ink); font-weight: 600; }
+</style>
+<title>Mentions légales · Trailblaze</title>
+<meta name="description" content="Mentions légales du site trailblaze.work." />
+<link rel="canonical" href="https://trailblaze.work/mentions-legales.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400..600&family=Schibsted+Grotesk:wght@400..900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="components.css" />
+</head>
+<body>
+
+<header class="legal-top">
+  <div class="wrap legal-top-inner">
+    <a class="brand" href="/"><img class="mark" src="trailblaze-mark.svg" alt="" aria-hidden="true" />Trailblaze</a>
+    <a class="legal-back" href="/">← Retour au site</a>
+  </div>
+</header>
+
+<main class="wrap legal">
+  <h1>Mentions légales</h1>
+  <p class="updated">Dernière mise à jour : 9 juin 2026</p>
+
+  <h2>1. Éditeur du site</h2>
+  <p>Le site <strong>trailblaze.work</strong> est édité par :</p>
+  <ul>
+    <li><strong>Trailblaze</strong></li>
+    <li>Siège social : 60 rue François Ier, 75008 Paris, France</li>
+    <li>SIRET : 101&nbsp;637&nbsp;544&nbsp;00012 — SIREN : 101&nbsp;637&nbsp;544</li>
+    <li>RCS Paris : 101&nbsp;637&nbsp;544</li>
+    <li>E-mail : <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a></li>
+  </ul>
+
+  <h2>2. Hébergement</h2>
+  <p>Le site est hébergé par <strong>GitHub Pages</strong> — GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (<a href="https://github.com" rel="noopener">github.com</a>).</p>
+  <p>La diffusion et la mise en cache sont assurées par <strong>Cloudflare, Inc.</strong>, 101 Townsend Street, San Francisco, CA 94107, États-Unis (<a href="https://www.cloudflare.com" rel="noopener">cloudflare.com</a>).</p>
+
+  <h2>3. Propriété intellectuelle</h2>
+  <p>L’ensemble des contenus présents sur ce site (textes, graphismes, logo, identité visuelle) sont, sauf mention contraire, la propriété de Trailblaze et sont protégés par le droit de la propriété intellectuelle. Toute reproduction ou représentation, totale ou partielle, sans autorisation préalable, est interdite.</p>
+
+  <h2>4. Données personnelles</h2>
+  <p>Le traitement de vos données personnelles est décrit dans notre <a href="privacy.html">politique de confidentialité</a>. Conformément au RGPD, vous disposez de droits d’accès, de rectification, d’effacement et d’opposition, que vous pouvez exercer à <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>. Vous pouvez également saisir la CNIL (<a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>).</p>
+
+  <h2>5. Cookies</h2>
+  <p>Ce site n’utilise aucun cookie de mesure d’audience, de publicité ou de suivi tiers. Voir la <a href="privacy.html">politique de confidentialité</a> pour plus de détails.</p>
+
+  <h2>6. Contact</h2>
+  <p>Pour toute question relative au site : <a href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>.</p>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="brand" href="/"><img class="mark" src="trailblaze-mark.svg" alt="" aria-hidden="true" />Trailblaze</a>
+    <div class="f-meta">
+      <a href="privacy.html">Politique de confidentialité</a>
+      <a class="f-email" href="mailto:hello@trailblaze.work">hello@trailblaze.work</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
